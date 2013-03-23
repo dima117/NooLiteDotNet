@@ -37,6 +37,11 @@
 
 		<div data-role="content">
 			<p>@page.Description</p>
+			@foreach (var control in page.Controls)
+   {
+				<input id="btn-@control.Id" value="@control.DisplayText" type="button" />
+				<input id="hdn-@control.Id" value="@control.Level" type="hidden" />
+   }
 		</div>
 		<!-- /content -->
 	</div>

@@ -31,6 +31,20 @@ namespace ThinkingHome.NooLite.Web.Controllers
 						Title = page.Title,
 						Description = page.Description
 					};
+
+				foreach (ControlElement control in page.Controls)
+				{
+					var controlModel = new ControlModel
+					{
+						Id = control.Id,
+						DisplayText = control.DisplayText,
+						Level = control.Level,
+						ShowSlider = control.ShowSlider
+					};
+
+					pageModel.Controls.Add(controlModel);
+				}
+
 				model.Add(pageModel);
 			}
 
