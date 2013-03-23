@@ -2,7 +2,7 @@
 
 namespace ThinkingHome.NooLite.Web.Configuration
 {
-	public class ControlPage : ConfigurationElement
+	public class ControlPageElement : ConfigurationElement
 	{
 		[ConfigurationProperty("id", IsKey = true, IsRequired = true)]
 		public string Id
@@ -25,6 +25,15 @@ namespace ThinkingHome.NooLite.Web.Configuration
 			set { base["description"] = value; }
 		}
 
-		//public IEnumerable<Control> Controls { get; set; }
+		private static readonly ConfigurationProperty propControls = new ConfigurationProperty(null, typeof(ControlPageElementCollection), null, ConfigurationPropertyOptions.IsDefaultCollection);
+
+		[ConfigurationProperty("", IsDefaultCollection = true)]
+		public ControlElementCollection ControlPages
+		{
+			get
+			{
+				return (ControlElementCollection)base[propControls];
+			}
+		}
 	}
 }
