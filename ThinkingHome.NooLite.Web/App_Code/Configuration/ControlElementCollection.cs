@@ -3,7 +3,7 @@ using System.Configuration;
 
 namespace ThinkingHome.NooLite.Web.Configuration
 {
-	[ConfigurationCollection(typeof(ControlElement), AddItemName = "button")]
+	[ConfigurationCollection(typeof(ControlElement), AddItemName = "control")]
 	public class ControlElementCollection: ConfigurationElementCollection
 	{
 		public ControlElementCollection()

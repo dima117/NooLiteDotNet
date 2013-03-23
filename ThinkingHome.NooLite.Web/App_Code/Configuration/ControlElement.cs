@@ -18,18 +18,18 @@ namespace ThinkingHome.NooLite.Web.Configuration
 			set { base["displayText"] = value; }
 		}
 
-		[ConfigurationProperty("level", IsRequired = true)]
+		[ConfigurationProperty("level", DefaultValue = (byte)50)]
 		public byte Level
 		{
 			get { return (byte)base["level"]; }
 			set { base["level"] = value; }
 		}
 
-		[ConfigurationProperty("showSlider", DefaultValue = false)]
-		public bool ShowSlider
+		[ConfigurationProperty("type", DefaultValue = "Button")]
+		public ControlType Type
 		{
-			get { return (bool)base["showSlider"]; }
-			set { base["showSlider"] = value; }
+			get { return (ControlType)base["type"]; }
+			set { base["type"] = value; }
 		}
 
 
