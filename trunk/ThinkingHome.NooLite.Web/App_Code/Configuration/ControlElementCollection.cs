@@ -20,5 +20,10 @@ namespace ThinkingHome.NooLite.Web.Configuration
 		{
 			return ((ControlElement)element).Id;
 		}
+
+		public ControlElement GetControl(string id)
+		{
+			return BaseGet(id) as ControlElement;
+		}
 	}
 }

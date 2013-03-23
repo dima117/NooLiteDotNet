@@ -92,13 +92,15 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\Configuration\ChannelElementCollection.cs" />
     <Compile Include="App_Code\Configuration\ControlElementCollection.cs" />
     <Compile Include="App_Code\Configuration\ControlPageElement.cs" />
     <Compile Include="App_Code\Configuration\ControlElement.cs" />
-    <Compile Include="App_Code\Configuration\ControlAction.cs" />
+    <Compile Include="App_Code\Configuration\ChannelElement.cs" />
     <Compile Include="App_Code\Configuration\NooLiteConfigurationSection.cs" />
     <Compile Include="App_Code\Configuration\ControlPageElementCollection.cs" />
     <Compile Include="App_Code\ControlType.cs" />
+    <Compile Include="App_Code\Pc118CommandData.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,6 +145,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\Home\Controls\Slider.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ThinkingHome.NooLite\ThinkingHome.NooLite.csproj">
+      <Project>{13CF9847-9279-4815-B573-70CC152201A2}</Project>
+      <Name>ThinkingHome.NooLite</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

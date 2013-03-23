@@ -20,5 +20,10 @@ namespace ThinkingHome.NooLite.Web.Configuration
 		{
 			return ((ControlPageElement)element).Id;
 		}
+
+		public ControlPageElement GetPage(string id)
+		{
+			return BaseGet(id) as ControlPageElement;
+		}
 	}
 }
