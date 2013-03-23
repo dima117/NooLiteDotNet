@@ -35,13 +35,18 @@
 		</div>
 		<!-- /header -->
 
-		<div data-role="content">
-			<p>@page.Description</p>
+		<div class="control-page" data-role="content">
+
+			@if (!string.IsNullOrWhiteSpace(page.Description))
+   {
+				<p>@page.Description</p>
+   }
+
 			@foreach (var control in page.Controls)
    {
-	   <div class="control-group">
+				<div class="control-group">
 
-				@Html.Partial(control.TemplateName, control)
+					@Html.Partial(control.TemplateName, control)
 				</div>
    }
 		</div>
