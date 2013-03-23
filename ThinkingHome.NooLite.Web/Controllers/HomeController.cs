@@ -52,5 +52,40 @@ namespace ThinkingHome.NooLite.Web.Controllers
 			return View(model);
 		}
 
+		public ActionResult Command(string page, string control, byte level, bool strong)
+		{
+			var commands = GetCommandList(page, control, level, strong);
+
+			using (var adapter = new PC118Adapter())
+			{
+				adapter.OpenDevice();
+
+				foreach (var cmd in commands)
+				{
+					adapter.SendCommand(cmd.Command, cmd.Channel, cmd.Level);
+				}
+			}
+
+			return new EmptyResult();
+		}
+
+		private static List<Pc118CommandData> GetCommandList(string pageId, string controlId, byte level, bool strong)
+		{
+			var result = new List<Pc118CommandData>();
+
+			var page = CurrentConfig.ControlPages.GetPage(pageId);
+
+			if (page != null)
+			{
+				var control = page.Controls.GetControl(controlId);
+
+				if (control != null)
+				{
+					
+				}
+			}
+
+			return result;
+		}
 	}
 }

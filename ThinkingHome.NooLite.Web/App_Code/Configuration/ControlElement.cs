@@ -32,7 +32,15 @@ namespace ThinkingHome.NooLite.Web.Configuration
 			set { base["type"] = value; }
 		}
 
+		private static readonly ConfigurationProperty propChannels = new ConfigurationProperty(null, typeof(ChannelElementCollection), null, ConfigurationPropertyOptions.IsDefaultCollection);
 
-		//public IEnumerable<ControlAction> Actions { get; set; }
+		[ConfigurationProperty("", IsDefaultCollection = true)]
+		public ChannelElementCollection Channels
+		{
+			get
+			{
+				return (ChannelElementCollection)base[propChannels];
+			}
+		}
 	}
 }
