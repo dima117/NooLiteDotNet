@@ -92,6 +92,9 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\Configuration\ControlSection.cs" />
+    <Content Include="App_Code\Configuration\Control.cs" />
+    <Content Include="App_Code\Configuration\ControlAction.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
