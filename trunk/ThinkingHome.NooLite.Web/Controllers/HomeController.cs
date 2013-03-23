@@ -81,7 +81,16 @@ namespace ThinkingHome.NooLite.Web.Controllers
 
 				if (control != null)
 				{
-					
+					foreach (ChannelElement channel in control.Channels)
+					{
+						var lvl = strong ? level : channel.Level.GetValueOrDefault(level);
+						var cmd =
+							level == 0 ? Pc118Command.Off :
+							level < 100 ? Pc118Command.SetLevel :
+								Pc118Command.On;
+
+						result.Add(new Pc118CommandData { Channel = channel.Id, Command = cmd, Level = lvl });
+					}
 				}
 			}
 
