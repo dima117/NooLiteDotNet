@@ -1,0 +1,12 @@
+﻿@model ThinkingHome.NooLite.Web.Models.ControlModel
+<label>@Model.DisplayText</label>
+<div class="ui-grid-a responsive-slider">
+	<div class="ui-block-a">
+		<input id="btn-on-@Model.Id" value="On" type="button" />
+	</div>
+	<!-- /ui-block -->
+	<div class="ui-block-b">
+		<input id="btn-off-@Model.Id" value="Off" type="button" />
+	</div>
+	<!-- /ui-block -->
+</div>

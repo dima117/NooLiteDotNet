@@ -1,0 +1,18 @@
+﻿
+/* stack all grids below 40em (640px) */
+@media all and (max-width: 35em) {
+	.responsive-slider .ui-block-a,
+	.responsive-slider .ui-block-b,
+	.responsive-slider .ui-block-c,
+	.responsive-slider .ui-block-d,
+	.responsive-slider .ui-block-e {
+		width: 100%;
+		float: none;
+	}
+}
+
+.control-group {
+	margin-top: 6px;
+	padding-top: 4px;
+	border-top: 1px solid #e2e2e2;
+}

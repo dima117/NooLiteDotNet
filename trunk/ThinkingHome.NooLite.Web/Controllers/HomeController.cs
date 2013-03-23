@@ -39,7 +39,7 @@ namespace ThinkingHome.NooLite.Web.Controllers
 						Id = control.Id,
 						DisplayText = control.DisplayText,
 						Level = control.Level,
-						ShowSlider = control.ShowSlider
+						TemplateName = "Controls/" + control.Type.ToString()
 					};
 
 					pageModel.Controls.Add(controlModel);
