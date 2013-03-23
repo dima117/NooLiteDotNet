@@ -1,39 +1,44 @@
-﻿@model dynamic
-
+﻿@model List<ThinkingHome.NooLite.Web.Models.ControlPageModel>
 @{
 	ViewBag.Title = "title";
 }
 
 <!-- Start of first page -->
-<div data-role="page" id="foo">
+<div data-role="page" id="main-page">
 
 	<div data-role="header" data-position="fixed">
 		<h1>Foo</h1>
-	</div><!-- /header -->
+	</div>
+	<!-- /header -->
 
 	<div data-role="content">
-		<p>I'm first in the source order so I'm shown as the page.</p>
-		<p>View internal page called <a href="#bar">bar</a></p>
-	</div><!-- /content -->
+		<ul data-role="listview">
+			@foreach (var page in Model)
+   {
+				<li><a href="#page-@page.Id">@page.Title</a></li>
+   }
+		</ul>
 
-	<div data-role="footer" data-position="fixed">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
+	</div>
+	<!-- /content -->
+</div>
+<!-- /page -->
 
-<!-- Start of second page -->
-<div data-role="page" id="bar">
+<!-- Other pages -->
+@foreach (var page in Model)
+{
+	<div data-role="page" id="page-@page.Id">
 
-	<div data-role="header" data-position="fixed">
-		<h1>Bar</h1>
-	</div><!-- /header -->
+		<div data-role="header" data-position="fixed">
+			<a href="#main-page" data-icon="home">Home</a>
+			<h1>@page.Title</h1>
+		</div>
+		<!-- /header -->
 
-	<div data-role="content">
-		<p>I'm the second in the source order so I'm hidden when the page loads. I'm just shown if a link that references my id is beeing clicked.</p>
-		<p><a href="#foo">Back to foo</a></p>
-	</div><!-- /content -->
-
-	<div data-role="footer" data-position="fixed">
-		<h4>Page Footer</h4>
-	</div><!-- /footer -->
-</div><!-- /page -->
+		<div data-role="content">
+			<p>@page.Description</p>
+		</div>
+		<!-- /content -->
+	</div>
+	<!-- /page -->
+}
