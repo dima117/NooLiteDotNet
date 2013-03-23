@@ -1,3 +1,2 @@
 ﻿@model ThinkingHome.NooLite.Web.Models.ControlModel
-<input id="btn-@Model.Id" value="@Model.DisplayText" type="button" />
-<input id="hdn-@Model.Id" value="@Model.Level" type="hidden" />
+<input type="button" class="control-button" value="@Model.DisplayText" data-control-id="@Model.Id" data-level="@Model.Level" data-strong="0" />

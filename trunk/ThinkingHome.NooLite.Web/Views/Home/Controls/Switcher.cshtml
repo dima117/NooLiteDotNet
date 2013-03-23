@@ -2,11 +2,9 @@
 <label>@Model.DisplayText</label>
 <div class="ui-grid-a responsive-slider">
 	<div class="ui-block-a">
-		<input id="btn-on-@Model.Id" value="On" type="button" />
+		<input type="button" class="control-button" value="On" data-control-id="@Model.Id" data-level="@Model.Level" data-strong="0" />
 	</div>
-	<!-- /ui-block -->
 	<div class="ui-block-b">
-		<input id="btn-off-@Model.Id" value="Off" type="button" />
+		<input type="button" class="control-button" value="Off" data-control-id="@Model.Id" data-level="0" data-strong="1" />
 	</div>
-	<!-- /ui-block -->
 </div>

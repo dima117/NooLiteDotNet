@@ -1,13 +1,15 @@
 ﻿@model ThinkingHome.NooLite.Web.Models.ControlModel
-<label for="level-@Model.Id">@Model.DisplayText</label>
+@{
+	var tmpId = "fld-" + Guid.NewGuid().ToString();
+}
+
+<label for="@tmpId">@Model.DisplayText</label>
 <div class="ui-grid-a responsive-slider">
 	<div class="ui-block-a">
-		<input name="level-@Model.Id" id="level-@Model.Id" data-highlight="true" min="0" max="100" step="5" value="@Model.Level" type="range">
+		<input name="@tmpId" id="@tmpId" data-highlight="true" min="0" max="100" step="5" value="@Model.Level" type="range">
 	</div>
-	<!-- /ui-block -->
 	<div class="ui-block-b">
-		<input id="btn-set-@Model.Id" value="Set" type="button" />
+		<input type="button" class="control-button" value="Set" data-control-id="@Model.Id" data-level="@tmpId" data-strong="0" />
 	</div>
-	<!-- /ui-block -->
 </div>
-<!-- /ui-grid -->
+
