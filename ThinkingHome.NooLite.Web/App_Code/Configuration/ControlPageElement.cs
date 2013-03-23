@@ -25,10 +25,10 @@ namespace ThinkingHome.NooLite.Web.Configuration
 			set { base["description"] = value; }
 		}
 
-		private static readonly ConfigurationProperty propControls = new ConfigurationProperty(null, typeof(ControlPageElementCollection), null, ConfigurationPropertyOptions.IsDefaultCollection);
+		private static readonly ConfigurationProperty propControls = new ConfigurationProperty(null, typeof(ControlElementCollection), null, ConfigurationPropertyOptions.IsDefaultCollection);
 
 		[ConfigurationProperty("", IsDefaultCollection = true)]
-		public ControlElementCollection ControlPages
+		public ControlElementCollection Controls
 		{
 			get
 			{
