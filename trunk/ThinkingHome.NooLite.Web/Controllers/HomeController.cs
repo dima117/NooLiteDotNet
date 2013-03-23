@@ -23,7 +23,7 @@ namespace ThinkingHome.NooLite.Web.Controllers
 		{
 			var model = new List<ControlPageModel>();
 
-			foreach (ControlPage page in CurrentConfig.ControlPages)
+			foreach (ControlPageElement page in CurrentConfig.ControlPages)
 			{
 				var pageModel = new ControlPageModel
 					{

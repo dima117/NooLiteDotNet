@@ -3,22 +3,22 @@ using System.Configuration;
 
 namespace ThinkingHome.NooLite.Web.Configuration
 {
-	[ConfigurationCollection(typeof(ControlPage), AddItemName = "page")]
-	public sealed class ControlPageCollection : ConfigurationElementCollection
+	[ConfigurationCollection(typeof(ControlPageElement), AddItemName = "page")]
+	public sealed class ControlPageElementCollection : ConfigurationElementCollection
 	{
-		public ControlPageCollection()
+		public ControlPageElementCollection()
 			: base(StringComparer.OrdinalIgnoreCase)
 		{
 		}
 
 		protected override ConfigurationElement CreateNewElement()
 		{
-			return new ControlPage();
+			return new ControlPageElement();
 		}
 
 		protected override object GetElementKey(ConfigurationElement element)
 		{
-			return ((ControlPage)element).Id;
+			return ((ControlPageElement)element).Id;
 		}
 	}
 }
