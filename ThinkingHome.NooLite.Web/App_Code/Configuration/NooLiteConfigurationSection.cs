@@ -14,5 +14,12 @@ namespace ThinkingHome.NooLite.Web.Configuration
 				return (ControlPageElementCollection)base[propControlPages];
 			}
 		}
+
+		[ConfigurationProperty("debug", DefaultValue = false)]
+		public bool Debug
+		{
+			get { return (bool)base["debug"]; }
+			set { base["debug"] = value; }
+		}
 	}
 }

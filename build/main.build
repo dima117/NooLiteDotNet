@@ -6,17 +6,16 @@
 
 	<property name="dist.dir" value="..\dist"/>
 	<property name="web.dir" value="..\ThinkingHome.NooLite.Web" />
-	<property name="Api.dir" value="..\ThinkingHome.NooLite\bin\Release" />
 	
 	<!-- Tasks -->
 	<target name="compile" unless="${target::has-executed('compile')}">
+
 		<msbuild project="..\ThinkingHome.NooLite.sln">
 			<property name="Configuration" value="Release" />
 			<property name="Platform" value="Any CPU" />
-			<property name="DefineConstants" value="NOOLITE_DEBUG" if="${property::exists('demo')}" />
 		</msbuild>
 	</target>
-
+	
 	<target name="dist" depends="compile" unless="${target::has-executed('dist')}" >
 
 		<echo message="Delete temporary directory" />
@@ -54,6 +53,14 @@
 		<xmlpoke 
 			file="${path::combine(dist.dir, 'web.config')}" 
 			xpath="/configuration/system.web/compilation/@debug" value="false" />
+
+		<xmlpoke if="${property::exists('demo') and (demo == 'true')}"
+			file="${path::combine(dist.dir, 'NooLite.config')}" 
+			xpath="/nooLiteConfiguration/@debug" value="true" />
+
+		<xmlpoke unless="${property::exists('demo') and (demo == 'true')}"
+			file="${path::combine(dist.dir, 'NooLite.config')}" 
+			xpath="/nooLiteConfiguration/@debug" value="false" />
 
 	</target>
 

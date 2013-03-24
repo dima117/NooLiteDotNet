@@ -1,6 +1,4 @@
-﻿//#define NOOLITE_DEBUG
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
@@ -13,14 +11,11 @@ namespace ThinkingHome.NooLite.Web.Controllers
 {
 	public class HomeController : Controller
 	{
-#if NOOLITE_DEBUG
+		#region debug
 
-		private static readonly List<string> channelNames = new List<string>
-				{
-					"Свет в спальне", "Ночник", "Свет в коридоре", "Свет в маленьком коридоре"
-				};
+		private static readonly List<string> channelNames = new List<string> { "Свет в спальне", "Ночник", "Свет в коридоре", "Свет в маленьком коридоре" };
 
-#endif
+		#endregion
 
 		private static readonly NooLiteConfigurationSection current =
 			ConfigurationManager.GetSection("nooLiteConfiguration") as NooLiteConfigurationSection;
@@ -74,39 +69,37 @@ namespace ThinkingHome.NooLite.Web.Controllers
 			{
 				var commands = GetCommandList(page, control, level, strong);
 
-#if NOOLITE_DEBUG
-
-				foreach (var cmd in commands)
+				if (CurrentConfig.Debug)
 				{
-					string channelName = channelNames[cmd.Channel];
-					string actionName = cmd.Command == Pc118Command.SetLevel
-											? string.Format("SET LEVEL {0}", cmd.Level)
-											: cmd.Command.ToString().ToUpper();
 
-					string msg = string.Format("{0} (channel {1}): {2}", channelName, cmd.Channel, actionName);
-					messages.Add(msg);
-				}
-
-#else
-
-				using (var adapter = new Pc118Adapter())
-				{
-					if (adapter.OpenDevice())
+					foreach (var cmd in commands)
 					{
-						foreach (var cmd in commands)
+						string channelName = channelNames[cmd.Channel];
+						string actionName = cmd.Command == Pc118Command.SetLevel
+												? string.Format("SET LEVEL {0}", cmd.Level)
+												: cmd.Command.ToString().ToUpper();
+
+						string msg = string.Format("{0} (channel {1}): {2}", channelName, cmd.Channel, actionName);
+						messages.Add(msg);
+					}
+				}
+				else
+				{
+					using (var adapter = new Pc118Adapter())
+					{
+						if (adapter.OpenDevice())
 						{
-							adapter.SendCommand(cmd.Command, cmd.Channel, cmd.Level);
+							foreach (var cmd in commands)
+							{
+								adapter.SendCommand(cmd.Command, cmd.Channel, cmd.Level);
+							}
+						}
+						else
+						{
+							messages.Add("PC118 adapter not found");
 						}
 					}
-					else
-					{
-						messages.Add("PC118 adapter not found");
-					}
 				}
-
-#endif
-
-
 			}
 			catch (Exception ex)
 			{
