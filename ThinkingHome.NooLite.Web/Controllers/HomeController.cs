@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
 using ThinkingHome.NooLite.Web.Configuration;
@@ -39,7 +40,7 @@ namespace ThinkingHome.NooLite.Web.Controllers
 						Id = control.Id,
 						DisplayText = control.DisplayText,
 						Level = control.Level,
-						TemplateName = "Controls/" + control.Type.ToString()
+						TemplateName = control.Type.ToString()
 					};
 
 					pageModel.Controls.Add(controlModel);
@@ -54,19 +55,29 @@ namespace ThinkingHome.NooLite.Web.Controllers
 
 		public ActionResult Command(string page, string control, byte level, bool strong)
 		{
-			var commands = GetCommandList(page, control, level, strong);
-
-			using (var adapter = new PC118Adapter())
+			var messages = new List<string>();
+			
+			try
 			{
-				adapter.OpenDevice();
+				var commands = GetCommandList(page, control, level, strong);
 
-				foreach (var cmd in commands)
+				using (var adapter = new PC118Adapter())
 				{
-					adapter.SendCommand(cmd.Command, cmd.Channel, cmd.Level);
+					adapter.OpenDevice();
+
+					foreach (var cmd in commands)
+					{
+						adapter.SendCommand(cmd.Command, cmd.Channel, cmd.Level);
+					}
 				}
 			}
+			catch (Exception ex)
+			{
+				messages.Add(ex.Message);
+			}
 
-			return new EmptyResult();
+
+			return Json(messages, JsonRequestBehavior.AllowGet);
 		}
 
 		private static List<Pc118CommandData> GetCommandList(string pageId, string controlId, byte level, bool strong)
