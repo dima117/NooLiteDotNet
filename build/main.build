@@ -1,0 +1,86 @@
+<?xml version="1.0" ?>
+<project name="th-noolite" default="full" xmlns="http://nant.sf.net/release/0.85/nant.xsd">
+
+	<!-- Settings -->
+	<property name="nant.settings.currentframework" value="net-4.0" />
+
+	<property name="dist.dir" value="..\dist"/>
+	<property name="web.dir" value="..\ThinkingHome.NooLite.Web" />
+	<property name="Api.dir" value="..\ThinkingHome.NooLite\bin\Release" />
+	
+	<!-- Tasks -->
+	<target name="compile" unless="${target::has-executed('compile')}">
+		<msbuild project="..\ThinkingHome.NooLite.sln">
+			<property name="Configuration" value="Release" />
+			<property name="Platform" value="Any CPU" />
+			<property name="DefineConstants" value="NOOLITE_DEBUG" if="${property::exists('demo') and (demo == 'true')}" />
+		</msbuild>
+	</target>
+
+	<target name="dist" depends="compile" unless="${target::has-executed('dist')}" >
+
+		<echo message="Delete temporary directory" />
+		<delete dir="${dist.dir}" if="${directory::exists(dist.dir)}"/>
+
+		<echo message="Create temporary directory" />
+		<mkdir dir="${dist.dir}" />
+
+		<echo message="Prepare application" />
+		<copy todir="${dist.dir}">
+			<fileset basedir="${web.dir}">
+				<include name="**\*"/>
+				<exclude name="**\*.cs" />
+				<exclude name="**\*.scc"/>
+				<exclude name="**\*.pdb" />
+				<exclude name="**\*.csproj" />
+				<exclude name="**\*.vspscc" />
+				<exclude name="**\*.log" />
+				<exclude name="**\*.Cache" />
+				<exclude name="**\*.csproj.user" />
+			</fileset>
+		</copy>
+
+		<delete dir="${path::combine(dist.dir, 'aspnet_client') }" if="${directory::exists(path::combine(dist.dir, 'aspnet_client'))}"/>
+		<delete dir="${path::combine(dist.dir, 'Controllers') }" if="${directory::exists(path::combine(dist.dir, 'Controllers'))}"/>
+		<delete dir="${path::combine(dist.dir, 'App_Code') }" if="${directory::exists(path::combine(dist.dir, 'App_Code'))}"/>
+		<delete dir="${path::combine(dist.dir, 'Models') }" if="${directory::exists(path::combine(dist.dir, 'Models'))}"/>
+		<delete dir="${path::combine(dist.dir, 'obj') }" if="${directory::exists(path::combine(dist.dir, 'obj'))}"/>
+		<delete dir="${path::combine(dist.dir, 'Properties') }" if="${directory::exists(path::combine(dist.dir, 'Properties'))}"/>
+
+	</target>
+
+	<!-- загрузка настроек по умолчанию -->
+	<loadtasks assembly="ECM7.NantContrib.dll" />
+
+	<target name="configure" depends="dist" unless="${target::has-executed('configure')}" >
+
+		<property name="web.config.path" value="${path::combine(dist.dir, 'web.config')}"/>
+
+		<xmlpoke file="${web.config.path}" xpath="/configuration/system.web/compilation/@debug" value="false" />
+
+	</target>
+
+	<target name="transfer" if="${property::exists('result.dir')}" unless="${target::has-executed('transfer')}" >
+
+		<echo message="Create destination directories" />
+
+		<mkdir unless="${directory::exists(result.dir)}"  dir="${result.dir}" />
+		
+		<copy todir="${result.dir}">
+			<fileset basedir="${dist.dir}">
+				<include name="**\*"/>
+			</fileset>
+		</copy>
+	
+	</target>
+
+	<target name="full">
+		<call target="compile" />
+		<call target="dist" />
+		<call target="configure" />
+		<call target="transfer" />
+	</target>
+
+
+</project>
+
