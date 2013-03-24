@@ -35,7 +35,8 @@ namespace ThinkingHome.NooLite
 
         public void SendCommand(Pc118Command cmd, byte channel, byte level = 0)
         {
-            var data = new byte[] { 0x00, 0x30, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+	        var sleepTime = 50;
+            var data = new byte[] { 0x00, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
             data[2] = (byte)cmd;
             data[5] = channel;
@@ -44,10 +45,11 @@ namespace ThinkingHome.NooLite
             {
                 data[3] = 0x01;
                 data[6] = level;
+	            sleepTime = 200;
             }
 
             device.WriteFeatureData(data);
-            System.Threading.Thread.Sleep(20);
+			System.Threading.Thread.Sleep(200);
         }
 
         public void Dispose()
