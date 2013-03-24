@@ -56,20 +56,29 @@ namespace ThinkingHome.NooLite.Web.Controllers
 		public ActionResult Command(string page, string control, byte level, bool strong)
 		{
 			var messages = new List<string>();
-			
+
 			try
 			{
 				var commands = GetCommandList(page, control, level, strong);
 
+#if NOOLITE_DEBUG
+qq
+#else
+
 				using (var adapter = new PC118Adapter())
 				{
-					adapter.OpenDevice();
-
-					foreach (var cmd in commands)
+					if (adapter.OpenDevice())
 					{
-						adapter.SendCommand(cmd.Command, cmd.Channel, cmd.Level);
+						foreach (var cmd in commands)
+						{
+							adapter.SendCommand(cmd.Command, cmd.Channel, cmd.Level);
+						}
 					}
 				}
+
+#endif
+
+
 			}
 			catch (Exception ex)
 			{

@@ -50,7 +50,10 @@ namespace ThinkingHome.NooLite
 
         public void Dispose()
         {
-            device.Dispose();
+			if (device != null)
+			{
+				device.Dispose();
+			}
         }
     }
 }

@@ -64,7 +64,7 @@
 			var pageId = $(this).closest('[data-role=page]').attr('id');
 			var controlId = $(this).data('control-id');
 			var strong = !!$(this).data('strong');
-			
+
 			// level
 			var level = $(this).data('level') + '';
 			var levelControl = $(level);
@@ -86,7 +86,7 @@
 					if ($.isArray(data)) {
 
 						var message = '';
-						
+
 						for (var i = 0; i < data.length; i++) {
 
 							if (message) {
@@ -96,7 +96,9 @@
 							message += data[i];
 						}
 
-						alert(message);
+						if (message) {
+							alert(message);
+						}
 					}
 				});
 		});
