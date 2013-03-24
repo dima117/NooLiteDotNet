@@ -8,95 +8,55 @@ using NDesk.Options;
 
 namespace ThinkingHome.NooLite.Console
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            string action = string.Empty;
+            byte? channel = null;
+            byte level = 100;
 
-            bool show_help = true;
-            List<string> commands = new List<string> ();
-            int repeat = 1;
+            var p = new OptionSet() {
+                { "a|action=", "the {NAME} of action to execute. (On, Off, SetLevel, Switch, Bind, Unbind)", v => action = v },                
+                { "c|channel=", "the number of {CHANNEL} for the command. This must be between 0 to 7.", (byte v) => channel = v },
+                { "l|level=",  "the {LEVEL} of brightness for the command. This must be an byte.", (byte v) => level = v },                    
+            };
 
-            while (true)
+            try
             {
-                var p = new OptionSet() {
-                    { "c|command=", "the {NAME} of command to execute.", v => commands.Add (v) },
-                    { "l|level=",  "the level of brightness {TIMES} for the command.\n" + "this must be an integer.", (int v) => repeat = v },
-                    { "h|help",  "show this message and exit", v => show_help = v != null },
-                };
+                p.Parse(args);
 
-                ParseParameters(args, ref p);
-
-                if (show_help)
+                if (!channel.HasValue)
                 {
-                    ShowHelp(p);
-                    show_help = false;
-                    args = EnterCommand().Split(' ');
-                    ParseParameters(args, ref p);
+                    throw new Exception("The action has no value");
                 }
 
-                using (PC118Adapter adapter = new PC118Adapter())
+                using (var adapter = new Pc118Adapter())
                 {
-
-                    while (!adapter.OpenDevice())
+                    if (adapter.OpenDevice())
+                    {
+                        Pc118Command cmd = (Pc118Command)System.Enum.Parse(typeof(Pc118Command), action, true);
+                        adapter.SendCommand(cmd, channel.Value, level);
+                        System.Console.WriteLine(string.Format("command {0} execute succeful", action));
+                    }
+                    else
                     {
                         System.Console.WriteLine("Can't connect to device");
-                        EnterCommand();
                     }
-
-                    foreach (string command in commands)
-                    {
-                        for (int i = 0; i < repeat; ++i)
-                        {
-                            try
-                            {
-                                Pc118Command cmd = (Pc118Command)System.Enum.Parse(typeof(Pc118Command), command, true);
-                                adapter.SendCommand(cmd, (byte)0, (byte)0);
-                                System.Console.WriteLine(string.Format("command {0} execute succeful", command));
-                            }
-                            catch (ArgumentException e)
-                            {
-                                System.Console.WriteLine(e.Message);
-                            }
-                        }
-                    }
-
-                    args = EnterCommand().Split(' ');
-                    ParseParameters(args, ref p);
                 }
             }
-        }
-
-        static void ShowHelp(OptionSet p)
-        {
-            System.Console.WriteLine("List of commands: \n");
-            foreach (string command in PC118Commands.GetCommandsList())
+            catch (Exception e)
             {
-                System.Console.WriteLine(command);
+                System.Console.WriteLine(e.Message);
+                System.Console.WriteLine("\nUsage:\n");
+                p.WriteOptionDescriptions(System.Console.Out);
             }
-            System.Console.WriteLine();
-            System.Console.WriteLine("Usage:");
-            p.WriteOptionDescriptions(System.Console.Out);
         }
 
         static string EnterCommand()
-        {           
+        {
             System.Console.Write("\nEnter command: ");
             return System.Console.ReadLine();
         }
-
-        static void ParseParameters(string[] args, ref OptionSet p)
-        {
-            try 
-                {
-                    p.Parse(args);
-                }
-                catch (OptionException e) {
-                    System.Console.Write ("greet: ");
-                    System.Console.WriteLine (e.Message);
-                    System.Console.WriteLine ("Try `greet --help' for more information.");
-                    return;
-                }
-        }
-	}
+    }
 }
