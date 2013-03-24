@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using HidLibrary;
+using ThinkingHome.NooLite;
 
 namespace ThinkingHome.NooLite
 {
@@ -18,17 +19,24 @@ namespace ThinkingHome.NooLite
 
 		public bool OpenDevice()
         {
-            device = HidDevices.Enumerate(VENDOR_ID, PRODUCT_ID).FirstOrDefault();
+            try
+            {
+                device = HidDevices.Enumerate(VENDOR_ID, PRODUCT_ID).FirstOrDefault();
 
-	        if (device != null)
-	        {
-				device.OpenDevice();
-				device.MonitorDeviceEvents = true;
+                if (device != null)
+                {
+                    device.OpenDevice();
+                    device.MonitorDeviceEvents = true;
+                    return true;
+                }
+            }
+            catch
+            {
+                System.Diagnostics.Debug.Write(this, "Can't connect to device");
+            }
+            return false;
 
-		        return true;
-	        }
-
-	        return false;
+	        
         }
 
         public void SendCommand(Pc118Command cmd, byte channel, byte level = 0)
