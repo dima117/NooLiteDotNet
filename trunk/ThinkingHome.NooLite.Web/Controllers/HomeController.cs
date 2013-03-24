@@ -80,8 +80,8 @@ namespace ThinkingHome.NooLite.Web.Controllers
 				{
 					string channelName = channelNames[cmd.Channel];
 					string actionName = cmd.Command == Pc118Command.SetLevel
-											? string.Format("set level {0}", cmd.Level)
-											: cmd.Command.ToString().ToLower();
+											? string.Format("SET LEVEL {0}", cmd.Level)
+											: cmd.Command.ToString().ToUpper();
 
 					string msg = string.Format("{0} (channel {1}): {2}", channelName, cmd.Channel, actionName);
 					messages.Add(msg);
@@ -129,9 +129,8 @@ namespace ThinkingHome.NooLite.Web.Controllers
 					{
 						var lvl = strong ? level : channel.Level.GetValueOrDefault(level);
 						var cmd =
-							level == 0 ? Pc118Command.Off :
-							level < 100 ? Pc118Command.SetLevel :
-								Pc118Command.On;
+							lvl == 0 ? Pc118Command.Off :
+							lvl < 100 ? Pc118Command.SetLevel : Pc118Command.On;
 
 						result.Add(new Pc118CommandData { Channel = channel.Id, Command = cmd, Level = lvl });
 					}

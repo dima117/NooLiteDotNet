@@ -18,7 +18,7 @@ namespace ThinkingHome.NooLite.Web.Configuration
 			set { base["displayText"] = value; }
 		}
 
-		[ConfigurationProperty("level", DefaultValue = (byte)50)]
+		[ConfigurationProperty("level", DefaultValue = (byte)100)]
 		public byte Level
 		{
 			get { return (byte)base["level"]; }
