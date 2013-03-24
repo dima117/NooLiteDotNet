@@ -1,13 +1,13 @@
 ﻿@model List<ThinkingHome.NooLite.Web.Models.ControlPageModel>
 @{
-	ViewBag.Title = "title";
+	ViewBag.Title = "Комнаты";
 }
 
 <!-- Start of first page -->
 <div data-role="page" id="main-page">
 
 	<div data-role="header" data-position="fixed">
-		<h1>Foo</h1>
+		<h1>Комнаты</h1>
 	</div>
 	<!-- /header -->
 
@@ -15,7 +15,7 @@
 		<ul data-role="listview">
 			@foreach (var page in Model)
    {
-				<li><a href="#page-@page.Id">@page.Title</a></li>
+				<li><a href="#@page.Id">@page.Title</a></li>
    }
 		</ul>
 
@@ -27,7 +27,7 @@
 <!-- Other pages -->
 @foreach (var page in Model)
 {
-	<div data-role="page" id="page-@page.Id">
+	<div data-role="page" id="@page.Id">
 
 		<div data-role="header" data-position="fixed">
 			<a href="#main-page" data-icon="home">Home</a>
@@ -35,7 +35,7 @@
 		</div>
 		<!-- /header -->
 
-		<div class="control-page" data-role="content">
+		<div data-role="content">
 
 			@if (!string.IsNullOrWhiteSpace(page.Description))
    {
@@ -54,3 +54,52 @@
 	</div>
 	<!-- /page -->
 }
+
+<script type="text/javascript">
+
+	$(function () {
+		$('.control-button').on('click', function () {
+
+			// params
+			var pageId = $(this).closest('[data-role=page]').attr('id');
+			var controlId = $(this).data('control-id');
+			var strong = !!$(this).data('strong');
+			
+			// level
+			var level = $(this).data('level') + '';
+			var levelControl = $(level);
+			if (levelControl.length) {
+				level = levelControl.val();
+			}
+
+			// request
+			var url = '@Url.Action("Command", "Home")';
+			$.getJSON(
+				url,
+				{
+					page: pageId,
+					control: controlId,
+					level: level,
+					strong: strong
+				},
+				function (data) {
+					if ($.isArray(data)) {
+
+						var message = '';
+						
+						for (var i = 0; i < data.length; i++) {
+
+							if (message) {
+								message += '\r\n';
+							}
+
+							message += data[i];
+						}
+
+						alert(message);
+					}
+				});
+		});
+	});
+
+</script>
