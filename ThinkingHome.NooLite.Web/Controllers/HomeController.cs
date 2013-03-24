@@ -1,14 +1,27 @@
-﻿using System;
+﻿#define NOOLITE_DEBUG
+
+using System;
 using System.Collections.Generic;
 using System.Configuration;
 using System.Web.Mvc;
 using ThinkingHome.NooLite.Web.Configuration;
 using ThinkingHome.NooLite.Web.Models;
 
+
+
 namespace ThinkingHome.NooLite.Web.Controllers
 {
 	public class HomeController : Controller
 	{
+#if NOOLITE_DEBUG
+
+		private static readonly List<string> channelNames = new List<string>
+				{
+					"Свет в спальне", "Ночник", "Свет в коридоре", "Свет в маленьком коридоре"
+				};
+
+#endif
+
 		private static readonly NooLiteConfigurationSection current =
 			ConfigurationManager.GetSection("nooLiteConfiguration") as NooLiteConfigurationSection;
 
@@ -62,7 +75,18 @@ namespace ThinkingHome.NooLite.Web.Controllers
 				var commands = GetCommandList(page, control, level, strong);
 
 #if NOOLITE_DEBUG
-qq
+
+				foreach (var cmd in commands)
+				{
+					string channelName = channelNames[cmd.Channel];
+					string actionName = cmd.Command == Pc118Command.SetLevel
+											? string.Format("set level {0}", cmd.Level)
+											: cmd.Command.ToString().ToLower();
+
+					string msg = string.Format("{0} (channel {1}): {2}", channelName, cmd.Channel, actionName);
+					messages.Add(msg);
+				}
+
 #else
 
 				using (var adapter = new PC118Adapter())
