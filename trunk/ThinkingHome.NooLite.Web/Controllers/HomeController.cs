@@ -98,6 +98,10 @@ namespace ThinkingHome.NooLite.Web.Controllers
 							adapter.SendCommand(cmd.Command, cmd.Channel, cmd.Level);
 						}
 					}
+					else
+					{
+						messages.Add("PC118 adapter not found");
+					}
 				}
 
 #endif
