@@ -53,6 +53,7 @@ namespace ThinkingHome.NooLite
             }
 
             device.WriteFeatureData(data);
+            System.Threading.Thread.Sleep(20);
             //device.Write(data);
         }
 

@@ -1,4 +1,4 @@
-﻿#define NOOLITE_DEBUG
+﻿//#define NOOLITE_DEBUG
 
 using System;
 using System.Collections.Generic;
