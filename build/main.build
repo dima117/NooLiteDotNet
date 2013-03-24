@@ -13,7 +13,7 @@
 		<msbuild project="..\ThinkingHome.NooLite.sln">
 			<property name="Configuration" value="Release" />
 			<property name="Platform" value="Any CPU" />
-			<property name="DefineConstants" value="NOOLITE_DEBUG" if="${property::exists('demo') and (demo == 'true')}" />
+			<property name="DefineConstants" value="NOOLITE_DEBUG" if="${property::exists('demo')}" />
 		</msbuild>
 	</target>
 
@@ -49,14 +49,11 @@
 
 	</target>
 
-	<!-- загрузка настроек по умолчанию -->
-	<loadtasks assembly="ECM7.NantContrib.dll" />
-
 	<target name="configure" depends="dist" unless="${target::has-executed('configure')}" >
 
-		<property name="web.config.path" value="${path::combine(dist.dir, 'web.config')}"/>
-
-		<xmlpoke file="${web.config.path}" xpath="/configuration/system.web/compilation/@debug" value="false" />
+		<xmlpoke 
+			file="${path::combine(dist.dir, 'web.config')}" 
+			xpath="/configuration/system.web/compilation/@debug" value="false" />
 
 	</target>
 
