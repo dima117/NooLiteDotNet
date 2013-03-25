@@ -54,28 +54,54 @@
 			file="${path::combine(dist.dir, 'web.config')}" 
 			xpath="/configuration/system.web/compilation/@debug" value="false" />
 
-		<xmlpoke if="${property::exists('demo') and (demo == 'true')}"
-			file="${path::combine(dist.dir, 'NooLite.config')}" 
-			xpath="/nooLiteConfiguration/@debug" value="true" />
-
-		<xmlpoke unless="${property::exists('demo') and (demo == 'true')}"
-			file="${path::combine(dist.dir, 'NooLite.config')}" 
-			xpath="/nooLiteConfiguration/@debug" value="false" />
-
 	</target>
 
-	<target name="transfer" if="${property::exists('result.dir')}" unless="${target::has-executed('transfer')}" >
+	<target name="transfer" unless="${target::has-executed('transfer')}" >
 
-		<echo message="Create destination directories" />
+		<if test="${property::exists('result.dir')}">
 
-		<mkdir unless="${directory::exists(result.dir)}"  dir="${result.dir}" />
-		
-		<copy todir="${result.dir}">
-			<fileset basedir="${dist.dir}">
-				<include name="**\*"/>
-			</fileset>
-		</copy>
-	
+			<mkdir unless="${directory::exists(result.dir)}"  dir="${result.dir}" />
+
+			<xmlpoke
+				file="${path::combine(dist.dir, 'NooLite.config')}"
+				xpath="/nooLiteConfiguration/@debug" value="true" />
+
+			<copy todir="${result.dir}">
+				<fileset basedir="${dist.dir}">
+					<include name="**\*"/>
+				</fileset>
+			</copy>
+
+		</if>
+
+		<if test="${property::exists('zip.dir')}">
+
+			<xmlpoke
+				file="${path::combine(dist.dir, 'NooLite.config')}"
+				xpath="/nooLiteConfiguration/@debug" value="false" />
+
+			<property name="zip.filename" value="ThinkingHome.NooLite.zip" />
+			<delete file="${zip.filename}" if="${file::exists(zip.filename)}" />
+			<zip zipfile="${zip.filename}">
+				<fileset basedir="${path::combine(dist.dir, 'bin')}" >
+					<include name="ThinkingHome.NooLite.DLL" />
+				</fileset>
+			</zip>
+
+			<property name="web.zip.filename" value="ThinkingHome.NooLite.Web.zip" />
+			<delete file="${web.zip.filename}" if="${file::exists(web.zip.filename)}" />
+			<zip zipfile="${web.zip.filename}">
+				<fileset basedir="${dist.dir}">
+					<include name="**\*"/>
+				</fileset>
+			</zip>
+
+			<copy todir="${zip.dir}" file="${zip.filename}" />
+			<copy todir="${zip.dir}" file="${web.zip.filename}" />
+
+		</if>
+
+
 	</target>
 
 	<target name="full">
