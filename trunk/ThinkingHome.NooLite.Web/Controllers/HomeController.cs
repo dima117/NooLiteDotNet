@@ -13,7 +13,17 @@ namespace ThinkingHome.NooLite.Web.Controllers
 	{
 		#region debug
 
-		private static readonly List<string> channelNames = new List<string> { "Свет в спальне", "Ночник", "Свет в коридоре", "Свет в маленьком коридоре" };
+		private static readonly List<string> channelNames = new List<string>
+			{
+				"Свет в спальне", 
+				"Ночник", 
+				"Свет в коридоре", 
+				"Свет в маленьком коридоре",
+				"Канал освещения 4",
+				"Канал освещения 5",
+				"Канал освещения 6",
+				"Канал освещения 7"
+			};
 
 		#endregion
 
