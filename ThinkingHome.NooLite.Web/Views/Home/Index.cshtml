@@ -58,6 +58,9 @@
 <script type="text/javascript">
 
 	$(function () {
+		
+		$.ajaxSetup({ cache: false });
+
 		$('.control-button').on('click', function () {
 
 			// params
