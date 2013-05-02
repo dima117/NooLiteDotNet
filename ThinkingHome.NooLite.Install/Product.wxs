@@ -14,10 +14,10 @@
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
 
-		<!--<WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="License.rtf"/>
+		<WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="License.rtf"/>
 		
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
-		<UIRef Id="WixUI_InstallDir" />-->
+		<UIRef Id="WixUI_InstallDir" />
 	</Product>
 
 	<Fragment>
