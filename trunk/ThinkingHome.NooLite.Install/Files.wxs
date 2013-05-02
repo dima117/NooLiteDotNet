@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+
+	<?include Variables.wxi?>
+
+	<Fragment>
+
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			<Component Id="ProductComponent" Guid="A8F17E23-4899-4E5F-B0D3-E16CD2F2146B" DiskId="1">
+				<File Id="Calc" Source="C:\WINDOWS\system32\calc.exe"/>
+				<File Id="Notepad" Source="C:\WINDOWS\system32\notepad.exe"/>
+			</Component>
+		</ComponentGroup>
+
+	</Fragment>
+</Wix>
