@@ -15,15 +15,22 @@
 		</Feature>
 
 		<WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="License.rtf"/>
-		
+
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
 		<UIRef Id="WixUI_InstallDir" />
 	</Product>
 
 	<Fragment>
+
+
+
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
+				<Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" >
+					<Directory Id="BIN_FOLDER" Name="bin" />
+					<Directory Id="CONTENT_FOLDER" Name="Content" />
+					<Directory Id="VIEWS_FOLDER" Name="Views" />
+				</Directory>
 			</Directory>
 		</Directory>
 	</Fragment>
