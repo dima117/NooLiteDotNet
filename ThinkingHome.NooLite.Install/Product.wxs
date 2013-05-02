@@ -1,26 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
 
-	<?define ProductName="ThinkingHome.NooLite" ?>
-	<?define ProductVersion="1.0.0.0" ?>
-	<?define ProductCode="8196CE49-33CF-4EC9-A802-2C8DDF08A3FB"?>
-	<?define UpgradeCode="C2499454-DFFF-436E-AA66-ABB581C06EE1"?>
-	<?define Manufacturer="MyCompany"?>
+	<?include Variables.wxi?>
 
 
 	<Product Id="$(var.ProductCode)" Name="$(var.ProductName)" Language="1049" Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
-		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
-		<MediaTemplate />
+		<MajorUpgrade DowngradeErrorMessage="A newer version of $(var.ProductName) is already installed." />
 
 		<Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
 
-		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLLOCATION" ></Property>
-		<WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="License.rtf"/>
-		<UIRef Id="WixUI_InstallDir"/>
+		<!--<WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="License.rtf"/>
+		
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
+		<UIRef Id="WixUI_InstallDir" />-->
 	</Product>
 
 	<Fragment>
@@ -31,11 +28,5 @@
 		</Directory>
 	</Fragment>
 
-	<Fragment>
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<Component Id="ProductComponent" Guid="2EB331A4-235E-4BF1-B1F6-D42FDEC8CF6A">
-				<File Id='Calc' DiskId='1' Source='C:\WINDOWS\system32\calc.exe'/>
-			</Component>
-		</ComponentGroup>
-	</Fragment>
+
 </Wix>

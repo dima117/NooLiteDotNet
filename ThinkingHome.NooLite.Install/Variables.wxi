@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Include>
+
+	<?define ProductName="ThinkingHome.NooLite3" ?>
+	<?define ProductVersion="1.0.0.0" ?>
+	<?define ProductCode="8196CE49-33CF-4EC9-A802-2C8DDF08A3FB"?>
+	<?define UpgradeCode="C2499454-DFFF-436E-AA66-ABB581C06EE1"?>
+	<?define Manufacturer="MyCompany2"?>
+
+</Include>
