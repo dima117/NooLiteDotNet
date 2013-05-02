@@ -4,11 +4,18 @@
 	<?include Variables.wxi?>
 
 	<Fragment>
-
-		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
-			<Component Id="ProductComponent" Guid="A8F17E23-4899-4E5F-B0D3-E16CD2F2146B" DiskId="1">
-				<File Id="Calc" Source="C:\WINDOWS\system32\calc.exe"/>
-				<File Id="Notepad" Source="C:\WINDOWS\system32\notepad.exe"/>
+	
+		<ComponentGroup Id="ProductComponents">
+			<Component Id="RootComponents" Guid="FD058F3A-04E0-4B8E-9E9C-C2C7248BD5AA" DiskId="1" Directory="INSTALLFOLDER">
+				<File Id="Global.asax" Source="..\ThinkingHome.NooLite.Web\Global.asax"/>
+				<File Id="NooLite.config" Source="..\ThinkingHome.NooLite.Web\NooLite.config"/>
+				<File Id="Web.config" Source="..\ThinkingHome.NooLite.Web\Web.config"/>
+			</Component>			
+			<Component Id="BinComponents" Guid="4337469D-A847-477A-B181-9099247CC4E1" DiskId="1" Directory="BIN_FOLDER">
+				<File Id="HidLibrary.dll" Source="..\ThinkingHome.NooLite.Web\bin\HidLibrary.dll"/>
+				<File Id="System.Web.Providers.dll" Source="..\ThinkingHome.NooLite.Web\bin\System.Web.Providers.dll"/>
+				<File Id="ThinkingHome.NooLite.dll" Source="..\ThinkingHome.NooLite.Web\bin\ThinkingHome.NooLite.dll"/>
+				<File Id="ThinkingHome.NooLite.Web.dll" Source="..\ThinkingHome.NooLite.Web\bin\ThinkingHome.NooLite.Web.dll"/>
 			</Component>
 		</ComponentGroup>
 
