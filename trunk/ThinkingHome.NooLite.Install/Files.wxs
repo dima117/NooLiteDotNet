@@ -1,23 +1,221 @@
-<?xml version="1.0" encoding="UTF-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-
-	<?include Variables.wxi?>
-
-	<Fragment>
-	
-		<ComponentGroup Id="ProductComponents">
-			<Component Id="RootComponents" Guid="FD058F3A-04E0-4B8E-9E9C-C2C7248BD5AA" DiskId="1" Directory="INSTALLFOLDER">
-				<File Id="Global.asax" Source="..\ThinkingHome.NooLite.Web\Global.asax"/>
-				<File Id="NooLite.config" Source="..\ThinkingHome.NooLite.Web\NooLite.config"/>
-				<File Id="Web.config" Source="..\ThinkingHome.NooLite.Web\Web.config"/>
-			</Component>			
-			<Component Id="BinComponents" Guid="4337469D-A847-477A-B181-9099247CC4E1" DiskId="1" Directory="BIN_FOLDER">
-				<File Id="HidLibrary.dll" Source="..\ThinkingHome.NooLite.Web\bin\HidLibrary.dll"/>
-				<File Id="System.Web.Providers.dll" Source="..\ThinkingHome.NooLite.Web\bin\System.Web.Providers.dll"/>
-				<File Id="ThinkingHome.NooLite.dll" Source="..\ThinkingHome.NooLite.Web\bin\ThinkingHome.NooLite.dll"/>
-				<File Id="ThinkingHome.NooLite.Web.dll" Source="..\ThinkingHome.NooLite.Web\bin\ThinkingHome.NooLite.Web.dll"/>
-			</Component>
-		</ComponentGroup>
-
-	</Fragment>
+  <Fragment>
+    <ComponentGroup Id="ProductComponents">
+      <Component Id="Component16DF5CBC589D42809164D81BA7E9C1ED" Guid="16df5cbc-589d-4280-9164-d81ba7e9c1ed" DiskId="1" Directory="FOLDER_8C5D923BD9C5482DA9A1B1C5503BBC0C">
+        <File Id="FILE_3A370C25548148BEA4668DEF4C5B21C9" Source="..\iisexpress\appcmd.exe" />
+        <File Id="FILE_E5E0D015B1834904858F6C6712C95023" Source="..\iisexpress\appcmd.xml" />
+        <File Id="FILE_7C03E14C4D054E7999C6EBA2194292B5" Source="..\iisexpress\appobj.dll" />
+        <File Id="FILE_31FB3A2F7F014F8CBA6D04582B458EA9" Source="..\iisexpress\asp.dll" />
+        <File Id="FILE_4D3AB0434A5F43C5B7C090182119921B" Source="..\iisexpress\asptlb.tlb" />
+        <File Id="FILE_A275EE524437455D9D73A40C48C73F05" Source="..\iisexpress\authanon.dll" />
+        <File Id="FILE_6ED4CDA063F64A929B25BDC60BA143E7" Source="..\iisexpress\authbas.dll" />
+        <File Id="FILE_CEEC60DCA8F348759CCB2713708A3CE2" Source="..\iisexpress\authcert.dll" />
+        <File Id="FILE_DB1FAEEDE9F045C895E94CF8C10503D9" Source="..\iisexpress\authmap.dll" />
+        <File Id="FILE_5B1B86973492490094344C4506CAA4C7" Source="..\iisexpress\authsspi.dll" />
+        <File Id="FILE_98CEA304865240FCA515AB5A8CC0120A" Source="..\iisexpress\browscap.dll" />
+        <File Id="FILE_F488D7B8FB964BB6A05245C157A13963" Source="..\iisexpress\browscap.ini" />
+        <File Id="FILE_B54F9AA7C9B84D9A9452F25CAEC03BF5" Source="..\iisexpress\cachtokn.dll" />
+        <File Id="FILE_0BEA607C508F4F55A0DA9F7F9580A29D" Source="..\iisexpress\cachuri.dll" />
+        <File Id="FILE_065EF06FA5C742E5B55C5F2777D405F0" Source="..\iisexpress\cgi.dll" />
+        <File Id="FILE_C0749884A1744ECF837D44DAB90AF26A" Source="..\iisexpress\compdyn.dll" />
+        <File Id="FILE_5CB4650E71574EDB9F98158AE80BCD8C" Source="..\iisexpress\compstat.dll" />
+        <File Id="FILE_1110AFF34C79448AA7B8D4D80D4086D2" Source="..\iisexpress\custerr.dll" />
+        <File Id="FILE_9EE23F7D2BAC4785A84A6D2ABE5DEED8" Source="..\iisexpress\defdoc.dll" />
+        <File Id="FILE_6BC9F1294D4046D1AD5808C8E4779507" Source="..\iisexpress\diprestr.dll" />
+        <File Id="FILE_5F0449F261BE4EB4856C3413F7D1D37D" Source="..\iisexpress\dirlist.dll" />
+        <File Id="FILE_2B45023388ED4E50B5785CAF4BCCEE1F" Source="..\iisexpress\filter.dll" />
+        <File Id="FILE_35FED167582049CD81FD11021FDF7038" Source="..\iisexpress\gzip.dll" />
+        <File Id="FILE_7DCD19D2384948CF95EE410C5C67E667" Source="..\iisexpress\hwebcore.dll" />
+        <File Id="FILE_A79350248E9C4BED8855F9AEF935DDCB" Source="..\iisexpress\iiscore.dll" />
+        <File Id="FILE_D6C1B32F5A6E4441B64C09D6BED5D31E" Source="..\iisexpress\iisexpress.exe" />
+        <File Id="FILE_3EF9D691A62F4C1DAF70074144A0F6C2" Source="..\iisexpress\iisexpress.exe.manifest" />
+        <File Id="FILE_0132FD92406945CDA2401CE734BC68AB" Source="..\iisexpress\IisExpressAdminCmd.exe" />
+        <File Id="FILE_36C1F826A4B840DCA85BE35C3CAB34C7" Source="..\iisexpress\IisExpressAdminCmd.exe.config" />
+        <File Id="FILE_83CB516D587D4518B97EEC9971C31879" Source="..\iisexpress\IisExpressadminCmd.resources.dll" />
+        <File Id="FILE_836150282B714FCDB32AD21D4795041D" Source="..\iisexpress\iisexpresshelper.dll" />
+        <File Id="FILE_C8745BAF8B9C417787968A4F764641FF" Source="..\iisexpress\iisexpressshim.sdb" />
+        <File Id="FILE_C0496CB3825342D8890F9325ACAD555F" Source="..\iisexpress\iisexpresstray.dll" />
+        <File Id="FILE_F56C907C09FF4F069DCDA4070F434DFE" Source="..\iisexpress\iisexpresstray.exe" />
+        <File Id="FILE_AA8BF4D6349B47969C4860BE3E19DAD9" Source="..\iisexpress\iisexpresstray.exe.config" />
+        <File Id="FILE_9F031C2E5CDB4955BF04FB24BA8BFC64" Source="..\iisexpress\iisexpresstray.exe.manifest" />
+        <File Id="FILE_462AE2D952D74173AC2BB8BAF40B6844" Source="..\iisexpress\iisfcgi.dll" />
+        <File Id="FILE_C1E0A05EC4CC4533897C0319C9BAB487" Source="..\iisexpress\iisfreb.dll" />
+        <File Id="FILE_DDA593C887B44206ACB187F0F26231B3" Source="..\iisexpress\iisreqs.dll" />
+        <File Id="FILE_586F8367E3AA48DD8490C98D04E00253" Source="..\iisexpress\iisres.dll" />
+        <File Id="FILE_F95086B42EDF4EA0B9F08F4ADC537E0D" Source="..\iisexpress\iisRtl.dll" />
+        <File Id="FILE_B74A798BCD04486D9BCB31AF01C41101" Source="..\iisexpress\iisutil2.dll" />
+        <File Id="FILE_687FEEB4CC9B48668E3D7C3C2AEEFC7E" Source="..\iisexpress\iisvermg.dll" />
+        <File Id="FILE_91B6A38B64CB4C16AA5510A364AE8AFF" Source="..\iisexpress\iiswsock.dll" />
+        <File Id="FILE_017C33A2ED36424996CF995AB2C65FE8" Source="..\iisexpress\iis_ssi.dll" />
+        <File Id="FILE_4E546EEEBA7642DEAC7DD07C65DD5CC9" Source="..\iisexpress\iprestr.dll" />
+        <File Id="FILE_942B7D8628E348E985433CA5078D2EC2" Source="..\iisexpress\isapi.dll" />
+        <File Id="FILE_7386D10103574AB28F90FA1F011AAF80" Source="..\iisexpress\license.rtf" />
+        <File Id="FILE_8445249C5C8844E0BC9872CB67131B86" Source="..\iisexpress\logcust.dll" />
+        <File Id="FILE_D50B836641B347239CC606FC6752FECD" Source="..\iisexpress\loghttp.dll" />
+        <File Id="FILE_BF1FAE1085984EAFABB4DA23B61E3CE2" Source="..\iisexpress\Microsoft.Web.Tasks.dll" />
+        <File Id="FILE_4EF8D91A4AC74AF5B19CD8679E3D2205" Source="..\iisexpress\modrqflt.dll" />
+        <File Id="FILE_E285AE57B7954B6D886D9E2C2179C197" Source="..\iisexpress\nativrd2.dll" />
+        <File Id="FILE_62573F7AFE1346A2A8F4446384EBCC16" Source="..\iisexpress\protsup.dll" />
+        <File Id="FILE_D473D9939D2F454EBB196B0483D7573C" Source="..\iisexpress\redirect.dll" />
+        <File Id="FILE_6DACB3AC0265479294138E73A970DBD9" Source="..\iisexpress\REDIST.TXT" />
+        <File Id="FILE_38884BBD3FC24FB6B80CC9EE11EBD18B" Source="..\iisexpress\Release_Notes.url" />
+        <File Id="FILE_8D2E74E170EB4C6E92C09BDEE17598A6" Source="..\iisexpress\rewrite.dll" />
+        <File Id="FILE_39EAE2EBE21D44C986788F5435CFAD0F" Source="..\iisexpress\rsca2.dll" />
+        <File Id="FILE_762F00D8D6024A78B7E41DE0A470934A" Source="..\iisexpress\rscaext.dll" />
+        <File Id="FILE_B74ECC8AA7E94090BF7D43B8829FDEA2" Source="..\iisexpress\rtinfo.dll" />
+        <File Id="FILE_67918F00821146AAAED518A16F9F93F2" Source="..\iisexpress\static.dll" />
+        <File Id="FILE_F40BFB63F6024587B8F0ADDE31F8447E" Source="..\iisexpress\UpgradeApplicationHost.js" />
+        <File Id="FILE_9C687EAA9E3A4D3593DF54498537B2ED" Source="..\iisexpress\urlauthz.dll" />
+        <File Id="FILE_2D3A8F080C6D422481333013F36E2874" Source="..\iisexpress\validcfg.dll" />
+        <File Id="FILE_3585E18D819043EC8CC7FBD984DC17D3" Source="..\iisexpress\w3dt.dll" />
+        <File Id="FILE_DE90F461DCE94ED8B80F8C95ACA78491" Source="..\iisexpress\w3tp.dll" />
+        <File Id="FILE_312470C414574CA8A9247EF7711D90AC" Source="..\iisexpress\w3wphost.dll" />
+        <File Id="FILE_DBE01D99C8AF4D2A864536902A1F8D09" Source="..\iisexpress\warmup.dll" />
+        <File Id="FILE_DF02A3FDFD66456CB0ADA8F58FBEE62F" Source="..\iisexpress\wbhst_pm.dll" />
+        <File Id="FILE_ADF10DB23AAD4270BDD823C339759DF1" Source="..\iisexpress\WCF35Setup.js" />
+        <File Id="FILE_1B2F9A4B5CBE40AEBF549E1C76FE7532" Source="..\iisexpress\webdav.dll" />
+        <File Id="FILE_0BF380AA50F74E239B909EE1C32104FD" Source="..\iisexpress\webdav_simple_lock.dll" />
+        <File Id="FILE_7210FB7FFA9142FEAE10EC7349D1ABB8" Source="..\iisexpress\webdav_simple_prop.dll" />
+        <File Id="FILE_1B62BAD75BFA474B945770A44AA86104" Source="..\iisexpress\webmatrixsup.dll" />
+      </Component>
+      <Component Id="ComponentE3B7C5E70CEE4034ACE30CB5A2FA3714" Guid="e3b7c5e7-0cee-4034-ace3-0cb5a2fa3714" DiskId="1" Directory="FOLDER_F2469A8C209C4C4EAB80656A4A053B27">
+        <File Id="FILE_5B10EC48730E4F4D996752F8EEFC7389" Source="..\iisexpress\AppServer\applicationhost.config" />
+      </Component>
+      <Component Id="ComponentAFC89EF193504FA88E10A2F3439FBA36" Guid="afc89ef1-9350-4fa8-8e10-a2f3439fba36" DiskId="1" Directory="FOLDER_E90439623CCB42B5A44B37BC6370AD2B">
+        <File Id="FILE_5DB9C92D324549BA982C36E297BFE0AC" Source="..\iisexpress\config\administration.config" />
+      </Component>
+      <Component Id="ComponentD6215002B93B4EBA902AED6B8C6F5A01" Guid="d6215002-b93b-4eba-902a-ed6b8c6f5a01" DiskId="1" Directory="FOLDER_5E28C29CC0C7443FAC6ED6B160FFE6EF">
+        <File Id="FILE_98131D50EDF74B92B17C393F398A1825" Source="..\iisexpress\config\schema\ASPNET_schema.xml" />
+        <File Id="FILE_50F96280EC91454DB7E449B64D362F32" Source="..\iisexpress\config\schema\dbmanager_schema.xml" />
+        <File Id="FILE_A94DC3F59A714A938674A537C2CE3302" Source="..\iisexpress\config\schema\FX_schema.xml" />
+        <File Id="FILE_C9A41793A912463E92F432A75CEDC867" Source="..\iisexpress\config\schema\IIS_schema.xml" />
+        <File Id="FILE_A089F48E01AA442690F7906E3F593E15" Source="..\iisexpress\config\schema\rewrite_schema.xml" />
+        <File Id="FILE_C6FA8E41E6AD4C09AA0486CDDB33D5EF" Source="..\iisexpress\config\schema\rscaext.xml" />
+        <File Id="FILE_A21020F2808341B4B5A6FAD04D147533" Source="..\iisexpress\config\schema\WebDAV_schema.xml" />
+      </Component>
+      <Component Id="Component56A1069BC9084B3C828FD13AEC64715D" Guid="56a1069b-c908-4b3c-828f-d13aec64715d" DiskId="1" Directory="FOLDER_5285B46E4CB948E6B708A72CE7400B6A">
+        <File Id="FILE_C77982B37A724EEBAD3ECB0236CA6C5D" Source="..\iisexpress\config\templates\PersonalWebServer\applicationhost.config" />
+        <File Id="FILE_E26CFF9A1F1F41BFA2969301D25729A9" Source="..\iisexpress\config\templates\PersonalWebServer\aspnet.config" />
+        <File Id="FILE_AA82674B56A84E2586CBEC2FAFD0CA3E" Source="..\iisexpress\config\templates\PersonalWebServer\redirection.config" />
+      </Component>
+      <Component Id="Component7424631A81F54576B02ED91F4F1B333C" Guid="7424631a-81f5-4576-b02e-d91f4f1b333c" DiskId="1" Directory="FOLDER_AE9E357C45DA4B389D990AF8D9F1FB19">
+        <File Id="FILE_8B9AB42D21F34B6EAD4EE36CC2C0FA37" Source="..\iisexpress\custerr\en-us\401-1.htm" />
+        <File Id="FILE_AB61F23AF5AF4A638D1EAD353551C600" Source="..\iisexpress\custerr\en-us\401-2.htm" />
+        <File Id="FILE_DCD17A19655744788062D59E6F42669E" Source="..\iisexpress\custerr\en-us\401-3.htm" />
+        <File Id="FILE_062A0329FF934F01A7146A8A62FB2F0F" Source="..\iisexpress\custerr\en-us\401-4.htm" />
+        <File Id="FILE_CE41386DEAFE41FD8FB8C36E080CDC39" Source="..\iisexpress\custerr\en-us\401-5.htm" />
+        <File Id="FILE_913F29AB1B2647D3894991DADC0EF0AA" Source="..\iisexpress\custerr\en-us\401.htm" />
+        <File Id="FILE_BBCE00A652954319B8551AF9CC453046" Source="..\iisexpress\custerr\en-us\403-1.htm" />
+        <File Id="FILE_A10197A74ED041D3BE66A36F9ACB7034" Source="..\iisexpress\custerr\en-us\403-10.htm" />
+        <File Id="FILE_342F4BAB1A934C3AACD6A604222E2AF7" Source="..\iisexpress\custerr\en-us\403-11.htm" />
+        <File Id="FILE_2DBCFAAC816A4AB28A34492D0E5B3F96" Source="..\iisexpress\custerr\en-us\403-12.htm" />
+        <File Id="FILE_9C7A42EAEA8A4D7CBC09F99FD570ACF3" Source="..\iisexpress\custerr\en-us\403-13.htm" />
+        <File Id="FILE_A09BF8F7F6B84A5CBF436E52DA568826" Source="..\iisexpress\custerr\en-us\403-14.htm" />
+        <File Id="FILE_ED729E0B1ECF4DAF863F626377C405E4" Source="..\iisexpress\custerr\en-us\403-15.htm" />
+        <File Id="FILE_46A72E43332945FBB0D4BC2B628356E1" Source="..\iisexpress\custerr\en-us\403-16.htm" />
+        <File Id="FILE_C65DAF5948B044BFB90B49FC21FD8097" Source="..\iisexpress\custerr\en-us\403-17.htm" />
+        <File Id="FILE_A4382B6101C54278A988CC60E8224F45" Source="..\iisexpress\custerr\en-us\403-18.htm" />
+        <File Id="FILE_7397AD07EF2949C8A87C659EABB24A09" Source="..\iisexpress\custerr\en-us\403-19.htm" />
+        <File Id="FILE_8EC96C937EA84BCEA7CCBF73B09B5F7F" Source="..\iisexpress\custerr\en-us\403-2.htm" />
+        <File Id="FILE_8274452C06A14BFAA77CF8FE10702D01" Source="..\iisexpress\custerr\en-us\403-3.htm" />
+        <File Id="FILE_265FEABB60774711BA09A0ED7E10A2C8" Source="..\iisexpress\custerr\en-us\403-4.htm" />
+        <File Id="FILE_2E73B50A961B4A4394C67C9F234DD5C6" Source="..\iisexpress\custerr\en-us\403-5.htm" />
+        <File Id="FILE_CA427AA77819411581FDA36D62959C30" Source="..\iisexpress\custerr\en-us\403-6.htm" />
+        <File Id="FILE_BE30D72DCF0D46659F08F0E0BB5AEAA8" Source="..\iisexpress\custerr\en-us\403-7.htm" />
+        <File Id="FILE_8178F23FE762425EB8F4B5048B83E3F9" Source="..\iisexpress\custerr\en-us\403-8.htm" />
+        <File Id="FILE_5D7260B278D64A95AB88E94A686672F3" Source="..\iisexpress\custerr\en-us\403-9.htm" />
+        <File Id="FILE_B685C5DDCC4841F28FA69EC6F0D67CF3" Source="..\iisexpress\custerr\en-us\403.htm" />
+        <File Id="FILE_2DA8236FD72B4B4FA6D3C7252515A98B" Source="..\iisexpress\custerr\en-us\404-1.htm" />
+        <File Id="FILE_454C91E4ADE4410FA85E9375EA45A462" Source="..\iisexpress\custerr\en-us\404-10.htm" />
+        <File Id="FILE_303732A9DEE746C7B5BE0215ED611797" Source="..\iisexpress\custerr\en-us\404-11.htm" />
+        <File Id="FILE_C314DC43D679480E9FF566630687CE05" Source="..\iisexpress\custerr\en-us\404-12.htm" />
+        <File Id="FILE_1437BE029F9D4F62B4BCDB87A1C8504B" Source="..\iisexpress\custerr\en-us\404-13.htm" />
+        <File Id="FILE_3F7377E660454BDDBBC371D97A2CCDAB" Source="..\iisexpress\custerr\en-us\404-14.htm" />
+        <File Id="FILE_3C1D9F0451D34C37B8E8FEF25BDE1B8F" Source="..\iisexpress\custerr\en-us\404-15.htm" />
+        <File Id="FILE_7CDF87F378844F3D80A01A20F9E1743A" Source="..\iisexpress\custerr\en-us\404-2.htm" />
+        <File Id="FILE_A881255A72A44267B0CAD04FD2E6DAD7" Source="..\iisexpress\custerr\en-us\404-3.htm" />
+        <File Id="FILE_4B71EB0CB769490F82F8942457896483" Source="..\iisexpress\custerr\en-us\404-4.htm" />
+        <File Id="FILE_3B1BF06F79AD4CDF81299C95F50D6902" Source="..\iisexpress\custerr\en-us\404-5.htm" />
+        <File Id="FILE_0017BAF764644FE983CF555148F36A21" Source="..\iisexpress\custerr\en-us\404-6.htm" />
+        <File Id="FILE_98E16C5D78494732AAD3D5233FFE9445" Source="..\iisexpress\custerr\en-us\404-7.htm" />
+        <File Id="FILE_A5A3B406D16B41A8B502E59A9A8C9C1E" Source="..\iisexpress\custerr\en-us\404-8.htm" />
+        <File Id="FILE_2C458EF2A6A6449190C22FA2AAF3B737" Source="..\iisexpress\custerr\en-us\404-9.htm" />
+        <File Id="FILE_53E7015D6409414F82A195F2442BB4D1" Source="..\iisexpress\custerr\en-us\404.htm" />
+        <File Id="FILE_69C63D2D97AC45B5B177C605370D1633" Source="..\iisexpress\custerr\en-us\405.htm" />
+        <File Id="FILE_1C86BB2E4B9E48EC9117E7B201C5CB86" Source="..\iisexpress\custerr\en-us\406.htm" />
+        <File Id="FILE_86637C1654AC44208BEE441350818338" Source="..\iisexpress\custerr\en-us\412.htm" />
+        <File Id="FILE_6D31B87B6FAE424094E3F8E507FE46B5" Source="..\iisexpress\custerr\en-us\500-13.htm" />
+        <File Id="FILE_18B998BDE279479CA58D7C8CB419EEA7" Source="..\iisexpress\custerr\en-us\500-14.htm" />
+        <File Id="FILE_C59B0464AD8844F8977001AAC6D90D1D" Source="..\iisexpress\custerr\en-us\500-15.htm" />
+        <File Id="FILE_3B1FBF74A12A4B8FA840B2B5AA28324C" Source="..\iisexpress\custerr\en-us\500-16.htm" />
+        <File Id="FILE_D58AC977F44A4B1298EEA27752A5AD8D" Source="..\iisexpress\custerr\en-us\500-17.htm" />
+        <File Id="FILE_1F3F2C17261547D080598ED30A3924BE" Source="..\iisexpress\custerr\en-us\500-18.htm" />
+        <File Id="FILE_D0FAFA159FFF47169C77ECD016EDA3A9" Source="..\iisexpress\custerr\en-us\500-19.htm" />
+        <File Id="FILE_BB2B76CA7ACF40B9B72455B41BCFA204" Source="..\iisexpress\custerr\en-us\500.htm" />
+        <File Id="FILE_9AC883F0951640FE9251ED9B7F67367B" Source="..\iisexpress\custerr\en-us\501.htm" />
+      </Component>
+      <Component Id="Component9507FAAAED6849BB957820683749C7E1" Guid="9507faaa-ed68-49bb-9578-20683749c7e1" DiskId="1" Directory="FOLDER_A57BA33C1747493A8F7F3000029D4D88">
+        <File Id="FILE_BA165C50E9214EBBB64374EC7B2C4D4E" Source="..\iisexpress\en\iisexpresstray.resources.dll" />
+        <File Id="FILE_90CB450E7C3E4165B213D81CC1FD3C12" Source="..\iisexpress\en\Microsoft.Web.Administration.resources.dll" />
+      </Component>
+      <Component Id="Component19A652054C4843F7BF1C9D9EC6284875" Guid="19a65205-4c48-43f7-bf1c-9d9ec6284875" DiskId="1" Directory="FOLDER_6351A5CE6818445BB38C383FC637BD3E">
+        <File Id="FILE_271D572CF05742899A0E6F3C0F90BA4E" Source="..\iisexpress\en-us\appcmd.exe.mui" />
+        <File Id="FILE_6C2F254E0A724F5AAC6FAE7BABDC4880" Source="..\iisexpress\en-us\appobj.dll.mui" />
+        <File Id="FILE_587DB345224F40719E7B07417AB4CBAC" Source="..\iisexpress\en-us\iisexpress.exe.mui" />
+        <File Id="FILE_FB7EC72D4B8043FAB0B567616D09B9F6" Source="..\iisexpress\en-us\iisexpresstray.exe.mui" />
+        <File Id="FILE_6A89A8D368904011BECA4C2B24AFF0B7" Source="..\iisexpress\en-us\iisres.dll.mui" />
+      </Component>
+      <Component Id="Component68939D8869C94CBB982B7EBADE1D211E" Guid="68939d88-69c9-4cbb-982b-7ebade1d211e" DiskId="1" Directory="FOLDER_3F42BC54088544D9BD2F3D0D7F0FEAB3">
+        <File Id="FILE_5615A8077DAF4373AE37F7934F100C82" Source="..\iisexpress\ru\IisExpressadminCmd.resources.dll" />
+        <File Id="FILE_C9D1144B47F7491E9F80C46FEB854A1B" Source="..\iisexpress\ru\iisexpresstray.resources.dll" />
+      </Component>
+      <Component Id="Component7FCD696B737A4EBCAAAD438BD4CB5581" Guid="7fcd696b-737a-4ebc-aaad-438bd4cb5581" DiskId="1" Directory="FOLDER_1DA0AC589BC34346969E4FA88AD2FB03">
+        <File Id="FILE_02A7A326ED9542DB808D97958C905ED4" Source="..\iisexpress\ru-RU\appcmd.exe.mui" />
+        <File Id="FILE_63621AD6ACBA4496B74039C935EE3376" Source="..\iisexpress\ru-RU\appobj.dll.mui" />
+        <File Id="FILE_C425EE9530D94C34B49C268983854123" Source="..\iisexpress\ru-RU\iisexpresstray.exe.mui" />
+        <File Id="FILE_57168AF0EA044F0CA2022833053C0339" Source="..\iisexpress\ru-RU\iisres.dll.mui" />
+      </Component>
+      <Component Id="Component0CD335C6189F4344AF35567FF958DE91" Guid="0cd335c6-189f-4344-af35-567ff958de91" DiskId="1" Directory="FOLDER_9B0CD0AD36684B2A92DD8045981C19F8">
+        <File Id="FILE_54F6823A1EB145A7BFFE5362E905C08C" Source="..\dist\Global.asax" />
+        <File Id="FILE_9650E2EBC8A34B78A4F19CE1B8E91916" Source="..\dist\NooLite.config" />
+        <File Id="FILE_8E4821A3FB5445008A0BDB1E2C68A623" Source="..\dist\Web.config" />
+      </Component>
+      <Component Id="ComponentB6BB7701D0D74539B9853A55A489E2DC" Guid="b6bb7701-d0d7-4539-b985-3a55a489e2dc" DiskId="1" Directory="FOLDER_962F1AE5C0A343B2BD020F68BD3E5820">
+        <File Id="FILE_B2BAC95FC9774F5C8D37B681091B2920" Source="..\dist\bin\HidLibrary.dll" />
+        <File Id="FILE_A071A124DFDD4EFCAE202524865985A3" Source="..\dist\bin\System.Web.Providers.dll" />
+        <File Id="FILE_A12F32CB6A3B48AA90569E02777F830B" Source="..\dist\bin\ThinkingHome.NooLite.dll" />
+        <File Id="FILE_095AD85BF42A49FAA8CB631BEF2B6679" Source="..\dist\bin\ThinkingHome.NooLite.Web.dll" />
+      </Component>
+      <Component Id="Component80BEACCCD18543CE9BC8B252B3ED0C45" Guid="80beaccc-d185-43ce-9bc8-b252b3ed0c45" DiskId="1" Directory="FOLDER_9A230D7F98D54F719F08DE95B9D7AF61">
+        <File Id="FILE_2D48300FC8384F5B96FF3DFA2A82EBAD" Source="..\dist\Content\css\jquery.mobile-1.3.0.min.css" />
+        <File Id="FILE_625B6B3F00F84414800A9A38BF75C7D9" Source="..\dist\Content\css\site.css" />
+      </Component>
+      <Component Id="Component114A13AB7EAD438BBFFFA55DDAB551E6" Guid="114a13ab-7ead-438b-bfff-a55ddab551e6" DiskId="1" Directory="FOLDER_8216E57C56814BF883EEC2ACBD313E31">
+        <File Id="FILE_C2A27A1C265941ACB74C487C7D5F80BD" Source="..\dist\Content\css\images\ajax-loader.gif" />
+        <File Id="FILE_766C63C7CB46427A96A68B1D35C27AF4" Source="..\dist\Content\css\images\icons-18-black.png" />
+        <File Id="FILE_11EE48C76F9840E6B4517C5BDFCAEC1A" Source="..\dist\Content\css\images\icons-18-white.png" />
+        <File Id="FILE_84E321E941EC4188BFEE1C9314F3DE27" Source="..\dist\Content\css\images\icons-36-black.png" />
+        <File Id="FILE_A66F066F9F284D47A6E4F5B828754E29" Source="..\dist\Content\css\images\icons-36-white.png" />
+      </Component>
+      <Component Id="ComponentBE6B8E1E8A6D43A5BBF98C5F01C1971C" Guid="be6b8e1e-8a6d-43a5-bbf9-8c5f01c1971c" DiskId="1" Directory="FOLDER_90532857BCB64C9DB909A57A2E73E87C">
+        <File Id="FILE_E701E109E57F4400B9D8E16BB94A371A" Source="..\dist\Content\js\jquery-1.8.2.min.js" />
+        <File Id="FILE_7C7EE43BA9F44BE98308E5449640867F" Source="..\dist\Content\js\jquery.mobile-1.3.0.min.js" />
+      </Component>
+      <Component Id="ComponentB22334A5C6204C75AAF21A003A8D3652" Guid="b22334a5-c620-4c75-aaf2-1a003a8d3652" DiskId="1" Directory="FOLDER_647E97C2BBA044168A5D7623C516BA81">
+        <File Id="FILE_A2A9CC9F32AC4800A775C6BD88B57345" Source="..\dist\Views\Web.config" />
+        <File Id="FILE_6EED112ABCDF4B16BEC6F08F26B66364" Source="..\dist\Views\_ViewStart.cshtml" />
+      </Component>
+      <Component Id="ComponentF384D4C291E0457BB847510C7456F1BC" Guid="f384d4c2-91e0-457b-b847-510c7456f1bc" DiskId="1" Directory="FOLDER_A211BBCA9010431CB5E541034E9FB4D4">
+        <File Id="FILE_4A4AAF5278154967A96A42BBA0F48F30" Source="..\dist\Views\Home\Button.cshtml" />
+        <File Id="FILE_05B26902E5BF40A89A117DD2E614908D" Source="..\dist\Views\Home\Index.cshtml" />
+        <File Id="FILE_066962D666F04E3BB0C0F9EB2EDDA89A" Source="..\dist\Views\Home\Slider.cshtml" />
+        <File Id="FILE_97DB53BAB47E42DCAED29D0431A6A87E" Source="..\dist\Views\Home\Switcher.cshtml" />
+      </Component>
+      <Component Id="Component4DFF9314291442F598268FDAA82E471B" Guid="4dff9314-2914-42f5-9826-8fdaa82e471b" DiskId="1" Directory="FOLDER_A73F5C9F04B64150A58073270A757B34">
+        <File Id="FILE_69B5474B72034799AC6FF1A8D0DC05C6" Source="..\dist\Views\Shared\Error.cshtml" />
+        <File Id="FILE_64C625B7DC3D4B04A288EB4CBF0FC1F5" Source="..\dist\Views\Shared\_Layout.cshtml" />
+      </Component>
+    </ComponentGroup>
+  </Fragment>
 </Wix>

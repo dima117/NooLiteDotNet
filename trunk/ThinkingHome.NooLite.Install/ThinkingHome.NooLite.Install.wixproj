@@ -23,6 +23,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Files.wxs" />
+    <Compile Include="Folders.wxs" />
     <Compile Include="Product.wxs" />
   </ItemGroup>
   <ItemGroup>
@@ -40,6 +41,8 @@
     </WixExtension>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FileListBuilder.exe" />
+    <Content Include="FileListBuilder.exe.config" />
     <Content Include="License.rtf" />
     <Content Include="Variables.wxi" />
   </ItemGroup>
