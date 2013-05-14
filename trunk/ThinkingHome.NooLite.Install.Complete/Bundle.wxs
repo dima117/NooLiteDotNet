@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Bundle Name="ThinkingHome.NooLite.Install.Complete" Version="1.0.0.0" Manufacturer="ThinkingHome.RU" UpgradeCode="c60e5959-14c9-41bf-9247-261febad019e">
+		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+
+		<Chain>
+			<PackageGroupRef Id="NetFx40Web"/>
+			<MsiPackage Id="SERVER" DisplayInternalUI="no" SourceFile="..\Requires\UltiDev.WebServer.msi" />
+			<MsiPackage Id="WEBAPP" After="SERVER" DisplayInternalUI="yes" SourceFile="..\ThinkingHome.NooLite.Install\bin\Debug\ThinkingHome.NooLite.Install.msi" />
+		</Chain>
+	</Bundle>
+</Wix>
