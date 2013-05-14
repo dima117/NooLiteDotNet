@@ -20,9 +20,15 @@
 		<UIRef Id="WixUI_InstallDir" />
 	</Product>
 
+
+
 	<Fragment>
 
-
+		<!--<Property Id="WEBAPPREGTOOL" >
+			<DirectorySearch Id="WRTFOLDER" Path="[ProgramFilesFolder]UltiDev\Web Server\Redist" >
+				<FileSearch Name="Starter.exe" />
+			</DirectorySearch>
+		</Property>-->
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
