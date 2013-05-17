@@ -25,6 +25,7 @@
     <Compile Include="Files.wxs" />
     <Compile Include="Folders.wxs" />
     <Compile Include="Product.wxs" />
+    <Compile Include="UserInterface.wxs" />
   </ItemGroup>
   <ItemGroup>
     <WixExtension Include="WixNetFxExtension">
@@ -43,7 +44,6 @@
   <ItemGroup>
     <Content Include="FileListBuilder.exe" />
     <Content Include="FileListBuilder.exe.config" />
-    <Content Include="License.rtf" />
     <Content Include="Variables.wxi" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
