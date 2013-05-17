@@ -13,11 +13,10 @@
 		<Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 		</Feature>
-
-		<WixVariable Id="WixUILicenseRtf" Overridable="yes" Value="License.rtf"/>
-
+		
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
-		<UIRef Id="WixUI_InstallDir" />
+		<Property Id="WEBSITE_PORT">4789</Property>
+		<UIRef Id="WixUI_InstallDirNoolite" />
 	</Product>
 
 
@@ -43,7 +42,7 @@
 
 		<CustomAction Id="Install" Directory="ULTIDEV_REDIST"
               Execute="deferred" Impersonate="no" Return="ignore"
-              ExeCommand="&quot;[ULTIDEV_REDIST]Starter.exe&quot; &quot;[ULTIDEV_WEBSERVER]UWS.RegApp.exe&quot; /r AppID:{$(var.UpgradeCode)} /url=http://*:7777,http://*:0/ &quot;/path:[INSTALLFOLDER]webapp&quot; /vdir:/ /Clr:4 /autostart" />
+              ExeCommand="&quot;[ULTIDEV_WEBSERVER]UWS.RegApp.exe&quot; /r AppID:{$(var.UpgradeCode)} /url=http://*:[WEBSITE_PORT]/ &quot;/path:[INSTALLFOLDER]webapp&quot; /vdir:/ /Clr:4 /autostart" />
 
 		<InstallExecuteSequence>
 			<Custom Action='Install' After='InstallFiles' />
