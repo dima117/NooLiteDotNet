@@ -15,7 +15,6 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		{
 			InitializeComponent();
 
-			propertyGrid1.SelectedObject = new ConfigModel();
 		}
 	}
 }
