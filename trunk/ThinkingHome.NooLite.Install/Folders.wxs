@@ -2,35 +2,17 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <DirectoryRef Id="INSTALLFOLDER">
-      <Directory Id="FOLDER_8C5D923BD9C5482DA9A1B1C5503BBC0C" Name="iisexpress">
-        <Directory Id="FOLDER_F2469A8C209C4C4EAB80656A4A053B27" Name="AppServer">
-          <Directory Id="FOLDER_1B62350153D54175B525075AE5E3CCD9" Name="empty_wwwroot" />
-        </Directory>
-        <Directory Id="FOLDER_E90439623CCB42B5A44B37BC6370AD2B" Name="config">
-          <Directory Id="FOLDER_5E28C29CC0C7443FAC6ED6B160FFE6EF" Name="schema" />
-          <Directory Id="FOLDER_73C19A2805E148FDB1B803FECD23978D" Name="templates">
-            <Directory Id="FOLDER_5285B46E4CB948E6B708A72CE7400B6A" Name="PersonalWebServer" />
+      <Directory Id="FOLDER_49E9B53ED0924429B0739C043E695E4A" Name="webapp">
+        <Directory Id="FOLDER_B91AC9AA355B4FDB9FB45962C76054DA" Name="bin" />
+        <Directory Id="FOLDER_3EDECDC796314FA99DDD8E02FE59D2A1" Name="Content">
+          <Directory Id="FOLDER_0EE1D1B7125B4FBA8AAA532A2CFA8672" Name="css">
+            <Directory Id="FOLDER_B256DDB123B34B4C96BCF7B57ED5D231" Name="images" />
           </Directory>
+          <Directory Id="FOLDER_7B7B2C65CE5F4532A06B07C25B546249" Name="js" />
         </Directory>
-        <Directory Id="FOLDER_DA3FB170FBF04B78BEFB462990B5ED7C" Name="custerr">
-          <Directory Id="FOLDER_AE9E357C45DA4B389D990AF8D9F1FB19" Name="en-us" />
-        </Directory>
-        <Directory Id="FOLDER_A57BA33C1747493A8F7F3000029D4D88" Name="en" />
-        <Directory Id="FOLDER_6351A5CE6818445BB38C383FC637BD3E" Name="en-us" />
-        <Directory Id="FOLDER_3F42BC54088544D9BD2F3D0D7F0FEAB3" Name="ru" />
-        <Directory Id="FOLDER_1DA0AC589BC34346969E4FA88AD2FB03" Name="ru-RU" />
-      </Directory>
-      <Directory Id="FOLDER_9B0CD0AD36684B2A92DD8045981C19F8" Name="dist">
-        <Directory Id="FOLDER_962F1AE5C0A343B2BD020F68BD3E5820" Name="bin" />
-        <Directory Id="FOLDER_897DB40428D448398A1C574B86BCA231" Name="Content">
-          <Directory Id="FOLDER_9A230D7F98D54F719F08DE95B9D7AF61" Name="css">
-            <Directory Id="FOLDER_8216E57C56814BF883EEC2ACBD313E31" Name="images" />
-          </Directory>
-          <Directory Id="FOLDER_90532857BCB64C9DB909A57A2E73E87C" Name="js" />
-        </Directory>
-        <Directory Id="FOLDER_647E97C2BBA044168A5D7623C516BA81" Name="Views">
-          <Directory Id="FOLDER_A211BBCA9010431CB5E541034E9FB4D4" Name="Home" />
-          <Directory Id="FOLDER_A73F5C9F04B64150A58073270A757B34" Name="Shared" />
+        <Directory Id="FOLDER_CE0629E5F907411A96E771886EA9BF3D" Name="Views">
+          <Directory Id="FOLDER_19C014A53F8F4900828B05A643B7F893" Name="Home" />
+          <Directory Id="FOLDER_6DE496477B274201B68D03D452144C7A" Name="Shared" />
         </Directory>
       </Directory>
     </DirectoryRef>

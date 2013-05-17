@@ -32,13 +32,23 @@
 
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" >
-					<Directory Id="BIN_FOLDER" Name="bin" />
-					<Directory Id="CONTENT_FOLDER" Name="Content" />
-					<Directory Id="VIEWS_FOLDER" Name="Views" />
+				<Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
+				<Directory Id="ULTIDEV_ROOT" Name="UltiDev" >
+					<Directory Id="ULTIDEV_WEBSERVER" Name="Web Server">
+						<Directory Id="ULTIDEV_REDIST" Name="Redist" />
+				</Directory>
 				</Directory>
 			</Directory>
 		</Directory>
+
+		<CustomAction Id="Install" Directory="ULTIDEV_REDIST"
+              Execute="deferred" Impersonate="no" Return="ignore"
+              ExeCommand="&quot;[ULTIDEV_REDIST]Starter.exe&quot; &quot;[ULTIDEV_WEBSERVER]UWS.RegApp.exe&quot; /r AppID:{$(var.UpgradeCode)} /url=http://*:7777,http://*:0/ &quot;/path:[INSTALLFOLDER]webapp&quot; /vdir:/ /Clr:4 /autostart" />
+
+		<InstallExecuteSequence>
+			<Custom Action='Install' After='InstallFiles' />
+		</InstallExecuteSequence>
+
 	</Fragment>
 
 
