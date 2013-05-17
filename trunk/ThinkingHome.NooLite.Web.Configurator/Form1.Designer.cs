@@ -28,22 +28,22 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.propertyGrid1 = new System.Windows.Forms.PropertyGrid();
+			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.SuspendLayout();
 			// 
-			// propertyGrid1
+			// treeView1
 			// 
-			this.propertyGrid1.Location = new System.Drawing.Point(12, 29);
-			this.propertyGrid1.Name = "propertyGrid1";
-			this.propertyGrid1.Size = new System.Drawing.Size(260, 221);
-			this.propertyGrid1.TabIndex = 0;
+			this.treeView1.Location = new System.Drawing.Point(12, 12);
+			this.treeView1.Name = "treeView1";
+			this.treeView1.Size = new System.Drawing.Size(241, 584);
+			this.treeView1.TabIndex = 0;
 			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 262);
-			this.Controls.Add(this.propertyGrid1);
+			this.ClientSize = new System.Drawing.Size(588, 608);
+			this.Controls.Add(this.treeView1);
 			this.MaximizeBox = false;
 			this.Name = "Form1";
 			this.Text = "Form1";
@@ -53,7 +53,8 @@
 
 		#endregion
 
-		private System.Windows.Forms.PropertyGrid propertyGrid1;
+		private System.Windows.Forms.TreeView treeView1;
+
 	}
 }
 
