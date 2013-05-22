@@ -6,6 +6,9 @@ namespace ThinkingHome.NooLite.Web.Configurator
 	[XmlRoot("nooLiteConfiguration")]
 	public class NooLiteConfiguration
 	{
+		[XmlAttribute("title")]
+		public string Title { get; set; }
+
 		[XmlAttribute("debug")]
 		public bool Debug { get; set; }
 
@@ -27,6 +30,10 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		[XmlElement("control")]
 		public List<NooliteControl> Controls { get; set; }
 
+		public override string ToString()
+		{
+			return Title;
+		}
 	}
 	public class NooliteControl
 	{

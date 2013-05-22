@@ -19,7 +19,7 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		{
 			var mySerializer = new XmlSerializer(typeof(NooLiteConfiguration));
 
-			using (var stream = new FileStream("NooLite.config", FileMode.CreateNew))
+			using (var stream = new FileStream("NooLite.config", FileMode.Create))
 			{
 				mySerializer.Serialize(stream, obj);
 			}
