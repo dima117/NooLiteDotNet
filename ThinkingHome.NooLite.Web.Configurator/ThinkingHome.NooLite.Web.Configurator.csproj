@@ -55,10 +55,19 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="NooLiteConfiguration.cs" />
+    <Compile Include="PageEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PageEditorForm.Designer.cs">
+      <DependentUpon>PageEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PageEditorForm.resx">
+      <DependentUpon>PageEditorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -20,6 +20,20 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			InitializeComponent();
 
 			config = Config.Load();
+			FillFormControls(config);
+		}
+
+		private void FillFormControls(NooLiteConfiguration cfg)
+		{
+			tbTitle.Text = cfg.Title;
+			cbDebug.Checked = cfg.Debug;
+			lbPages.DataSource = cfg.Pages;
+		}
+
+		private void UpdateModel(NooLiteConfiguration cfg)
+		{
+			cfg.Title = tbTitle.Text;
+			cfg.Debug = cbDebug.Checked;
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -29,6 +43,7 @@ namespace ThinkingHome.NooLite.Web.Configurator
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			UpdateModel(config);
 			Config.SaveConfig(config);
 			Close();
 		}
