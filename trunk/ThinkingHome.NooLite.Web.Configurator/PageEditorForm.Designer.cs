@@ -28,12 +28,15 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.tbIdentifier = new System.Windows.Forms.TextBox();
 			this.tbTitle = new System.Windows.Forms.TextBox();
 			this.tbDescription = new System.Windows.Forms.TextBox();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -65,10 +68,12 @@
 			// 
 			// tbIdentifier
 			// 
+			this.tbIdentifier.CharacterCasing = System.Windows.Forms.CharacterCasing.Lower;
 			this.tbIdentifier.Location = new System.Drawing.Point(105, 12);
 			this.tbIdentifier.Name = "tbIdentifier";
 			this.tbIdentifier.Size = new System.Drawing.Size(132, 20);
 			this.tbIdentifier.TabIndex = 3;
+			this.tbIdentifier.Validating += new System.ComponentModel.CancelEventHandler(this.TbIdentifierValidating);
 			// 
 			// tbTitle
 			// 
@@ -84,6 +89,10 @@
 			this.tbDescription.Size = new System.Drawing.Size(209, 20);
 			this.tbDescription.TabIndex = 5;
 			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
+			// 
 			// PageEditorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,6 +106,7 @@
 			this.Controls.Add(this.label1);
 			this.Name = "PageEditorForm";
 			this.Text = "PageEditorForm";
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -110,5 +120,6 @@
 		private System.Windows.Forms.TextBox tbIdentifier;
 		private System.Windows.Forms.TextBox tbTitle;
 		private System.Windows.Forms.TextBox tbDescription;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }
