@@ -31,9 +31,9 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.textBox2 = new System.Windows.Forms.TextBox();
-			this.textBox3 = new System.Windows.Forms.TextBox();
+			this.tbIdentifier = new System.Windows.Forms.TextBox();
+			this.tbTitle = new System.Windows.Forms.TextBox();
+			this.tbDescription = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -63,35 +63,35 @@
 			this.label3.TabIndex = 2;
 			this.label3.Text = "Пояснение";
 			// 
-			// textBox1
+			// tbIdentifier
 			// 
-			this.textBox1.Location = new System.Drawing.Point(105, 12);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(132, 20);
-			this.textBox1.TabIndex = 3;
+			this.tbIdentifier.Location = new System.Drawing.Point(105, 12);
+			this.tbIdentifier.Name = "tbIdentifier";
+			this.tbIdentifier.Size = new System.Drawing.Size(132, 20);
+			this.tbIdentifier.TabIndex = 3;
 			// 
-			// textBox2
+			// tbTitle
 			// 
-			this.textBox2.Location = new System.Drawing.Point(105, 38);
-			this.textBox2.Name = "textBox2";
-			this.textBox2.Size = new System.Drawing.Size(209, 20);
-			this.textBox2.TabIndex = 4;
+			this.tbTitle.Location = new System.Drawing.Point(105, 38);
+			this.tbTitle.Name = "tbTitle";
+			this.tbTitle.Size = new System.Drawing.Size(209, 20);
+			this.tbTitle.TabIndex = 4;
 			// 
-			// textBox3
+			// tbDescription
 			// 
-			this.textBox3.Location = new System.Drawing.Point(105, 64);
-			this.textBox3.Name = "textBox3";
-			this.textBox3.Size = new System.Drawing.Size(209, 20);
-			this.textBox3.TabIndex = 5;
+			this.tbDescription.Location = new System.Drawing.Point(105, 64);
+			this.tbDescription.Name = "tbDescription";
+			this.tbDescription.Size = new System.Drawing.Size(209, 20);
+			this.tbDescription.TabIndex = 5;
 			// 
 			// PageEditorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(371, 262);
-			this.Controls.Add(this.textBox3);
-			this.Controls.Add(this.textBox2);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.tbDescription);
+			this.Controls.Add(this.tbTitle);
+			this.Controls.Add(this.tbIdentifier);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.label1);
@@ -107,8 +107,8 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label3;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TextBox textBox2;
-		private System.Windows.Forms.TextBox textBox3;
+		private System.Windows.Forms.TextBox tbIdentifier;
+		private System.Windows.Forms.TextBox tbTitle;
+		private System.Windows.Forms.TextBox tbDescription;
 	}
 }

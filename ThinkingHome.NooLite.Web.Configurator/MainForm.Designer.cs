@@ -33,8 +33,12 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.tbTitle = new System.Windows.Forms.TextBox();
 			this.cbDebug = new System.Windows.Forms.CheckBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.button3 = new System.Windows.Forms.Button();
+			this.btnEditPage = new System.Windows.Forms.Button();
+			this.btnAddPage = new System.Windows.Forms.Button();
 			this.lbPages = new System.Windows.Forms.ListBox();
-			this.label2 = new System.Windows.Forms.Label();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// btnSave
@@ -46,7 +50,7 @@
 			this.btnSave.TabIndex = 0;
 			this.btnSave.Text = "Save";
 			this.btnSave.UseVisualStyleBackColor = true;
-			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+			this.btnSave.Click += new System.EventHandler(this.BtnSaveClick);
 			// 
 			// btnCancel
 			// 
@@ -57,7 +61,7 @@
 			this.btnCancel.TabIndex = 1;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
-			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+			this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
 			// 
 			// label1
 			// 
@@ -85,30 +89,62 @@
 			this.cbDebug.Text = "Режим отладки";
 			this.cbDebug.UseVisualStyleBackColor = true;
 			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.button3);
+			this.groupBox1.Controls.Add(this.btnEditPage);
+			this.groupBox1.Controls.Add(this.btnAddPage);
+			this.groupBox1.Controls.Add(this.lbPages);
+			this.groupBox1.Location = new System.Drawing.Point(12, 61);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(349, 192);
+			this.groupBox1.TabIndex = 5;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Разделы";
+			// 
+			// button3
+			// 
+			this.button3.Location = new System.Drawing.Point(168, 19);
+			this.button3.Name = "button3";
+			this.button3.Size = new System.Drawing.Size(75, 23);
+			this.button3.TabIndex = 13;
+			this.button3.Text = "Удалить";
+			this.button3.UseVisualStyleBackColor = true;
+			// 
+			// btnEditPage
+			// 
+			this.btnEditPage.Location = new System.Drawing.Point(87, 19);
+			this.btnEditPage.Name = "btnEditPage";
+			this.btnEditPage.Size = new System.Drawing.Size(75, 23);
+			this.btnEditPage.TabIndex = 12;
+			this.btnEditPage.Text = "Изменить";
+			this.btnEditPage.UseVisualStyleBackColor = true;
+			this.btnEditPage.Click += new System.EventHandler(this.BtnEditPageClick);
+			// 
+			// btnAddPage
+			// 
+			this.btnAddPage.Location = new System.Drawing.Point(6, 19);
+			this.btnAddPage.Name = "btnAddPage";
+			this.btnAddPage.Size = new System.Drawing.Size(75, 23);
+			this.btnAddPage.TabIndex = 11;
+			this.btnAddPage.Text = "Добавить";
+			this.btnAddPage.UseVisualStyleBackColor = true;
+			this.btnAddPage.Click += new System.EventHandler(this.BtnAddPageClick);
+			// 
 			// lbPages
 			// 
 			this.lbPages.FormattingEnabled = true;
-			this.lbPages.Location = new System.Drawing.Point(12, 88);
+			this.lbPages.Location = new System.Drawing.Point(6, 44);
 			this.lbPages.Name = "lbPages";
-			this.lbPages.Size = new System.Drawing.Size(349, 160);
-			this.lbPages.TabIndex = 5;
-			// 
-			// label2
-			// 
-			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(12, 72);
-			this.label2.Name = "label2";
-			this.label2.Size = new System.Drawing.Size(52, 13);
-			this.label2.TabIndex = 6;
-			this.label2.Text = "Разделы";
+			this.lbPages.Size = new System.Drawing.Size(337, 134);
+			this.lbPages.TabIndex = 10;
 			// 
 			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(373, 294);
-			this.Controls.Add(this.label2);
-			this.Controls.Add(this.lbPages);
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.cbDebug);
 			this.Controls.Add(this.tbTitle);
 			this.Controls.Add(this.label1);
@@ -117,6 +153,7 @@
 			this.MaximizeBox = false;
 			this.Name = "MainForm";
 			this.Text = "Form1";
+			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -129,8 +166,11 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox tbTitle;
 		private System.Windows.Forms.CheckBox cbDebug;
+		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button btnEditPage;
+		private System.Windows.Forms.Button btnAddPage;
 		private System.Windows.Forms.ListBox lbPages;
-		private System.Windows.Forms.Label label2;
 
 
 	}
