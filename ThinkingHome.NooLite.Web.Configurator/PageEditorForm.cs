@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.ComponentModel;
+using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ThinkingHome.NooLite.Web.Configurator
 {
@@ -25,6 +27,24 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			tbIdentifier.Text = p.Id;
 			tbTitle.Text = p.Title;
 			tbDescription.Text = p.Description;
+		}
+
+		private void TbIdentifierValidating(object sender, CancelEventArgs e)
+		{
+			var tb = sender as TextBox;
+
+			if (tb != null)
+			{
+				string error = null;
+
+				if (!Regex.IsMatch(tb.Text, @"^[-a-z1-9]+$"))
+				{
+					error = "Разрешены следующие символы: английские буквы, цифры, дефис";
+					e.Cancel = true;
+				}
+
+				errorProvider1.SetError(tb, error);
+			}
 		}
 	}
 }
