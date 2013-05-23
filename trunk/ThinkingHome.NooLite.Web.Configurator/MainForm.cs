@@ -36,16 +36,42 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			cfg.Debug = cbDebug.Checked;
 		}
 
-		private void btnCancel_Click(object sender, EventArgs e)
+		private void BtnCancelClick(object sender, EventArgs e)
 		{
 			Close();
 		}
 
-		private void btnSave_Click(object sender, EventArgs e)
+		private void BtnSaveClick(object sender, EventArgs e)
 		{
 			UpdateModel(config);
 			Config.SaveConfig(config);
 			Close();
+		}
+
+		private void BtnAddPageClick(object sender, EventArgs e)
+		{
+			using (var form = new PageEditorForm())
+			{
+				if (form.ShowDialog() == DialogResult.OK)
+				{
+					lbPages.DataSource = config.Pages;
+				}
+			}
+		}
+
+		private void BtnEditPageClick(object sender, EventArgs e)
+		{
+			var page = lbPages.SelectedItem as NooliteControlPage;
+			if (page != null)
+			{
+				using (var form = new PageEditorForm(page))
+				{
+					if (form.ShowDialog() == DialogResult.OK)
+					{
+						lbPages.DataSource = config.Pages;
+					}
+				}
+			}
 		}
 	}
 }
