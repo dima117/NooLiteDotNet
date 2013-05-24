@@ -55,13 +55,13 @@
 			// btnCancel
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnCancel.Location = new System.Drawing.Point(286, 259);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 1;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
-			this.btnCancel.Click += new System.EventHandler(this.BtnCancelClick);
 			// 
 			// label1
 			// 
@@ -133,6 +133,7 @@
 			// 
 			// lbPages
 			// 
+			this.lbPages.DisplayMember = "Title";
 			this.lbPages.FormattingEnabled = true;
 			this.lbPages.Location = new System.Drawing.Point(6, 44);
 			this.lbPages.Name = "lbPages";
@@ -141,8 +142,10 @@
 			// 
 			// MainForm
 			// 
+			this.AcceptButton = this.btnSave;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.CancelButton = this.btnCancel;
 			this.ClientSize = new System.Drawing.Size(373, 294);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.cbDebug);

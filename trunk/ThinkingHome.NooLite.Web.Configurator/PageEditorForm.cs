@@ -29,6 +29,13 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			tbDescription.Text = p.Description;
 		}
 
+		private void UpdateModel(NooliteControlPage p)
+		{
+			p.Id = tbIdentifier.Text;
+			p.Title = tbTitle.Text;
+			p.Description = tbDescription.Text;
+		}
+
 		private void TbIdentifierValidating(object sender, CancelEventArgs e)
 		{
 			var tb = sender as TextBox;
@@ -45,6 +52,13 @@ namespace ThinkingHome.NooLite.Web.Configurator
 
 				errorProvider1.SetError(tb, error);
 			}
+		}
+
+		private void BtnSaveClick(object sender, System.EventArgs e)
+		{
+			UpdateModel(page);
+			DialogResult = DialogResult.OK;
+			Close();
 		}
 	}
 }
