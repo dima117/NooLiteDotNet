@@ -36,11 +36,6 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			cfg.Debug = cbDebug.Checked;
 		}
 
-		private void BtnCancelClick(object sender, EventArgs e)
-		{
-			Close();
-		}
-
 		private void BtnSaveClick(object sender, EventArgs e)
 		{
 			UpdateModel(config);

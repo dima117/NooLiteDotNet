@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using System.Xml.Serialization;
+using ThinkingHome.NooLite.Web.Configurator.Annotations;
 
 namespace ThinkingHome.NooLite.Web.Configurator
 {
@@ -13,16 +15,22 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		public bool Debug { get; set; }
 
 		[XmlElement("page")]
-		public List<NooliteControlPage> Pages { get; set; }
+		public BindingList<NooliteControlPage> Pages { get; set; }
 	}
 
-	public class NooliteControlPage
+	public class NooliteControlPage : INotifyPropertyChanged
 	{
+		private string title;
+
 		[XmlAttribute("id")]
 		public string Id { get; set; }
 
 		[XmlAttribute("title")]
-		public string Title { get; set; }
+		public string Title
+		{
+			get { return title; }
+			set { title = value; OnPropertyChanged("Title"); }
+		}
 
 		[XmlAttribute("description")]
 		public string Description { get; set; }
@@ -30,9 +38,13 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		[XmlElement("control")]
 		public List<NooliteControl> Controls { get; set; }
 
-		public override string ToString()
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		[NotifyPropertyChangedInvocator]
+		protected virtual void OnPropertyChanged(string propertyName)
 		{
-			return Title;
+			var handler = PropertyChanged;
+			if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 	public class NooliteControl
