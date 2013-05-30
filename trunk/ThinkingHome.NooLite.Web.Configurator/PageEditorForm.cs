@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -6,20 +7,24 @@ namespace ThinkingHome.NooLite.Web.Configurator
 {
 	public partial class PageEditorForm : Form
 	{
-		private readonly NooliteControlPage page = new NooliteControlPage();
+		public readonly NooliteControlPage Page = new NooliteControlPage();
 
 		public PageEditorForm()
 		{
 			InitializeComponent();
-			FillFormControls(page);
+			FillFormControls(Page);
+
+			Text = "Добавление нового раздела";
 		}
 
 		public PageEditorForm(NooliteControlPage p)
 		{
-			page = p;
+			Page = p;
 
 			InitializeComponent();
-			FillFormControls(page);
+			FillFormControls(Page);
+
+			Text = "Редактирование раздела";
 		}
 
 		private void FillFormControls(NooliteControlPage p)
@@ -27,6 +32,8 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			tbIdentifier.Text = p.Id;
 			tbTitle.Text = p.Title;
 			tbDescription.Text = p.Description;
+
+			lbControls.DataSource = p.Controls;
 		}
 
 		private void UpdateModel(NooliteControlPage p)
@@ -56,9 +63,53 @@ namespace ThinkingHome.NooLite.Web.Configurator
 
 		private void BtnSaveClick(object sender, System.EventArgs e)
 		{
-			UpdateModel(page);
+			UpdateModel(Page);
 			DialogResult = DialogResult.OK;
 			Close();
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			var control = lbControls.SelectedItem as NooliteControl;
+
+			if (control != null)
+			{
+				var confirmation = MessageBox.Show(
+					"Элемент управления будет удален. Продолжить?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+				if (confirmation == DialogResult.Yes)
+				{
+					Page.Controls.Remove(control);
+				}
+			}
+		}
+
+		private void btnUp_Click(object sender, EventArgs e)
+		{
+			var index = lbControls.SelectedIndex;
+
+			if (index > 0)
+			{
+				var page = Page.Controls[index];
+				Page.Controls.RemoveAt(index);
+				Page.Controls.Insert(index - 1, page);
+
+				lbControls.SelectedIndex = index - 1;
+			}
+		}
+
+		private void btnDown_Click(object sender, EventArgs e)
+		{
+			var index = lbControls.SelectedIndex;
+
+			if (index >= 0 && index < Page.Controls.Count - 1)
+			{
+				var page = Page.Controls[index];
+				Page.Controls.RemoveAt(index);
+				Page.Controls.Insert(index + 1, page);
+
+				lbControls.SelectedIndex = index + 1;
+			}
 		}
 	}
 }
