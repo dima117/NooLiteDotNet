@@ -47,16 +47,27 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
-	public class NooliteControl
+	public class NooliteControl : INotifyPropertyChanged
 	{
+		private string displayText;
+		private ControlType controlType;
+
 		[XmlAttribute("id")]
 		public string Id { get; set; }
 
 		[XmlAttribute("displayText")]
-		public string DisplayText { get; set; }
+		public string DisplayText
+		{
+			get { return displayText; }
+			set { displayText = value; OnPropertyChanged("ConfiguratorUiDisplayText"); }
+		}
 
 		[XmlAttribute("type")]
-		public ControlType ControlType { get; set; }
+		public ControlType ControlType
+		{
+			get { return controlType; }
+			set { controlType = value; OnPropertyChanged("ConfiguratorUiDisplayText"); }
+		}
 
 		[XmlAttribute("level")]
 		public byte Level { get; set; }
@@ -64,6 +75,19 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		[XmlElement("channel")]
 		public List<NooliteChannelAction> Actions { get; set; }
 
+		[XmlIgnore]
+		public string ConfiguratorUiDisplayText
+		{
+			get { return string.Format("{0} ({1})", DisplayText, ControlType); }
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			var handler = PropertyChanged;
+			if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
+		}
 	}
 
 	public class NooliteChannelAction

@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.IO;
-using System.Linq;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml.Serialization;
+using System.Windows.Forms.VisualStyles;
 
 namespace ThinkingHome.NooLite.Web.Configurator
 {
@@ -40,6 +33,7 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		{
 			UpdateModel(config);
 			Config.SaveConfig(config);
+			DialogResult = DialogResult.OK;
 			Close();
 		}
 
@@ -49,6 +43,7 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			{
 				if (form.ShowDialog() == DialogResult.OK)
 				{
+					config.Pages.Add(form.Page);
 					lbPages.DataSource = config.Pages;
 				}
 			}
@@ -66,6 +61,65 @@ namespace ThinkingHome.NooLite.Web.Configurator
 						lbPages.DataSource = config.Pages;
 					}
 				}
+			}
+		}
+
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			DialogResult = DialogResult.Cancel;
+			Close();
+		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			var page = lbPages.SelectedItem as NooliteControlPage;
+			if (page != null)
+			{
+				var confirmation = MessageBox.Show(
+					"Раздел будет удален. Продолжить?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+				if (confirmation == DialogResult.Yes)
+				{
+					config.Pages.Remove(page);
+				}
+			}
+		}
+
+		private void btnUp_Click(object sender, EventArgs e)
+		{
+			var index = lbPages.SelectedIndex;
+
+			if (index > 0)
+			{
+				var page = config.Pages[index];
+				config.Pages.RemoveAt(index);
+				config.Pages.Insert(index - 1, page);
+
+				lbPages.SelectedIndex = index - 1;
+			}
+		}
+
+		private void btnDown_Click(object sender, EventArgs e)
+		{
+			var index = lbPages.SelectedIndex;
+
+			if (index >= 0 && index < config.Pages.Count - 1)
+			{
+				var page = config.Pages[index];
+				config.Pages.RemoveAt(index);
+				config.Pages.Insert(index + 1, page);
+
+				lbPages.SelectedIndex = index + 1;
+			}
+		}
+
+		private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			if (DialogResult != DialogResult.OK)
+			{
+				var confirmation = MessageBox.Show("Изменения будут потеряны. Продолжить?", "Внимание!", MessageBoxButtons.YesNo,
+												   MessageBoxIcon.Exclamation);
+				e.Cancel = confirmation == DialogResult.No;
 			}
 		}
 	}
