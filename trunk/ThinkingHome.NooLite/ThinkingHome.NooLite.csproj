@@ -43,8 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pc118Adapter.cs" />
-    <Compile Include="PC11XX1Command.cs" />
+    <Compile Include="PC11XXAdapter.cs" />
+    <Compile Include="PC11XXCommand.cs" />
     <Compile Include="PC11XXLedCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -26,7 +26,7 @@ namespace ThinkingHome.NooLite.Console
                     throw new Exception("The action has no value");
                 }
 
-                using (var adapter = new Pc118Adapter())
+                using (var adapter = new PC11XXAdapter())
                 {
                     if (adapter.OpenDevice())
                     {

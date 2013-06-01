@@ -95,7 +95,7 @@ namespace ThinkingHome.NooLite.Web.Controllers
 				}
 				else
 				{
-					using (var adapter = new Pc118Adapter())
+					using (var adapter = new PC11XXAdapter())
 					{
 						if (adapter.OpenDevice())
 						{
