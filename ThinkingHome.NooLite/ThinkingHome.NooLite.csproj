@@ -44,7 +44,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pc118Adapter.cs" />
-    <Compile Include="Pc118Command.cs" />
+    <Compile Include="PC11XX1Command.cs" />
+    <Compile Include="PC11XXLedCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

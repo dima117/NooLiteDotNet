@@ -1,8 +1,8 @@
 ﻿namespace ThinkingHome.NooLite.Web
 {
-	public class Pc118CommandData
+	public class PC11XXCommandData
 	{
-		public Pc118Command Command { get; set; }
+		public PC11XXCommand Command { get; set; }
 		public byte Channel { get; set; }
 		public byte Level { get; set; }
 	}

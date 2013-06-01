@@ -15,10 +15,10 @@ namespace ThinkingHome.NooLite.Web.Controllers
 
 		private static readonly List<string> channelNames = new List<string>
 			{
-				"Свет в спальне", 
-				"Ночник", 
-				"Свет в коридоре", 
-				"Свет в маленьком коридоре",
+				"Канал освещения 0", 
+				"Канал освещения 1", 
+				"Канал освещения 2", 
+				"Канал освещения 3",
 				"Канал освещения 4",
 				"Канал освещения 5",
 				"Канал освещения 6",
@@ -85,7 +85,7 @@ namespace ThinkingHome.NooLite.Web.Controllers
 					foreach (var cmd in commands)
 					{
 						string channelName = channelNames[cmd.Channel];
-						string actionName = cmd.Command == Pc118Command.SetLevel
+						string actionName = cmd.Command == PC11XXCommand.SetLevel
 												? string.Format("SET LEVEL {0}", cmd.Level)
 												: cmd.Command.ToString().ToUpper();
 
@@ -106,7 +106,7 @@ namespace ThinkingHome.NooLite.Web.Controllers
 						}
 						else
 						{
-							messages.Add("PC118 adapter not found");
+							messages.Add("PC11xx adapter not found");
 						}
 					}
 				}
@@ -120,9 +120,9 @@ namespace ThinkingHome.NooLite.Web.Controllers
 			return Json(messages, JsonRequestBehavior.AllowGet);
 		}
 
-		private static List<Pc118CommandData> GetCommandList(string pageId, string controlId, byte level, bool strong)
+		private static List<PC11XXCommandData> GetCommandList(string pageId, string controlId, byte level, bool strong)
 		{
-			var result = new List<Pc118CommandData>();
+			var result = new List<PC11XXCommandData>();
 
 			var page = CurrentConfig.ControlPages.GetPage(pageId);
 
@@ -136,10 +136,10 @@ namespace ThinkingHome.NooLite.Web.Controllers
 					{
 						var lvl = strong ? level : channel.Level.GetValueOrDefault(level);
 						var cmd =
-							lvl == 0 ? Pc118Command.Off :
-							lvl < 100 ? Pc118Command.SetLevel : Pc118Command.On;
+							lvl == 0 ? PC11XXCommand.Off :
+							lvl < 100 ? PC11XXCommand.SetLevel : PC11XXCommand.On;
 
-						result.Add(new Pc118CommandData { Channel = channel.Id, Command = cmd, Level = lvl });
+						result.Add(new PC11XXCommandData { Channel = channel.Id, Command = cmd, Level = lvl });
 					}
 				}
 			}
