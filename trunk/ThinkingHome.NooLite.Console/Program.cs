@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using NDesk.Options;
 
 namespace ThinkingHome.NooLite.Console
@@ -17,8 +12,8 @@ namespace ThinkingHome.NooLite.Console
             byte level = 100;
 
             var p = new OptionSet() {
-                { "a|action=", "the {NAME} of action to execute. (On, Off, SetLevel, Switch, Bind, Unbind)", v => action = v },                
-                { "c|channel=", "the number of {CHANNEL} for the command. This must be between 0 to 7.", (byte v) => channel = v },
+                { "a|action=", "the {NAME} of action to execute. (On, Off, SetLevel, Switch, SaveState, LoadState, Bind, Unbind)", v => action = v },                
+                { "c|channel=", "the number of {CHANNEL} for the command. This must be between 0 to 31.", (byte v) => channel = v },
                 { "l|level=",  "the {LEVEL} of brightness for the command. This must be an byte.", (byte v) => level = v },                    
             };
 
@@ -35,9 +30,9 @@ namespace ThinkingHome.NooLite.Console
                 {
                     if (adapter.OpenDevice())
                     {
-                        Pc118Command cmd = (Pc118Command)System.Enum.Parse(typeof(Pc118Command), action, true);
+                        var cmd = (PC11XXCommand)Enum.Parse(typeof(PC11XXCommand), action, true);
                         adapter.SendCommand(cmd, channel.Value, level);
-                        System.Console.WriteLine(string.Format("command {0} execute succeful", action));
+                        System.Console.WriteLine("command {0} execute succeful", action);
                     }
                     else
                     {
@@ -51,12 +46,6 @@ namespace ThinkingHome.NooLite.Console
                 System.Console.WriteLine("\nUsage:\n");
                 p.WriteOptionDescriptions(System.Console.Out);
             }
-        }
-
-        static string EnterCommand()
-        {
-            System.Console.Write("\nEnter command: ");
-            return System.Console.ReadLine();
         }
     }
 }

@@ -103,7 +103,7 @@
     <Compile Include="App_Code\Configuration\NooLiteConfigurationSection.cs" />
     <Compile Include="App_Code\Configuration\ControlPageElementCollection.cs" />
     <Compile Include="App_Code\ControlType.cs" />
-    <Compile Include="App_Code\Pc118CommandData.cs" />
+    <Compile Include="App_Code\PC11XXCommandData.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
