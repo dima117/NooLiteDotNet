@@ -185,6 +185,7 @@
 			this.btnEditPage.TabIndex = 17;
 			this.btnEditPage.Text = "Изменить";
 			this.btnEditPage.UseVisualStyleBackColor = true;
+			this.btnEditPage.Click += new System.EventHandler(this.BtnEdit_Click);
 			// 
 			// btnAddPage
 			// 
@@ -194,6 +195,7 @@
 			this.btnAddPage.TabIndex = 16;
 			this.btnAddPage.Text = "Добавить";
 			this.btnAddPage.UseVisualStyleBackColor = true;
+			this.btnAddPage.Click += new System.EventHandler(this.BtnAdd_Click);
 			// 
 			// PageEditorForm
 			// 
@@ -215,6 +217,7 @@
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
 			this.Name = "PageEditorForm";
+			this.ShowInTaskbar = false;
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Редактор разделов";
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
