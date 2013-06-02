@@ -68,6 +68,33 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			Close();
 		}
 
+		private void BtnAdd_Click(object sender, EventArgs e)
+		{
+			using (var form = new ControlEditorForm())
+			{
+				if (form.ShowDialog() == DialogResult.OK)
+				{
+					Page.Controls.Add(form.Control);
+					lbControls.DataSource = Page.Controls;
+				}
+			}
+		}
+
+		private void BtnEdit_Click(object sender, EventArgs e)
+		{
+			var control = lbControls.SelectedItem as NooliteControl;
+			if (control != null)
+			{
+				using (var form = new ControlEditorForm(control))
+				{
+					if (form.ShowDialog() == DialogResult.OK)
+					{
+						lbControls.DataSource = Page.Controls;
+					}
+				}
+			}
+		}
+
 		private void btnDelete_Click(object sender, EventArgs e)
 		{
 			var control = lbControls.SelectedItem as NooliteControl;
