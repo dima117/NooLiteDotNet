@@ -39,12 +39,12 @@
 			this.btnSave = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.lbControls = new System.Windows.Forms.ListBox();
 			this.btnUp = new System.Windows.Forms.Button();
 			this.btnDown = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnEditPage = new System.Windows.Forms.Button();
 			this.btnAddPage = new System.Windows.Forms.Button();
-			this.lbControls = new System.Windows.Forms.ListBox();
 			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
@@ -138,6 +138,15 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Элементы управления";
 			// 
+			// lbControls
+			// 
+			this.lbControls.DisplayMember = "ConfiguratorUiDisplayText";
+			this.lbControls.FormattingEnabled = true;
+			this.lbControls.Location = new System.Drawing.Point(6, 48);
+			this.lbControls.Name = "lbControls";
+			this.lbControls.Size = new System.Drawing.Size(345, 95);
+			this.lbControls.TabIndex = 9;
+			// 
 			// btnUp
 			// 
 			this.btnUp.Location = new System.Drawing.Point(269, 19);
@@ -146,6 +155,7 @@
 			this.btnUp.TabIndex = 14;
 			this.btnUp.Text = "↑";
 			this.btnUp.UseVisualStyleBackColor = true;
+			this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
 			// 
 			// btnDown
 			// 
@@ -155,6 +165,7 @@
 			this.btnDown.TabIndex = 15;
 			this.btnDown.Text = "↓";
 			this.btnDown.UseVisualStyleBackColor = true;
+			this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
 			// 
 			// btnDelete
 			// 
@@ -164,6 +175,7 @@
 			this.btnDelete.TabIndex = 18;
 			this.btnDelete.Text = "Удалить";
 			this.btnDelete.UseVisualStyleBackColor = true;
+			this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
 			// 
 			// btnEditPage
 			// 
@@ -182,15 +194,6 @@
 			this.btnAddPage.TabIndex = 16;
 			this.btnAddPage.Text = "Добавить";
 			this.btnAddPage.UseVisualStyleBackColor = true;
-			// 
-			// lbControls
-			// 
-			this.lbControls.DisplayMember = "ConfiguratorUiDisplayText";
-			this.lbControls.FormattingEnabled = true;
-			this.lbControls.Location = new System.Drawing.Point(6, 48);
-			this.lbControls.Name = "lbControls";
-			this.lbControls.Size = new System.Drawing.Size(345, 95);
-			this.lbControls.TabIndex = 9;
 			// 
 			// PageEditorForm
 			// 
