@@ -36,7 +36,7 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		public string Description { get; set; }
 
 		[XmlElement("control")]
-		public List<NooliteControl> Controls { get; set; }
+		public BindingList<NooliteControl> Controls { get; set; }
 
 		public event PropertyChangedEventHandler PropertyChanged;
 
@@ -73,7 +73,7 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		public byte Level { get; set; }
 
 		[XmlElement("channel")]
-		public List<NooliteChannelAction> Actions { get; set; }
+		public BindingList<NooliteChannelAction> Actions { get; set; }
 
 		[XmlIgnore]
 		public string ConfiguratorUiDisplayText

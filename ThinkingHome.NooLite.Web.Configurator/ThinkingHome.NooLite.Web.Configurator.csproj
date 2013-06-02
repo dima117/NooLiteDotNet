@@ -48,6 +48,12 @@
       <Link>ControlType.cs</Link>
     </Compile>
     <Compile Include="Config.cs" />
+    <Compile Include="ControlEditorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ControlEditorForm.Designer.cs">
+      <DependentUpon>ControlEditorForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -64,6 +70,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ControlEditorForm.resx">
+      <DependentUpon>ControlEditorForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
