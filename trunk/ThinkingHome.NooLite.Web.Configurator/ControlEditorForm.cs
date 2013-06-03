@@ -40,6 +40,10 @@ namespace ThinkingHome.NooLite.Web.Configurator
 
 			var index = ddlControlType.FindStringExact(control.ControlType.ToString());
 			ddlControlType.SelectedIndex = index;
+
+			var level = control.Level > 100 ? 100 : control.Level;
+
+			trbDefaultLevel.Value = level / 10;
 		}
 
 		private void UpdateModel(NooliteControl control)
@@ -48,9 +52,9 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			control.DisplayText = tbTitle.Text;
 
 			ControlType type;
-			control.ControlType = Enum.TryParse(ddlControlType.SelectedText, out type)
-				                      ? type
-				                      : ControlType.Button;
+			string strType = (ddlControlType.SelectedItem ?? string.Empty).ToString();
+			control.ControlType = Enum.TryParse(strType, out type) ? type : ControlType.Button;
+			control.Level = (byte)(trbDefaultLevel.Value * 10);
 		}
 
 		private void TbIdentifierValidating(object sender, CancelEventArgs e)
@@ -69,6 +73,13 @@ namespace ThinkingHome.NooLite.Web.Configurator
 
 				errorProvider1.SetError(tb, error);
 			}
+		}
+
+		private void btnSave_Click(object sender, EventArgs e)
+		{
+			UpdateModel(Control);
+			DialogResult = DialogResult.OK;
+			Close();
 		}
 	}
 }
