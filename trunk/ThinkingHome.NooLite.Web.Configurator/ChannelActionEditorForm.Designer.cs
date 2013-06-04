@@ -28,7 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.ddlChannelIds = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblLevel = new System.Windows.Forms.Label();
 			this.trbLevel = new System.Windows.Forms.TrackBar();
@@ -38,13 +38,14 @@
 			((System.ComponentModel.ISupportInitialize)(this.trbLevel)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// comboBox1
+			// ddlChannelIds
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(68, 12);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(46, 21);
-			this.comboBox1.TabIndex = 0;
+			this.ddlChannelIds.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.ddlChannelIds.FormattingEnabled = true;
+			this.ddlChannelIds.Location = new System.Drawing.Point(68, 12);
+			this.ddlChannelIds.Name = "ddlChannelIds";
+			this.ddlChannelIds.Size = new System.Drawing.Size(46, 21);
+			this.ddlChannelIds.TabIndex = 0;
 			// 
 			// label1
 			// 
@@ -114,7 +115,7 @@
 			this.Controls.Add(this.trbLevel);
 			this.Controls.Add(this.lblLevel);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.ddlChannelIds);
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
 			this.MaximizeBox = false;
 			this.MinimizeBox = false;
@@ -129,7 +130,7 @@
 
 		#endregion
 
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox ddlChannelIds;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Label lblLevel;
 		private System.Windows.Forms.TrackBar trbLevel;

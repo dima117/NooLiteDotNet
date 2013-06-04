@@ -172,7 +172,6 @@
 			this.lbChannelActions.DisplayMember = "ConfiguratorUiDisplayText";
 			this.lbChannelActions.FormattingEnabled = true;
 			this.lbChannelActions.Location = new System.Drawing.Point(6, 48);
-			this.lbChannelActions.MultiColumn = true;
 			this.lbChannelActions.Name = "lbChannelActions";
 			this.lbChannelActions.Size = new System.Drawing.Size(327, 95);
 			this.lbChannelActions.TabIndex = 262;
@@ -185,6 +184,7 @@
 			this.btnAdd.TabIndex = 262;
 			this.btnAdd.Text = "Добавить";
 			this.btnAdd.UseVisualStyleBackColor = true;
+			this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
 			// 
 			// btnEdit
 			// 
@@ -194,6 +194,7 @@
 			this.btnEdit.TabIndex = 263;
 			this.btnEdit.Text = "Изменить";
 			this.btnEdit.UseVisualStyleBackColor = true;
+			this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
 			// 
 			// btnDelete
 			// 

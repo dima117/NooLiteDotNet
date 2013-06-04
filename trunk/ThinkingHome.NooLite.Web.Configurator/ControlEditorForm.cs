@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -77,6 +78,37 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			UpdateModel(Control);
 			DialogResult = DialogResult.OK;
 			Close();
+		}
+
+		private void btnAdd_Click(object sender, EventArgs e)
+		{
+			byte[] ids = Control.Actions.Select(x => x.ChannelId).ToArray();
+
+			using (var form = new ChannelActionEditorForm(ids))
+			{
+				if (form.ShowDialog() == DialogResult.OK)
+				{
+					Control.Actions.Add(form.ChannelAction);
+					lbChannelActions.DataSource = Control.Actions;
+				}
+			}
+		}
+
+		private void btnEdit_Click(object sender, EventArgs e)
+		{
+			byte[] ids = Control.Actions.Select(x => x.ChannelId).ToArray();
+			var action = lbChannelActions.SelectedItem as NooliteChannelAction;
+
+			if (action != null)
+			{
+				using (var form = new ChannelActionEditorForm(ids, action))
+				{
+					if (form.ShowDialog() == DialogResult.OK)
+					{
+						lbChannelActions.DataSource = Control.Actions;
+					}
+				}
+			}
 		}
 	}
 }
