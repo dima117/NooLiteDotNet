@@ -119,5 +119,21 @@ namespace ThinkingHome.NooLite.Web.Configurator
 				}
 			}
 		}
+
+		private void btnDelete_Click(object sender, EventArgs e)
+		{
+			var action = lbChannelActions.SelectedItem as NooliteChannelAction;
+
+			if (action != null)
+			{
+				var confirmation = MessageBox.Show(
+					"Настройка уровня яркости канала будет удалена. Продолжить?", "Внимание!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+
+				if (confirmation == DialogResult.Yes)
+				{
+					Control.Actions.Remove(action);
+				}
+			}
+		}
 	}
 }
