@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -42,6 +37,8 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			ddlControlType.SelectedIndex = index;
 
 			var level = control.Level > 100 ? 100 : control.Level;
+
+			lbChannelActions.DataSource = control.Actions;
 
 			trbDefaultLevel.Value = level / 10;
 		}

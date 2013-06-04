@@ -90,10 +90,16 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		}
 	}
 
-	public class NooliteChannelAction
+	public class NooliteChannelAction : INotifyPropertyChanged
 	{
+		private byte channelId;
+
 		[XmlAttribute("id")]
-		public byte ChannelId { get; set; }
+		public byte ChannelId
+		{
+			get { return channelId; }
+			set { channelId = value; OnPropertyChanged("ConfiguratorUiDisplayText"); }
+		}
 
 		[XmlAttribute("level")]
 		public string LevelText { get; set; }
@@ -109,7 +115,27 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			set
 			{
 				LevelText = value.HasValue ? value.ToString() : null;
+				OnPropertyChanged("ConfiguratorUiDisplayText");
 			}
+		}
+
+		[XmlIgnore]
+		public string ConfiguratorUiDisplayText
+		{
+			get
+			{
+				var level = (object)Level ?? "default";
+				return string.Format("канал: {0} (яркость: {1})", ChannelId, level);
+			}
+		}
+
+		public event PropertyChangedEventHandler PropertyChanged;
+
+		[NotifyPropertyChangedInvocator]
+		protected virtual void OnPropertyChanged(string propertyName)
+		{
+			var handler = PropertyChanged;
+			if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
 }
