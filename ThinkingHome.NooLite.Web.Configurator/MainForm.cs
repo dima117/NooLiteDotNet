@@ -117,7 +117,7 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		{
 			if (DialogResult != DialogResult.OK)
 			{
-				var confirmation = MessageBox.Show("Изменения будут потеряны. Продолжить?", "Внимание!", MessageBoxButtons.YesNo,
+				var confirmation = MessageBox.Show("Выйти без сохранения изменений?", "Внимание!", MessageBoxButtons.YesNo,
 												   MessageBoxIcon.Exclamation);
 				e.Cancel = confirmation == DialogResult.No;
 			}
