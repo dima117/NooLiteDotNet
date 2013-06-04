@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.ddlChannelIds = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.lblLevel = new System.Windows.Forms.Label();
@@ -35,7 +36,9 @@
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.cbSpecificLevel = new System.Windows.Forms.CheckBox();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.trbLevel)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// ddlChannelIds
@@ -69,14 +72,14 @@
 			// 
 			this.trbLevel.Location = new System.Drawing.Point(68, 39);
 			this.trbLevel.Name = "trbLevel";
-			this.trbLevel.Size = new System.Drawing.Size(209, 45);
+			this.trbLevel.Size = new System.Drawing.Size(233, 45);
 			this.trbLevel.TabIndex = 3;
 			// 
 			// btnCancel
 			// 
 			this.btnCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
 			this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancel.Location = new System.Drawing.Point(182, 92);
+			this.btnCancel.Location = new System.Drawing.Point(213, 92);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(88, 23);
 			this.btnCancel.TabIndex = 5;
@@ -86,17 +89,18 @@
 			// btnSave
 			// 
 			this.btnSave.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-			this.btnSave.Location = new System.Drawing.Point(88, 92);
+			this.btnSave.Location = new System.Drawing.Point(119, 92);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(88, 23);
 			this.btnSave.TabIndex = 4;
 			this.btnSave.Text = "Сохранить";
 			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
 			// cbSpecificLevel
 			// 
 			this.cbSpecificLevel.AutoSize = true;
-			this.cbSpecificLevel.Location = new System.Drawing.Point(120, 14);
+			this.cbSpecificLevel.Location = new System.Drawing.Point(144, 14);
 			this.cbSpecificLevel.Name = "cbSpecificLevel";
 			this.cbSpecificLevel.Size = new System.Drawing.Size(157, 17);
 			this.cbSpecificLevel.TabIndex = 6;
@@ -104,11 +108,17 @@
 			this.cbSpecificLevel.UseVisualStyleBackColor = true;
 			this.cbSpecificLevel.CheckedChanged += new System.EventHandler(this.cbSpecificLevel_CheckedChanged);
 			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
+			// 
 			// ChannelActionEditorForm
 			// 
+			this.AcceptButton = this.btnSave;
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(282, 127);
+			this.CancelButton = this.btnCancel;
+			this.ClientSize = new System.Drawing.Size(313, 127);
 			this.Controls.Add(this.cbSpecificLevel);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.btnSave);
@@ -123,6 +133,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
 			this.Text = "Яркость в канале";
 			((System.ComponentModel.ISupportInitialize)(this.trbLevel)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -137,5 +148,6 @@
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.Button btnSave;
 		private System.Windows.Forms.CheckBox cbSpecificLevel;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }
