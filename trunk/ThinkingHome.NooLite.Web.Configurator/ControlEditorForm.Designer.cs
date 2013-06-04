@@ -175,6 +175,7 @@
 			this.lbChannelActions.Name = "lbChannelActions";
 			this.lbChannelActions.Size = new System.Drawing.Size(327, 95);
 			this.lbChannelActions.TabIndex = 262;
+			this.lbChannelActions.DoubleClick += new System.EventHandler(this.btnEdit_Click);
 			// 
 			// btnAdd
 			// 

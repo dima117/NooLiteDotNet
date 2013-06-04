@@ -34,12 +34,12 @@
 			this.tbTitle = new System.Windows.Forms.TextBox();
 			this.cbDebug = new System.Windows.Forms.CheckBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.btnUp = new System.Windows.Forms.Button();
+			this.btnDown = new System.Windows.Forms.Button();
 			this.btnDelete = new System.Windows.Forms.Button();
 			this.btnEditPage = new System.Windows.Forms.Button();
 			this.btnAddPage = new System.Windows.Forms.Button();
 			this.lbPages = new System.Windows.Forms.ListBox();
-			this.btnUp = new System.Windows.Forms.Button();
-			this.btnDown = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -107,6 +107,26 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Разделы";
 			// 
+			// btnUp
+			// 
+			this.btnUp.Location = new System.Drawing.Point(279, 19);
+			this.btnUp.Name = "btnUp";
+			this.btnUp.Size = new System.Drawing.Size(38, 23);
+			this.btnUp.TabIndex = 6;
+			this.btnUp.Text = "↑";
+			this.btnUp.UseVisualStyleBackColor = true;
+			this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
+			// 
+			// btnDown
+			// 
+			this.btnDown.Location = new System.Drawing.Point(323, 19);
+			this.btnDown.Name = "btnDown";
+			this.btnDown.Size = new System.Drawing.Size(38, 23);
+			this.btnDown.TabIndex = 7;
+			this.btnDown.Text = "↓";
+			this.btnDown.UseVisualStyleBackColor = true;
+			this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+			// 
 			// btnDelete
 			// 
 			this.btnDelete.Location = new System.Drawing.Point(168, 19);
@@ -145,26 +165,7 @@
 			this.lbPages.Name = "lbPages";
 			this.lbPages.Size = new System.Drawing.Size(355, 134);
 			this.lbPages.TabIndex = 10;
-			// 
-			// btnUp
-			// 
-			this.btnUp.Location = new System.Drawing.Point(279, 19);
-			this.btnUp.Name = "btnUp";
-			this.btnUp.Size = new System.Drawing.Size(38, 23);
-			this.btnUp.TabIndex = 6;
-			this.btnUp.Text = "↑";
-			this.btnUp.UseVisualStyleBackColor = true;
-			this.btnUp.Click += new System.EventHandler(this.btnUp_Click);
-			// 
-			// btnDown
-			// 
-			this.btnDown.Location = new System.Drawing.Point(323, 19);
-			this.btnDown.Name = "btnDown";
-			this.btnDown.Size = new System.Drawing.Size(38, 23);
-			this.btnDown.TabIndex = 7;
-			this.btnDown.Text = "↓";
-			this.btnDown.UseVisualStyleBackColor = true;
-			this.btnDown.Click += new System.EventHandler(this.btnDown_Click);
+			this.lbPages.DoubleClick += new System.EventHandler(this.BtnEditPageClick);
 			// 
 			// MainForm
 			// 
