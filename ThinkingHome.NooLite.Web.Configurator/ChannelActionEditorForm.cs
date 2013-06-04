@@ -73,5 +73,28 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		{
 			trbLevel.Enabled = lblLevel.Enabled = cbSpecificLevel.Checked;
 		}
+
+		private void btnSave_Click(object sender, EventArgs e)
+		{
+			if (UpdateModel())
+			{
+				DialogResult = DialogResult.OK;
+				Close();
+			}
+		}
+
+		private bool UpdateModel()
+		{
+			if (ddlChannelIds.SelectedItem is byte)
+			{
+				ChannelId = (byte)ddlChannelIds.SelectedItem;
+				Level = cbSpecificLevel.Checked ? (byte)(trbLevel.Value * 10) : (byte?)null;
+
+				return true;
+			}
+
+			errorProvider1.SetError(ddlChannelIds, "Не выбран номер канала");
+			return false;
+		}
 	}
 }
