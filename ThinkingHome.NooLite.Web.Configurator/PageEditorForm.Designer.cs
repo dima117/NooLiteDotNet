@@ -146,6 +146,7 @@
 			this.lbControls.Name = "lbControls";
 			this.lbControls.Size = new System.Drawing.Size(345, 95);
 			this.lbControls.TabIndex = 9;
+			this.lbControls.DoubleClick += new System.EventHandler(this.BtnEdit_Click);
 			// 
 			// btnUp
 			// 

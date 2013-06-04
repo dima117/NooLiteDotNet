@@ -11,7 +11,9 @@ namespace ThinkingHome.NooLite.Web.Configurator
 {
 	public partial class ChannelActionEditorForm : Form
 	{
-		public readonly NooliteChannelAction ChannelAction = new NooliteChannelAction();
+		public byte? ChannelId { get; private set; }
+		public byte? Level { get; private set; }
+
 		private readonly byte[] usedIds = new byte[0];
 		private const byte MAX_CHANNEL_COUNT = 32;
 
@@ -25,39 +27,42 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			InitializeComponent();
 			usedIds = ids;
 
-			FillFormControls(ChannelAction);
+			FillFormControls();
 		}
 
-		public ChannelActionEditorForm(byte[] ids, NooliteChannelAction action)
+		public ChannelActionEditorForm(byte[] ids, byte channelId, byte? level)
 		{
 			InitializeComponent();
-			ChannelAction = action;
+			ChannelId = channelId;
+			Level = level;
 			usedIds = ids;
 
-			FillFormControls(ChannelAction);
+			FillFormControls();
 		}
 
-		private void FillFormControls(NooliteChannelAction action)
+		private void FillFormControls()
 		{
 			for (byte i = 0; i < MAX_CHANNEL_COUNT; i++)
 			{
-				if (!usedIds.Contains(i) || action.ChannelId == i)
+				if (!usedIds.Contains(i) || ChannelId == i)
 				{
 					ddlChannelIds.Items.Add(i);
 				}
 			}
 
-			if (action.ChannelId > 0 && action.ChannelId < MAX_CHANNEL_COUNT)
+			if (ChannelId.HasValue && ChannelId.Value < MAX_CHANNEL_COUNT)
 			{
-				ddlChannelIds.SelectedIndex = 
-					ddlChannelIds.FindStringExact(action.ChannelId.ToString());
+				ddlChannelIds.SelectedIndex =
+					ddlChannelIds.FindStringExact(ChannelId.Value.ToString());
 			}
 
-			cbSpecificLevel.Checked = action.Level.HasValue;
+			cbSpecificLevel.Checked =
+			trbLevel.Enabled =
+			lblLevel.Enabled = Level.HasValue;
 
-			if (action.Level.HasValue)
+			if (Level.HasValue)
 			{
-				var l = action.Level.Value;
+				var l = Level.Value;
 				var level = l > 100 ? 100 : l;
 				trbLevel.Value = level / 10;
 			}

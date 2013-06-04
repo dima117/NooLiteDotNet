@@ -88,7 +88,13 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			{
 				if (form.ShowDialog() == DialogResult.OK)
 				{
-					Control.Actions.Add(form.ChannelAction);
+					var action = new NooliteChannelAction
+					{
+						ChannelId = form.ChannelId.Value,
+						Level = form.Level
+					};
+
+					Control.Actions.Add(action);
 					lbChannelActions.DataSource = Control.Actions;
 				}
 			}
@@ -97,14 +103,17 @@ namespace ThinkingHome.NooLite.Web.Configurator
 		private void btnEdit_Click(object sender, EventArgs e)
 		{
 			byte[] ids = Control.Actions.Select(x => x.ChannelId).ToArray();
+
 			var action = lbChannelActions.SelectedItem as NooliteChannelAction;
 
 			if (action != null)
 			{
-				using (var form = new ChannelActionEditorForm(ids, action))
+				using (var form = new ChannelActionEditorForm(ids, action.ChannelId, action.Level))
 				{
 					if (form.ShowDialog() == DialogResult.OK)
 					{
+						action.ChannelId = form.ChannelId.Value;
+						action.Level = form.Level;
 						lbChannelActions.DataSource = Control.Actions;
 					}
 				}
