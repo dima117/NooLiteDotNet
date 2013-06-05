@@ -42,6 +42,9 @@ namespace ThinkingHome.NooLite.Web.Controllers
 		{
 			var model = new List<ControlPageModel>();
 
+			var title = CurrentConfig.Title;
+			ViewBag.Title = string.IsNullOrWhiteSpace(title) ? "Комнаты" : title;
+
 			foreach (ControlPageElement page in CurrentConfig.ControlPages)
 			{
 				var pageModel = new ControlPageModel
