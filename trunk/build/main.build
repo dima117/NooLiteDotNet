@@ -6,6 +6,7 @@
 
 	<property name="dist.dir" value="..\dist"/>
 	<property name="web.dir" value="..\ThinkingHome.NooLite.Web" />
+	<property name="configurator.dir" value="..\ThinkingHome.NooLite.Web.Configurator\bin\Release" />
 	
 	<!-- Tasks -->
 	<target name="compile" unless="${target::has-executed('compile')}">
@@ -36,6 +37,12 @@
 				<exclude name="**\*.log" />
 				<exclude name="**\*.Cache" />
 				<exclude name="**\*.csproj.user" />
+			</fileset>
+		</copy>
+
+		<copy todir="${dist.dir}">
+			<fileset basedir="${configurator.dir}">
+				<include name="Configurator.exe"/>
 			</fileset>
 		</copy>
 
