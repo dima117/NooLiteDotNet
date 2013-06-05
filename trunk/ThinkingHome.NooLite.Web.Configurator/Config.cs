@@ -17,11 +17,14 @@ namespace ThinkingHome.NooLite.Web.Configurator
 
 		public static void SaveConfig(NooLiteConfiguration obj)
 		{
+			var ns = new XmlSerializerNamespaces();
+			ns.Add("", "");
+
 			var mySerializer = new XmlSerializer(typeof(NooLiteConfiguration));
 
 			using (var stream = new FileStream("NooLite.config", FileMode.Create))
 			{
-				mySerializer.Serialize(stream, obj);
+				mySerializer.Serialize(stream, obj, ns);
 			}
 		}
 	}

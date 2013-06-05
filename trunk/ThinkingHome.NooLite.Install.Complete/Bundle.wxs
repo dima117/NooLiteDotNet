@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:bal="http://schemas.microsoft.com/wix/BalExtension">
 
 	<?include Variables.wxi?>
 
-	<Bundle Name="$(var.ProductName)" Version="1.0.0.0" Manufacturer="$(var.Manufacturer)"  UpgradeCode="c60e5959-14c9-41bf-9247-261febad019e">
-		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense" />
+	<Bundle Name="$(var.ProductName)" Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)"  UpgradeCode="c60e5959-14c9-41bf-9247-261febad019e">
+		<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
+			<bal:WixStandardBootstrapperApplication LicenseFile="License.rtf" />
+		</BootstrapperApplicationRef>
 		
 		<Chain>
 			<PackageGroupRef Id="NetFx40Web"/>
