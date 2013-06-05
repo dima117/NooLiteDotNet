@@ -15,6 +15,13 @@ namespace ThinkingHome.NooLite.Web.Configuration
 			}
 		}
 
+		[ConfigurationProperty("title", DefaultValue = "Комнаты")]
+		public string Title
+		{
+			get { return (string)base["title"]; }
+			set { base["title"] = value; }
+		}
+
 		[ConfigurationProperty("debug", DefaultValue = false)]
 		public bool Debug
 		{
