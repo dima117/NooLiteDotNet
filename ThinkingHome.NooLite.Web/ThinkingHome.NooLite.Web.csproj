@@ -150,7 +150,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="NooLite.config" />
+    <Content Include="NooLite.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -137,12 +137,15 @@ namespace ThinkingHome.NooLite.Web.Controllers
 				{
 					foreach (ChannelElement channel in control.Channels)
 					{
-						var lvl = strong ? level : channel.Level.GetValueOrDefault(level);
+						byte lvl = strong ? level : channel.Level.GetValueOrDefault(level);
+
 						var cmd =
 							lvl == 0 ? PC11XXCommand.Off :
 							lvl < 100 ? PC11XXCommand.SetLevel : PC11XXCommand.On;
 
-						result.Add(new PC11XXCommandData { Channel = channel.Id, Command = cmd, Level = lvl });
+						// преобразуем процентное значение яркости в уровень яркости для адаптера
+						var x = cmd == PC11XXCommand.SetLevel ? 40 + lvl : 0;
+						result.Add(new PC11XXCommandData { Channel = channel.Id, Command = cmd, Level = (byte)x });
 					}
 				}
 			}
