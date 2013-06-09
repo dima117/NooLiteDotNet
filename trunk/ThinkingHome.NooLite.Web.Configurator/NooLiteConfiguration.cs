@@ -7,6 +7,11 @@ namespace ThinkingHome.NooLite.Web.Configurator
 	[XmlRoot("nooLiteConfiguration")]
 	public class NooLiteConfiguration
 	{
+		public NooLiteConfiguration()
+		{
+			Pages = new BindingList<NooliteControlPage>();
+		}
+
 		[XmlAttribute("title")]
 		public string Title { get; set; }
 
@@ -19,6 +24,11 @@ namespace ThinkingHome.NooLite.Web.Configurator
 
 	public class NooliteControlPage : INotifyPropertyChanged
 	{
+		public NooliteControlPage()
+		{
+			Controls = new BindingList<NooliteControl>();
+		}
+
 		private string title;
 
 		[XmlAttribute("id")]
@@ -46,8 +56,14 @@ namespace ThinkingHome.NooLite.Web.Configurator
 			if (handler != null) handler(this, new PropertyChangedEventArgs(propertyName));
 		}
 	}
+
 	public class NooliteControl : INotifyPropertyChanged
 	{
+		public NooliteControl()
+		{
+			Actions = new BindingList<NooliteChannelAction>();
+		}
+
 		private string displayText;
 		private ControlType controlType;
 

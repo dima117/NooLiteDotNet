@@ -15,7 +15,7 @@
 		</Feature>
 		
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
-		<Property Id="WEBSITE_PORT">4789</Property>
+		<Property Id="WEBSITE_PORT"  Value="8080" />
 		<UIRef Id="WixUI_InstallDirNoolite" />
 	</Product>
 
