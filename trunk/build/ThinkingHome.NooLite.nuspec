@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+  <metadata>
+    <version>1.1.0.0</version>
+    <authors>dima117</authors>
+    <owners>dima117</owners>
+    <licenseUrl>http://www.opensource.org/licenses/mit-license.php</licenseUrl>
+    <projectUrl>http://code.google.com/p/th-noolite</projectUrl>
+    <!--<dependencies>
+      <dependency id="NLog" version="2.0.1.2" />
+    </dependencies>-->
+    <id>NooLiteDotNet</id>
+    <title>ThinkingHome.NooLite</title>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Wireless control of appliances using the system NooLite (http://www.noo.com.by)</description>
+    <summary>Wireless control of appliances using the system NooLite (http://www.noo.com.by)</summary>
+    <copyright>Dmitriy Andriyanov, Sergey Matveev</copyright>
+    <language>en-US</language>
+    <tags>noolite, smart home</tags>
+  </metadata>
+  <files>
+    <file src="..\nuget.package\lib\net40\ThinkingHome.NooLite.dll" target="lib\net40\ThinkingHome.NooLite.dll" />
+    <file src="..\nuget.package\lib\net40\HidLibrary.dll" target="lib\net40\HidLibrary.dll" />
+  </files>
+</package>

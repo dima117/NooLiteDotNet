@@ -7,7 +7,9 @@
 	<property name="dist.dir" value="..\dist"/>
 	<property name="web.dir" value="..\ThinkingHome.NooLite.Web" />
 	<property name="configurator.dir" value="..\ThinkingHome.NooLite.Web.Configurator\bin\Release" />
-	
+	<property name="api.dir" value="..\ThinkingHome.NooLite\bin\Release" />
+	<property name="nuget.source.dir" value="..\nuget.package"/>
+
 	<!-- Tasks -->
 	<target name="compile" unless="${target::has-executed('compile')}">
 
@@ -108,6 +110,34 @@
 
 		</if>
 
+
+	</target>
+
+	<target name="nuget" depends="compile" description="Build nuget package">
+
+		<property name="nuget.package.version" value="${assemblyname::get-version(assemblyname::get-assembly-name(path::combine(api.dir, 'ThinkingHome.NooLite.dll')))}"/>
+
+
+		<echo message="Prepare files for deploy package" />
+		<delete dir="${nuget.source.dir}" if="${directory::exists(nuget.source.dir)}"/>
+		<mkdir dir="${nuget.source.dir}" />
+		<mkdir dir="${path::combine(nuget.source.dir, 'lib')}" />
+		<mkdir dir="${path::combine(nuget.source.dir, 'lib\net40')}" />
+
+		<copy todir="${nuget.source.dir}" file="ThinkingHome.NooLite.nuspec" />
+
+		<xmlpoke
+			file="${path::combine(nuget.source.dir, 'ThinkingHome.NooLite.nuspec')}"
+			xpath="/package/metadata/version"
+			verbose="true"
+			value="${nuget.package.version}" />
+
+		<copy todir="${path::combine(nuget.source.dir, 'lib\net40')}" >
+			<fileset basedir="${api.dir}">
+				<include name="ThinkingHome.NooLite.dll"/>
+				<include name="HidLibrary.dll"/>
+			</fileset>
+		</copy>
 
 	</target>
 
