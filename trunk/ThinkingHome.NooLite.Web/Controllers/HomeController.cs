@@ -139,9 +139,9 @@ namespace ThinkingHome.NooLite.Web.Controllers
 					{
 						byte lvl = strong ? level : channel.Level.GetValueOrDefault(level);
 
-						var cmd =
-							lvl == 0 ? PC11XXCommand.Off :
-							lvl < 100 ? PC11XXCommand.SetLevel : PC11XXCommand.On;
+						lvl = lvl < 100 ? lvl : (byte)100;
+
+						var cmd = lvl == 0 ? PC11XXCommand.Off : PC11XXCommand.SetLevel;
 
 						// преобразуем процентное значение яркости в уровень яркости для адаптера
 						var x = cmd == PC11XXCommand.SetLevel ? 40 + lvl : 0;
