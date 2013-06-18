@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+<Wix
+	xmlns="http://schemas.microsoft.com/wix/2006/wi"
+	xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
 
 	<?include Variables.wxi?>
 
@@ -39,7 +41,7 @@
 
 		<CustomAction Id="Install" Directory="ULTIDEV_REDIST"
               Execute="deferred" Impersonate="no" Return="ignore"
-              ExeCommand="&quot;[ULTIDEV_WEBSERVER]UWS.RegApp.exe&quot; /r AppID:{$(var.UpgradeCode)} /url=http://*:[WEBSITE_PORT]/ &quot;/path:[INSTALLFOLDER]webapp&quot; /vdir:/ /Clr:4 /autostart" />
+              ExeCommand="&quot;[ULTIDEV_WEBSERVER]UWS.RegApp.exe&quot; /r AppID:{$(var.UpgradeCode)} /url=http://*:[WEBSITE_PORT]/ &quot;/path:[INSTALLFOLDER]webapp&quot; /vdir:/ /Clr:4 /autostart /createshortcuts:false" />
 
 		<InstallExecuteSequence>
 			<Custom Action='Install' After='InstallFiles' />
@@ -52,24 +54,27 @@
 		<ComponentGroup Id="ProductShortcuts">
 
 
-			<Component 
-				Id="ProductShortcut" 
-				Guid="D7EE113C-2F21-4526-B432-4B51563807F4" 
-				DiskId="1" 
+			<Component
+				Id="ProductShortcut"
+				Guid="D7EE113C-2F21-4526-B432-4B51563807F4"
+				DiskId="1"
 				Directory="DesktopFolder">
-					<Shortcut Id="ConfiguratorDesktopShortcut"
-					   Name="$(var.ProductName) Configurator"
-					   Description="$(var.ProductName) Configurator"
-					   Target="[FOLDER_06FE22AD2DBE4A389E545DAFE500A863]Configurator.exe"
-					   WorkingDirectory="FOLDER_06FE22AD2DBE4A389E545DAFE500A863"/>
-					<RemoveFolder Id="DesktopFolder" On="uninstall"/>
-					<RegistryValue
-					  Root="HKCU"
-					  Key="Software/NooLite Web Control Panel"
-					  Name="installed"
-					  Type="integer"
-					  Value="1"
-					  KeyPath="yes"/>
+				<Shortcut Id="ConfiguratorDesktopShortcut"
+					Name="nooLite Web Configurator"
+					Description="$(var.ProductName) Configurator"
+					Target="[FOLDER_06FE22AD2DBE4A389E545DAFE500A863]Configurator.exe"
+					WorkingDirectory="FOLDER_06FE22AD2DBE4A389E545DAFE500A863"/>
+				<util:InternetShortcut Id="WebAppShortcut"
+					Name="$(var.ProductName)"
+					Target="http://localhost:[WEBSITE_PORT]"/>
+				<RemoveFolder Id="DesktopFolder" On="uninstall"/>
+				<RegistryValue
+					Root="HKCU"
+					Key="Software/NooLite Web Control Panel"
+					Name="installed"
+					Type="integer"
+					Value="1"
+					KeyPath="yes"/>
 			</Component>
 		</ComponentGroup>
 
