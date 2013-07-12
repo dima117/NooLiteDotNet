@@ -74,6 +74,59 @@ namespace ThinkingHome.NooLite.Web.Controllers
 			return View(model);
 		}
 
+		public ActionResult OptionsCommand(string commandName, byte channel)
+		{
+			var messages = new List<string>();
+			try
+			{
+				PC11XXCommand? cmd = null;
+
+				switch (commandName.ToLower())
+				{
+					case "bind":
+						cmd = PC11XXCommand.Bind;
+						break;
+					case "unbind":
+						cmd = PC11XXCommand.UnBind;
+						break;
+				}
+
+				if (cmd.HasValue)
+				{
+					if (CurrentConfig.Debug)
+					{
+						string msg = string.Format("COMMAND: {0}, CHANNEL: {1}", cmd.Value.ToString().ToUpper(), channel);
+						messages.Add(msg);
+					}
+					else
+					{
+						using (var adapter = new PC11XXAdapter())
+						{
+							if (adapter.OpenDevice())
+							{
+								adapter.SendCommand(cmd.Value, channel);
+							}
+							else
+							{
+								messages.Add("PC11xx adapter not found");
+							}
+						}
+					}
+				}
+				else
+				{
+					string msg = string.Format("Unknown command: {0}", commandName);
+					messages.Add(msg);
+				}
+			}
+			catch (Exception ex)
+			{
+				messages.Add(ex.Message);
+			}
+
+			return Json(messages, JsonRequestBehavior.AllowGet);
+		}
+
 		public ActionResult Command(string page, string control, byte level, bool strong)
 		{
 			var messages = new List<string>();
