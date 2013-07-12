@@ -1,10 +1,10 @@
 ﻿@model List<ThinkingHome.NooLite.Web.Models.ControlPageModel>
-
 <!-- Start of first page -->
 <div data-role="page" id="main-page">
 
 	<div data-role="header" data-position="fixed">
 		<h1>@ViewBag.Title</h1>
+		<a href="#options-page" class="ui-btn-right">Options</a>
 	</div>
 	<!-- /header -->
 
@@ -21,6 +21,36 @@
 </div>
 <!-- /page -->
 
+<!-- Start of options page -->
+<div data-role="page" id="options-page">
+
+	<div data-role="header" data-position="fixed">
+		<a href="#main-page" data-icon="home">Home</a>
+		<h1>Options</h1>
+	</div>
+	<!-- /header -->
+
+	<div data-role="content">
+		<label for="select-channel" class="select">Select channel</label>
+		<select name="select-channel" id="select-channel" data-theme="d">
+			@for (int i = 0; i < 32; i++)
+   {
+				<option value="@i">Channel #@i</option>
+   }
+		</select>
+		<div class="ui-grid-a responsive-slider">
+			<div class="ui-block-a">
+				<input type="button" class="options-button" data-cmd-name="bind" value="Bind" />
+			</div>
+			<div class="ui-block-b">
+				<input type="button" class="options-button" data-cmd-name="unbind" value="Unbind" />
+			</div>
+		</div>
+	</div>
+	<!-- /content -->
+</div>
+<!-- /page -->
+
 <!-- Other pages -->
 @foreach (var page in Model)
 {
@@ -29,6 +59,7 @@
 		<div data-role="header" data-position="fixed">
 			<a href="#main-page" data-icon="home">Home</a>
 			<h1>@page.Title</h1>
+			<a href="#options-page" class="ui-btn-right">Options</a>
 		</div>
 		<!-- /header -->
 
@@ -54,8 +85,29 @@
 
 <script type="text/javascript">
 
+	function showRequestResult(data) {
+
+		if ($.isArray(data)) {
+
+			var message = '';
+
+			for (var i = 0; i < data.length; i++) {
+
+				if (message) {
+					message += '\r\n';
+				}
+
+				message += data[i];
+			}
+
+			if (message) {
+				alert(message);
+			}
+		}
+	}
+
 	$(function () {
-		
+
 		$.ajaxSetup({ cache: false });
 
 		$('.control-button').on('click', function () {
@@ -74,34 +126,20 @@
 
 			// request
 			var url = '@Url.Action("Command", "Home")';
-			$.getJSON(
-				url,
-				{
-					page: pageId,
-					control: controlId,
-					level: level,
-					strong: strong
-				},
-				function (data) {
-					if ($.isArray(data)) {
-
-						var message = '';
-
-						for (var i = 0; i < data.length; i++) {
-
-							if (message) {
-								message += '\r\n';
-							}
-
-							message += data[i];
-						}
-
-						if (message) {
-							alert(message);
-						}
-					}
-				});
+			$.getJSON(url, { page: pageId, control: controlId, level: level, strong: strong }, showRequestResult);
 		});
+
+		$('.options-button').on('click', function () {
+
+			// params
+			var cmd = $(this).data('cmd-name');
+			var channel = $('#select-channel').val();
+
+			// request
+			var url = '@Url.Action("OptionsCommand", "Home")';
+			$.getJSON(url, { commandName: cmd, channel: channel }, showRequestResult);
+		});
+
 	});
 
 </script>
