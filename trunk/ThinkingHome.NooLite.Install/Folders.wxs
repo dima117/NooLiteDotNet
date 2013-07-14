@@ -2,17 +2,17 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <DirectoryRef Id="INSTALLFOLDER">
-      <Directory Id="FOLDER_06FE22AD2DBE4A389E545DAFE500A863" Name="webapp">
-        <Directory Id="FOLDER_62669B3CDC0C48698235DB2C69D696A4" Name="bin" />
-        <Directory Id="FOLDER_8207CB7B25D045C8A32C33E59BB55C78" Name="Content">
-          <Directory Id="FOLDER_67FF209B4F544D1E84AC8C20721A67F3" Name="css">
-            <Directory Id="FOLDER_99C5E01E5F134D3CBA4520F4F55694BB" Name="images" />
+      <Directory Id="FOLDER_AD9F53B630C445EA948171BADD95F89F" Name="webapp">
+        <Directory Id="FOLDER_91F8C9D96F7B48E7934C209EF21B5495" Name="bin" />
+        <Directory Id="FOLDER_1189EDE73F3445F5B301146B37ECFC10" Name="Content">
+          <Directory Id="FOLDER_1890168B4E404BBB8C2913848B1745F7" Name="css">
+            <Directory Id="FOLDER_2A7AAE8FED9D4BA9BF7C6990AA4F3F35" Name="images" />
           </Directory>
-          <Directory Id="FOLDER_7DE3B0A9E2424CCAB76227FC3451E893" Name="js" />
+          <Directory Id="FOLDER_EC3A28DB5DCE431FA573857E1CAB91A5" Name="js" />
         </Directory>
-        <Directory Id="FOLDER_205D721267BF4998A5D33A8A3E3F4593" Name="Views">
-          <Directory Id="FOLDER_92C514300DA74B8B81A122AB7E141180" Name="Home" />
-          <Directory Id="FOLDER_9D4C3ED303D647D28E4D1B97D8DA6921" Name="Shared" />
+        <Directory Id="FOLDER_4CE82CD98F9048408639650904C46C2D" Name="Views">
+          <Directory Id="FOLDER_63679C8BEC264B278CB167D84DB68A11" Name="Home" />
+          <Directory Id="FOLDER_EEA817D492404F7A96F0C17AF84F22F5" Name="Shared" />
         </Directory>
       </Directory>
     </DirectoryRef>

@@ -39,12 +39,18 @@
 			</Directory>
 		</Directory>
 
+		<Icon Id="webapp.ico" src="..\dist\webapp.ico" />
 		<CustomAction Id="Install" Directory="ULTIDEV_REDIST"
               Execute="deferred" Impersonate="no" Return="ignore"
-              ExeCommand="&quot;[ULTIDEV_WEBSERVER]UWS.RegApp.exe&quot; /r AppID:{$(var.UpgradeCode)} /url=http://*:[WEBSITE_PORT]/ &quot;/path:[INSTALLFOLDER]webapp&quot; /vdir:/ /Clr:4 /autostart /createshortcuts:false" />
+			  
+              ExeCommand="&quot;[ULTIDEV_WEBSERVER]UWS.RegApp.exe&quot; /r AppID:{$(var.UpgradeCode)} /url=http://*:[WEBSITE_PORT]/ &quot;/path:[INSTALLFOLDER]webapp&quot; /vdir:/ /Clr:4 /autostart /createshortcuts:false">
+			NOT Installed
+		</CustomAction>
+
+
 
 		<InstallExecuteSequence>
-			<Custom Action='Install' After='InstallFiles' />
+			<Custom Action='Install' After='InstallFiles'>NOT Installed</Custom>
 		</InstallExecuteSequence>
 
 	</Fragment>
@@ -52,8 +58,6 @@
 	<Fragment>
 
 		<ComponentGroup Id="ProductShortcuts">
-
-
 			<Component
 				Id="ProductShortcut"
 				Guid="D7EE113C-2F21-4526-B432-4B51563807F4"
@@ -62,11 +66,13 @@
 				<Shortcut Id="ConfiguratorDesktopShortcut"
 					Name="nooLite Web Configurator"
 					Description="$(var.ProductName) Configurator"
-					Target="[FOLDER_06FE22AD2DBE4A389E545DAFE500A863]Configurator.exe"
-					WorkingDirectory="FOLDER_06FE22AD2DBE4A389E545DAFE500A863"/>
-				<util:InternetShortcut Id="WebAppShortcut"
+					Target="[FOLDER_AD9F53B630C445EA948171BADD95F89F]Configurator.exe"
+					WorkingDirectory="FOLDER_AD9F53B630C445EA948171BADD95F89F"/>
+				<Shortcut Id="WebAppDesktopShortcut"
 					Name="$(var.ProductName)"
-					Target="http://localhost:[WEBSITE_PORT]"/>
+					Description="$(var.ProductName)"
+					Target="http://localhost:[WEBSITE_PORT]"
+					Icon="webapp.ico" />
 				<RemoveFolder Id="DesktopFolder" On="uninstall"/>
 				<RegistryValue
 					Root="HKCU"
