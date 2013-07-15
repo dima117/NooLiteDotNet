@@ -141,6 +141,21 @@
 
 	</target>
 
+	<target name="msi" depends="configure" >
+
+		<loadtasks assembly="ECM7.NantContrib.dll" />
+
+		<wix-build-file-list
+			directoryRef="INSTALLFOLDER"
+			filesResultPath="..\ThinkingHome.NooLite.Install\Files.wxs" 
+			foldersResultPath="..\ThinkingHome.NooLite.Install\Folders.wxs"  >
+			<folders>
+				<add component-id="ComponentNoolite" path="..\dist" folder-id="WEBAPPFOLDER" folder-name="webapp" />
+			</folders>
+		</wix-build-file-list>
+
+	</target>
+
 	<target name="full">
 		<call target="compile" />
 		<call target="dist" />
