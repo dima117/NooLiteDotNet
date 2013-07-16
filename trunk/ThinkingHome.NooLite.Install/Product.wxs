@@ -13,6 +13,10 @@
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of $(var.ProductName) is already installed." />
 
+		<Binary 
+			Id="ThinkingHome.NooLite.Install.CustomActions.CA.dll" 
+			SourceFile="..\ThinkingHome.NooLite.Install.CustomActions\bin\Debug\ThinkingHome.NooLite.Install.CustomActions.CA.dll" />
+
 		<Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 			<ComponentGroupRef Id="ProductShortcuts" />
@@ -21,6 +25,7 @@
 		<PropertyRef Id="NETFRAMEWORK40FULL"/>
 		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
 		<Property Id="WEBSITE_PORT"  Value="8080" />
+
 		<UIRef Id="WixUI_InstallDirNoolite" />
 
 		<Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again.">
@@ -45,15 +50,17 @@
 			</Directory>
 		</Directory>
 
-		<CustomAction Id="Install" Directory="ULTIDEV_REDIST"
-              Execute="deferred" Impersonate="no" Return="ignore"
-			  
-              ExeCommand="&quot;[ULTIDEV_WEBSERVER]UWS.RegApp.exe&quot; /r AppID:{$(var.UpgradeCode)} /url=http://*:[WEBSITE_PORT]/ &quot;/path:[INSTALLFOLDER]webapp&quot; /vdir:/ /Clr:4 /autostart /createshortcuts:false">
-			NOT Installed
-		</CustomAction>
+		<CustomAction Id="SetAppId" Property="APP_ID" Value="$(var.UpgradeCode)" Execute="immediate" />
+		<CustomAction Id="SetPort" Property="APP_PORT" Value="[WEBSITE_PORT]" Execute="immediate" />
+		<CustomAction Id="SetPath" Property="APP_PATH" Value="[INSTALLFOLDER]" Execute="immediate" />
+		<CustomAction Id="RegisterWebApp" Execute="immediate" Return="check" 
+			BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="RegisterApplication" />
 
 		<InstallExecuteSequence>
-			<Custom Action='Install' After='InstallFiles'>NOT Installed</Custom>
+			<Custom Action='SetAppId' After='InstallFiles' />
+			<Custom Action='SetPort' After='SetAppId' />
+			<Custom Action='SetPath' After='SetPort' />
+			<Custom Action='RegisterWebApp' Before="SetPath">NOT Installed</Custom>
 		</InstallExecuteSequence>
 
 	</Fragment>
