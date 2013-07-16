@@ -63,8 +63,8 @@
 				<Shortcut Id="ConfiguratorDesktopShortcut"
 					Name="nooLite Web Configurator"
 					Description="$(var.ProductName) Configurator"
-					Target="[FOLDER_AD9F53B630C445EA948171BADD95F89F]Configurator.exe"
-					WorkingDirectory="FOLDER_AD9F53B630C445EA948171BADD95F89F"/>
+					Target="[WEBAPPFOLDER]Configurator.exe"
+					WorkingDirectory="WEBAPPFOLDER"/>
 				<util:InternetShortcut Id="WebAppDesktopShortcut"
 					Name="$(var.ProductName)"
 					Target="http://localhost:[WEBSITE_PORT]"/>
