@@ -18,7 +18,7 @@
 			<property name="Platform" value="Any CPU" />
 		</msbuild>
 	</target>
-	
+
 	<target name="dist" depends="compile" unless="${target::has-executed('dist')}" >
 
 		<echo message="Delete temporary directory" />
@@ -59,8 +59,8 @@
 
 	<target name="configure" depends="dist" unless="${target::has-executed('configure')}" >
 
-		<xmlpoke 
-			file="${path::combine(dist.dir, 'web.config')}" 
+		<xmlpoke
+			file="${path::combine(dist.dir, 'web.config')}"
 			xpath="/configuration/system.web/compilation/@debug" value="false" />
 
 	</target>
@@ -144,15 +144,48 @@
 	<target name="msi" depends="configure" >
 
 		<loadtasks assembly="ECM7.NantContrib.dll" />
+		<loadtasks assembly="Microsoft.Tools.WindowsInstallerXml.NAntTasks.dll" />
 
 		<wix-build-file-list
 			directoryRef="INSTALLFOLDER"
-			filesResultPath="..\ThinkingHome.NooLite.Install\Files.wxs" 
+			filesResultPath="..\ThinkingHome.NooLite.Install\Files.wxs"
 			foldersResultPath="..\ThinkingHome.NooLite.Install\Folders.wxs"  >
 			<folders>
 				<add component-id="ComponentNoolite" path="..\dist" folder-id="WEBAPPFOLDER" folder-name="webapp" />
 			</folders>
 		</wix-build-file-list>
+
+		<property name="wix.dir" value="${path::combine(environment::get-variable('WIX'), 'bin')}" readonly="true" />
+
+		<candle
+		  exedir="${wix.dir}"
+		  out="..\msi\obj\"
+		  rebuild="true"
+		  extensions="WixUIExtension;WixUtilExtension"
+		  warningsaserrors="true">
+			<sources basedir="..\ThinkingHome.NooLite.Install">
+				<include name="Product.wxs" />
+				<include name="Files.wxs" />
+				<include name="Folders.wxs" />
+				<include name="UserInterface.wxs" />
+			</sources>
+		</candle>
+
+		<light
+		  exedir="${wix.dir}"
+		  out="..\msi\nwcp-setup.msi"
+		  warningsaserrors="true"
+		  suppressices="ICE57"
+		  cultures="ru-ru"
+		  extensions="WixUIExtension;WixUtilExtension"
+		  rebuild="true"
+		  suppresspdb="true">
+			<!-- Specify additional options -->
+			<arg line="-fv" />
+			<sources basedir="..\msi\obj\">
+				<include name="*.wixobj" />
+			</sources>
+		</light>
 
 	</target>
 
