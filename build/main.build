@@ -161,7 +161,7 @@
 		  exedir="${wix.dir}"
 		  out="..\msi\obj\"
 		  rebuild="true"
-		  extensions="WixUIExtension;WixUtilExtension"
+		  extensions="WixUIExtension;WixUtilExtension;WixNetfxExtension"
 		  warningsaserrors="true">
 			<sources basedir="..\ThinkingHome.NooLite.Install">
 				<include name="Product.wxs" />
@@ -177,7 +177,7 @@
 		  warningsaserrors="true"
 		  suppressices="ICE57"
 		  cultures="ru-ru"
-		  extensions="WixUIExtension;WixUtilExtension"
+		  extensions="WixUIExtension;WixUtilExtension;WixNetfxExtension"
 		  rebuild="true"
 		  suppresspdb="true">
 			<!-- Specify additional options -->
