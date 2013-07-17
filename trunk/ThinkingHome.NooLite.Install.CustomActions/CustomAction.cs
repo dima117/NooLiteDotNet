@@ -17,23 +17,23 @@ namespace ThinkingHome.NooLite.Install.CustomActions
 			{
 				Guid appId = new Guid(session["APP_ID"]);
 				ushort port = ushort.Parse(session["APP_PORT"]);
-				string path = Path.Combine(session["APP_PATH"], "webapp");
+				string path = session["APP_PATH"];
 
-				session.Log("Begin Configure EWS Filter Custom Action");
+				session.Log("Begin Configure NooLite Web Control Panel Application");
 
 				WebAppConfigEntry app = Metabase.GetWebAppEntry(appId);
 				app.PhysicalDirectory = path;
 				app.ListenAddresses.AddAddresses(new ListenAddress(port));
-				app.ApplicationName = "My Test API-Registered UWS Application";
+				app.ApplicationName = "NooLite Web Control Panel";
 				Metabase.RegisterApplication(RuntimeVersion.AspNet_4, false, app, new AppShortcut[0]);
 
 
 
-				session.Log("End Configure EWS Filter Custom Action");
+				session.Log("End Configure NooLite Web Control Panel Application");
 			}
 			catch (Exception ex)
 			{
-				session.Log("ERROR in custom action ConfigureEwsFilter {0}", ex.ToString());
+				session.Log("ERROR in Configure NooLite Web Control Panel Application: {0}", ex.ToString());
 				return ActionResult.Failure;
 			}
 
