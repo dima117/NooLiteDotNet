@@ -3,16 +3,16 @@
   <Fragment>
     <DirectoryRef Id="INSTALLFOLDER">
       <Directory Id="WEBAPPFOLDER" Name="webapp">
-        <Directory Id="FOLDER_2D3388B5E58A4F2DB979BBA0E7726DBB" Name="bin" />
-        <Directory Id="FOLDER_7C6658DC4C9B4F2BBA762AF3FF216E29" Name="Content">
-          <Directory Id="FOLDER_BCF02B86194B4B38B4AC4EFC50AC0D11" Name="css">
-            <Directory Id="FOLDER_359499A7FE3C40DABC95F8886315C55F" Name="images" />
+        <Directory Id="FOLDER_D422823889654859B749B7A76F70B602" Name="bin" />
+        <Directory Id="FOLDER_A4833209A29344C4851CCAF6FD22B835" Name="Content">
+          <Directory Id="FOLDER_56ED8DAD080E46C98E16505250D5FC3C" Name="css">
+            <Directory Id="FOLDER_100E7D096715412EBA5679ECBD9D8F19" Name="images" />
           </Directory>
-          <Directory Id="FOLDER_600CD254235E433CB3AD727D29F95BF3" Name="js" />
+          <Directory Id="FOLDER_E41A9E1C2F1746D9AEAEDAE3B6CC9512" Name="js" />
         </Directory>
-        <Directory Id="FOLDER_5CA24EB56B66434C96CD8974F3FEBAB3" Name="Views">
-          <Directory Id="FOLDER_38FAAAB3F9E54FC98EAE53508F0DE7D9" Name="Home" />
-          <Directory Id="FOLDER_293F3148E60F45EFBD8E64E8D22BEB10" Name="Shared" />
+        <Directory Id="FOLDER_630BCD8FEE014986B912A2E9E4F1FF1E" Name="Views">
+          <Directory Id="FOLDER_19DBF32015304EB7937C3AD9C86344AD" Name="Home" />
+          <Directory Id="FOLDER_A44E2E5597A348A18978E4E27EB44EAF" Name="Shared" />
         </Directory>
       </Directory>
     </DirectoryRef>
