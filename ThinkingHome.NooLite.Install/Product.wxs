@@ -13,7 +13,8 @@
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of $(var.ProductName) is already installed." />
 
-		<Binary  Id="CustomActionsDll" SourceFile="..\ThinkingHome.NooLite.Install.CustomActions\bin\Debug\ThinkingHome.NooLite.Install.CustomActions.CA.dll" />
+		<Binary  Id="ThinkingHome.NooLite.Install.CustomActions.CA.dll" 
+			SourceFile="..\ThinkingHome.NooLite.Install.CustomActions\bin\Debug\ThinkingHome.NooLite.Install.CustomActions.CA.dll" />
 
 		<Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
@@ -46,8 +47,8 @@
 		<CustomAction Id="SetAppId" Property="APP_ID" Value="$(var.UpgradeCode)" Execute="immediate" />
 		<CustomAction Id="SetPort" Property="APP_PORT" Value="[WEBSITE_PORT]" Execute="immediate" />
 		<CustomAction Id="SetPath" Property="APP_PATH" Value="[WEBAPPFOLDER]" Execute="immediate" />
-		<CustomAction Id="RegisterWebApp" Execute="immediate" Return="check" BinaryKey="CustomActionsDll" DllEntry="RegisterApplication" />
-		<CustomAction Id="UnRegisterWebApp" Execute="immediate" Return="check" BinaryKey="CustomActionsDll" DllEntry="UnRegisterApplication" />
+		<CustomAction Id="RegisterWebApp" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="RegisterApplication" />
+		<CustomAction Id="UnRegisterWebApp" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="UnRegisterApplication" />
 
 		<InstallExecuteSequence>
 			<Custom Action='SetAppId' After='InstallFiles' />
