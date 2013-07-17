@@ -42,17 +42,12 @@
 			</Directory>
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="$(var.ProductName)" />
-				<Directory Id="ULTIDEV_ROOT" Name="UltiDev" >
-					<Directory Id="ULTIDEV_WEBSERVER" Name="Web Server">
-						<Directory Id="ULTIDEV_REDIST" Name="Redist" />
-					</Directory>
-				</Directory>
 			</Directory>
 		</Directory>
 
 		<CustomAction Id="SetAppId" Property="APP_ID" Value="$(var.UpgradeCode)" Execute="immediate" />
 		<CustomAction Id="SetPort" Property="APP_PORT" Value="[WEBSITE_PORT]" Execute="immediate" />
-		<CustomAction Id="SetPath" Property="APP_PATH" Value="[INSTALLFOLDER]" Execute="immediate" />
+		<CustomAction Id="SetPath" Property="APP_PATH" Value="[WEBAPPFOLDER]" Execute="immediate" />
 		<CustomAction Id="RegisterWebApp" Execute="immediate" Return="check" 
 			BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="RegisterApplication" />
 
@@ -60,7 +55,7 @@
 			<Custom Action='SetAppId' After='InstallFiles' />
 			<Custom Action='SetPort' After='SetAppId' />
 			<Custom Action='SetPath' After='SetPort' />
-			<Custom Action='RegisterWebApp' Before="SetPath">NOT Installed</Custom>
+			<Custom Action='RegisterWebApp' After="SetPath">NOT Installed</Custom>
 		</InstallExecuteSequence>
 
 	</Fragment>
