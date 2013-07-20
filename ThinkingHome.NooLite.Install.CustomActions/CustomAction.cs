@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Diagnostics;
-using System.IO;
 using Microsoft.Deployment.WindowsInstaller;
 using UWS.Configuration;
 
@@ -8,7 +7,7 @@ namespace ThinkingHome.NooLite.Install.CustomActions
 {
 	public class CustomActions
 	{
-		[CustomAction]
+		[CustomAction("RegisterApplication")]
 		public static ActionResult RegisterApplication(Session session)
 		{
 			Debugger.Launch();
@@ -38,9 +37,9 @@ namespace ThinkingHome.NooLite.Install.CustomActions
 
 			session.Log("End configure web application");
 			return ActionResult.Success;
-		}		
-		
-		[CustomAction]
+		}
+
+		[CustomAction("UnRegisterApplication")]
 		public static ActionResult UnRegisterApplication(Session session)
 		{
 			Debugger.Launch();
@@ -48,7 +47,7 @@ namespace ThinkingHome.NooLite.Install.CustomActions
 
 			try
 			{
-				Guid appId = new Guid(session["APP_ID"]);
+				var appId = new Guid(session["APP_ID"]);
 				Metabase.UnregisterApplication(appId);
 			}
 			catch (Exception ex)
