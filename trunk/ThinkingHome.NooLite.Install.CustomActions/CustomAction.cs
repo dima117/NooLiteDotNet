@@ -10,13 +10,12 @@ namespace ThinkingHome.NooLite.Install.CustomActions
 		[CustomAction("RegisterApplication")]
 		public static ActionResult RegisterApplication(Session session)
 		{
-			Debugger.Launch();
 			session.Log("Begin configure web application");
 
 			try
 			{
 				// parameters
-				Guid appId = new Guid(session["APP_ID"]);
+				var appId = new Guid(session["APP_ID"]);
 				ushort port = ushort.Parse(session["APP_PORT"]);
 				string path = session["APP_PATH"];
 
@@ -42,7 +41,6 @@ namespace ThinkingHome.NooLite.Install.CustomActions
 		[CustomAction("UnRegisterApplication")]
 		public static ActionResult UnRegisterApplication(Session session)
 		{
-			Debugger.Launch();
 			session.Log("Begin unregister web application");
 
 			try
@@ -57,6 +55,22 @@ namespace ThinkingHome.NooLite.Install.CustomActions
 			}
 
 			session.Log("End unregister web application");
+			return ActionResult.Success;
+		}
+
+		[CustomAction("CheckWebServer")]
+		public static ActionResult CheckWebServer(Session session)
+		{
+			try
+			{
+				Metabase.GetRegisteredApplicationCount();
+				session["SERVER_IS_INSTALLED"] = "1";
+			}
+			catch (Exception ex)
+			{
+				session["SERVER_IS_INSTALLED"] = "0";
+			}
+
 			return ActionResult.Success;
 		}
 	}
