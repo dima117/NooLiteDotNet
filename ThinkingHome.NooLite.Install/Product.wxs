@@ -26,13 +26,10 @@
 		<Property Id="WEBSITE_PORT"  Value="8080" />
 
 		<UIRef Id="WixUI_InstallDirNoolite" />
-
-		<Condition Message="This application requires .NET Framework 4.0. Please install the .NET Framework then run this installer again.">
+		<Condition Message="Для работы приложения необходим .NET Framework 4.0. Пожалуйста, установите .NET Framework и запустите инсталлятор еще раз.">
 			<![CDATA[Installed OR NETFRAMEWORK40FULL]]>
 		</Condition>
 	</Product>
-
-
 
 	<Fragment>
 
@@ -49,7 +46,10 @@
 		<CustomAction Id="SetPath" Property="APP_PATH" Value="[WEBAPPFOLDER]" Execute="immediate" />
 		<CustomAction Id="RegisterWebApp" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="RegisterApplication" />
 		<CustomAction Id="UnRegisterWebApp" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="UnRegisterApplication" />
-
+		<CustomAction Id="CheckWebServer" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="CheckWebServer" />
+		<InstallUISequence>
+			<Custom Action="CheckWebServer" After="CostFinalize">NOT Installed</Custom>
+		</InstallUISequence>
 		<InstallExecuteSequence>
 			<Custom Action='SetAppId' After='InstallFiles' />
 			<Custom Action='SetPort' After='SetAppId' />

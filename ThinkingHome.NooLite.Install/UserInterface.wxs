@@ -54,8 +54,15 @@ Patch dialog sequence:
 
 			<Publish Dialog="ExitDialog" Control="Finish" Event="EndDialog" Value="Return" Order="999">1</Publish>
 
-			<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">NOT Installed</Publish>
-			<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">Installed AND PATCH</Publish>
+			<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="RequirementsDlg">
+				<![CDATA[SERVER_IS_INSTALLED<>"1"]]>
+			</Publish>
+			<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="InstallDirDlg">
+				NOT Installed AND SERVER_IS_INSTALLED = "1"
+			</Publish>
+			<Publish Dialog="WelcomeDlg" Control="Next" Event="NewDialog" Value="VerifyReadyDlg">
+				Installed AND PATCH AND SERVER_IS_INSTALLED = "1"
+			</Publish>
 
 
 			<Publish Dialog="InstallDirDlg" Control="Back" Event="NewDialog" Value="WelcomeDlg">1</Publish>
@@ -108,6 +115,27 @@ Patch dialog sequence:
 				<Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
 				<Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes">
 					<Text>{\WixUI_Font_Title}Web Application Settings</Text>
+				</Control>
+
+				<Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
+			</Dialog>
+			<Dialog Id="RequirementsDlg" Width="370" Height="270" Title="Requirements - [ProductName]" NoMinimize="yes">
+
+				<Control Id="Text" Type="Text"  X="20" Y="60" Width="330" Height="64" TabSkip="yes">
+					<Text>Для работы приложения необходимо, чтобы на компьютере был установлен UltiDev WebServer. Пожалуйста, установите UltiDev WebServer и запустите инсталлятор еще раз.</Text>
+				</Control>
+
+				<Control Id="Cancel" Type="PushButton" X="304" Y="243" Width="56" Height="17" Cancel="yes" Text="!(loc.WixUICancel)">
+					<Publish Event="SpawnDialog" Value="CancelDlg">1</Publish>
+				</Control>
+
+				<Control Id="BannerBitmap" Type="Bitmap" X="0" Y="0" Width="370" Height="44" TabSkip="no" Text="WixUI_Bmp_Banner" />
+				<Control Id="Description" Type="Text" X="25" Y="23" Width="280" Height="15"
+					Transparent="yes" NoPrefix="yes" Text="Не установлены компоненты, необходимые для работы"></Control>
+
+				<Control Id="BottomLine" Type="Line" X="0" Y="234" Width="370" Height="0" />
+				<Control Id="Title" Type="Text" X="15" Y="6" Width="200" Height="15" Transparent="yes" NoPrefix="yes">
+					<Text>{\WixUI_Font_Title}Не установлен UltiDev WebServer</Text>
 				</Control>
 
 				<Control Id="BannerLine" Type="Line" X="0" Y="44" Width="370" Height="0" />
