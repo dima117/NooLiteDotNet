@@ -60,7 +60,7 @@
 		<CustomAction Id="SetPath" Property="APP_PATH" Value="[WEBAPPFOLDER]" Execute="immediate" />
 		<CustomAction Id="RegisterWebApp" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="RegisterApplication" />
 		<CustomAction Id="UnRegisterWebApp" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="UnRegisterApplication" />
-		<CustomAction Id="CheckWebServer" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="CheckWebServer" />
+		<CustomAction Id="CheckWebServer" Execute="immediate" Return="ignore" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="CheckWebServer" />
 		<InstallUISequence>
 			<Custom Action="CheckWebServer" After="CostFinalize">
 				<![CDATA[REMOVE <> "ALL"]]>
