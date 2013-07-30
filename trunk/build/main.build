@@ -17,6 +17,11 @@
 			<property name="Configuration" value="Release" />
 			<property name="Platform" value="Any CPU" />
 		</msbuild>
+
+		<msbuild project="..\ThinkingHome.NooLite.Install.CustomActions\ThinkingHome.NooLite.Install.CustomActions.csproj">
+			<property name="Configuration" value="Release" />
+			<property name="Platform" value="x86" />
+		</msbuild>
 	</target>
 
 	<target name="dist" depends="compile" unless="${target::has-executed('dist')}" >
