@@ -13,7 +13,7 @@
 		<MajorUpgrade DowngradeErrorMessage="A newer version of $(var.ProductName) is already installed." />
 		<WixVariable Id="WixUILicenseRtf" Value="..\dist\License.rtf" />
 
-		<Binary  Id="ThinkingHome.NooLite.Install.CustomActions.CA.dll" 
+		<Binary  Id="ThinkingHome.NooLite.Install.CustomActions.CA.dll"
 			SourceFile="..\ThinkingHome.NooLite.Install.CustomActions\bin\Debug\ThinkingHome.NooLite.Install.CustomActions.CA.dll" />
 
 		<Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
@@ -49,14 +49,20 @@
 		<CustomAction Id="UnRegisterWebApp" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="UnRegisterApplication" />
 		<CustomAction Id="CheckWebServer" Execute="immediate" Return="check" BinaryKey="ThinkingHome.NooLite.Install.CustomActions.CA.dll" DllEntry="CheckWebServer" />
 		<InstallUISequence>
-			<Custom Action="CheckWebServer" After="CostFinalize">NOT Installed</Custom>
+			<Custom Action="CheckWebServer" After="CostFinalize">
+				<![CDATA[REMOVE <> "ALL"]]>
+			</Custom>
 		</InstallUISequence>
 		<InstallExecuteSequence>
 			<Custom Action='SetAppId' After='InstallFiles' />
 			<Custom Action='SetPort' After='SetAppId' />
 			<Custom Action='SetPath' After='SetPort' />
-			<Custom Action='RegisterWebApp' After="SetPath">NOT Installed</Custom>
-			<Custom Action='UnRegisterWebApp' After="SetPath">Installed</Custom>
+			<Custom Action='RegisterWebApp' After="SetPath">
+				<![CDATA[REMOVE <> "ALL"]]>
+			</Custom>
+			<Custom Action='UnRegisterWebApp' After="SetPath">
+				<![CDATA[REMOVE = "ALL"]]>
+			</Custom>
 		</InstallExecuteSequence>
 
 	</Fragment>
