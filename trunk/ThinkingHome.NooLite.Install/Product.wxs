@@ -6,12 +6,12 @@
 
 	<?include Variables.wxi?>
 
-
 	<Product Id="$(var.ProductCode)" Name="$(var.ProductName)" Language="1049" Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)" UpgradeCode="$(var.UpgradeCode)">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 		<Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of $(var.ProductName) is already installed." />
+		<WixVariable Id="WixUILicenseRtf" Value="..\dist\License.rtf" />
 
 		<Binary  Id="ThinkingHome.NooLite.Install.CustomActions.CA.dll" 
 			SourceFile="..\ThinkingHome.NooLite.Install.CustomActions\bin\Debug\ThinkingHome.NooLite.Install.CustomActions.CA.dll" />
