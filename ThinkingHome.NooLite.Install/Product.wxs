@@ -14,7 +14,7 @@
 		<WixVariable Id="WixUILicenseRtf" Value="..\dist\License.rtf" />
 
 		<Binary  Id="ThinkingHome.NooLite.Install.CustomActions.CA.dll"
-			SourceFile="..\ThinkingHome.NooLite.Install.CustomActions\bin\Debug\ThinkingHome.NooLite.Install.CustomActions.CA.dll" />
+			SourceFile="..\ThinkingHome.NooLite.Install.CustomActions\bin\Release\ThinkingHome.NooLite.Install.CustomActions.CA.dll" />
 
 		<Feature Id="ProductFeature" Title="$(var.ProductName)" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
@@ -23,8 +23,21 @@
 		</Feature>
 
 		<PropertyRef Id="NETFRAMEWORK40FULL"/>
-		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER" />
-		<Property Id="WEBSITE_PORT"  Value="8080" />
+		<Property Id="REGISTRY_PATH"  Value="SOFTWARE\$(var.Manufacturer)\$(var.ProductName)" />
+		<Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER">
+			<RegistrySearch Id="NwcpInstallFolderSavedValue"
+				Root="HKCU"
+				Key="[REGISTRY_PATH]"
+				Name="Path"
+				Type="directory" />
+		</Property>
+		<Property Id="WEBSITE_PORT"  Value="8080">
+			<RegistrySearch Id="NwcpPortSavedValue"
+				Root="HKCU"
+				Key="[REGISTRY_PATH]"
+				Name="Port"
+				Type="raw" />
+		</Property>
 
 		<UIRef Id="WixUI_InstallDirNoolite" />
 		<Condition Message="Для работы приложения необходим .NET Framework 4.0. Пожалуйста, установите .NET Framework и запустите инсталлятор еще раз.">
@@ -75,16 +88,16 @@
 				DiskId="1" Directory="INSTALLFOLDER" >
 				<RegistryValue
 							Root="HKCU"
-							Key="SOFTWARE\$(var.Manufacturer)\$(var.ProductName)"
+							Key="[REGISTRY_PATH]"
 							Name="Path"
 							Type="string"
 							Value="[INSTALLFOLDER]"
 							KeyPath="yes"/>
 				<RegistryValue
 							Root="HKCU"
-							Key="SOFTWARE\$(var.Manufacturer)\$(var.ProductName)"
+							Key="[REGISTRY_PATH]"
 							Name="Port"
-							Type="integer"
+							Type="string"
 							Value="[WEBSITE_PORT]" />
 			</Component>
 		</ComponentGroup>
@@ -107,7 +120,7 @@
 				<RemoveFolder Id="DesktopFolder" On="uninstall"/>
 				<RegistryValue
 					Root="HKCU"
-					Key="SOFTWARE\$(var.Manufacturer)\$(var.ProductName)"
+					Key="[REGISTRY_PATH]"
 					Name="installed"
 					Type="integer"
 					Value="1"
