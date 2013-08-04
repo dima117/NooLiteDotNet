@@ -6,18 +6,20 @@
     <ProductVersion>3.7</ProductVersion>
     <ProjectGuid>c60e5959-14c9-41bf-9247-261febad019e</ProjectGuid>
     <SchemaVersion>2.0</SchemaVersion>
-    <OutputName>install</OutputName>
+    <OutputName>nwcp-setup-bundle</OutputName>
     <OutputType>Bundle</OutputType>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' AND '$(MSBuildExtensionsPath32)' != '' ">$(MSBuildExtensionsPath32)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
     <WixTargetsPath Condition=" '$(WixTargetsPath)' == '' ">$(MSBuildExtensionsPath)\Microsoft\WiX\v3.x\Wix.targets</WixTargetsPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>..\msi\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug</DefineConstants>
+    <SuppressAllWarnings>False</SuppressAllWarnings>
+    <Pedantic>True</Pedantic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
-    <OutputPath>bin\$(Configuration)\</OutputPath>
+    <OutputPath>..\msi\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>

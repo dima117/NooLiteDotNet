@@ -1,2 +1,2 @@
-msiexec /i nwcp-setup.msi /l*v log.txt
+msiexec /i nwcp-setup-bundle.msi /l*v log.txt
 pause

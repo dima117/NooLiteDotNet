@@ -12,7 +12,7 @@
 		<Chain>
 			<PackageGroupRef Id="NetFx40Web"/>
 			<MsiPackage Id="SERVER" DisplayInternalUI="no" SourceFile="..\Requires\UltiDev.WebServer.msi" />
-			<MsiPackage Id="WEBAPP" After="SERVER" DisplayInternalUI="yes" SourceFile="..\ThinkingHome.NooLite.Install\bin\nwcp-nstall.msi"  />
+			<MsiPackage Id="WEBAPP" After="SERVER" DisplayInternalUI="yes" SourceFile="..\msi\nwcp-setup.msi"  />
 		</Chain>
 	</Bundle>
 </Wix>

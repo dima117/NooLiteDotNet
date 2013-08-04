@@ -192,6 +192,12 @@
 			</sources>
 		</light>
 
+		<msbuild project="..\ThinkingHome.NooLite.Install.Complete\ThinkingHome.NooLite.Install.Complete.wixproj">
+			<property name="Configuration" value="Release" />
+			<property name="Platform" value="x86" />
+		</msbuild>
+
+
 	</target>
 
 	<target name="full">
