@@ -22,6 +22,7 @@ namespace ThinkingHome.NooLite.Install.CustomActions
 				// init
 				WebAppConfigEntry app = Metabase.GetWebAppEntry(appId);
 				app.ApplicationName = "NooLite Web Control Panel";
+				app.VirtualDirectory = string.Empty;
 				app.PhysicalDirectory = path;
 
 				app.ListenAddresses.Clear();
