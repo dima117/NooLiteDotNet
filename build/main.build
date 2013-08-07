@@ -151,7 +151,10 @@
 			</folders>
 		</wix-build-file-list>
 
-		<property name="wix.dir" value="${path::combine(environment::get-variable('WIX'), 'bin')}" readonly="true" />
+		<property 
+			name="wix.dir" 
+			value="${path::combine(environment::get-variable('WIX'), 'bin')}" 
+			unless="${property::exists('wix.dir')}" />
 
 		<candle
 		  exedir="${wix.dir}"
