@@ -2,58 +2,58 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
     <ComponentGroup Id="ProductComponents">
-      <Component Id="Component1C4AACE396CC46AE80FCBBF4AB1AAA0E" Guid="1c4aace3-96cc-46ae-80fc-bbf4ab1aaa0e" DiskId="1" Directory="WEBAPPFOLDER">
-        <File Id="FILE_60D6D12FDDE744A58D34CA7DB10C7CA9" Source="..\dist\Configurator.exe" />
-        <File Id="FILE_C3644E22456A4851BACE3A04CA0F0D89" Source="..\dist\Global.asax" />
-        <File Id="FILE_B3610020196E47CAB3D4A61BD83D3C7C" Source="..\dist\License.rtf" />
-        <File Id="FILE_0463FFE38A36403186C633DBB9F60461" Source="..\dist\Manual.rtf" />
-        <File Id="FILE_6FD322AB71564A0E893FC58012809C03" Source="..\dist\NooLite.config" />
-        <File Id="FILE_C73D3AA593EC43C290C04F8FC4F41888" Source="..\dist\Web.config" />
-        <File Id="FILE_24D5CB8B49124C15ADB06F697AF6D3F6" Source="..\dist\webapp.ico" />
+      <Component Id="Component9EAEB8A0AAEF4319AD6536CB1202803F" Guid="9eaeb8a0-aaef-4319-ad65-36cb1202803f" DiskId="1" Directory="WEBAPPFOLDER">
+        <File Id="FILE_8CB3DB0868574891A21D976CE8E1E9FC" Source="..\dist\Configurator.exe" />
+        <File Id="FILE_23DEAE86D9A24DE1AB24F8B761AF4F3F" Source="..\dist\Global.asax" />
+        <File Id="FILE_194FE2B3E7BB45F58CC28102FF4B7954" Source="..\dist\License.rtf" />
+        <File Id="FILE_EBAF741B566F401E8B8B82565025A4E2" Source="..\dist\Manual.rtf" />
+        <File Id="FILE_AE7F5D5CA8C944549FD4DFDF40B04BCD" Source="..\dist\NooLite.config" />
+        <File Id="FILE_A9A0CF4F259B417A9C9FDE2999E966DE" Source="..\dist\Web.config" />
+        <File Id="FILE_56221F406E3144E2A8A96A611AAF8DB6" Source="..\dist\webapp.ico" />
       </Component>
-      <Component Id="Component484C33741272402BBFA14A13CFC8C0FE" Guid="484c3374-1272-402b-bfa1-4a13cfc8c0fe" DiskId="1" Directory="FOLDER_5F46C1D23D20420BA8919362E8E491C1">
-        <File Id="FILE_6D64573B467B48538E41A7A61293B876" Source="..\dist\bin\HidLibrary.dll" />
-        <File Id="FILE_E131F3408A184EF990F5ADC52D9DD485" Source="..\dist\bin\License.rtf" />
-        <File Id="FILE_25D1F4F7374C42DEA22E86342EBA3D82" Source="..\dist\bin\Manual.rtf" />
-        <File Id="FILE_DDED633A3FC845F385052FD73BE5703B" Source="..\dist\bin\Microsoft.Web.Infrastructure.dll" />
-        <File Id="FILE_B2B90385749B45F791659B11CF6AF8BF" Source="..\dist\bin\System.Web.Helpers.dll" />
-        <File Id="FILE_65FC25AC623C4870B5B5E01C8257B7ED" Source="..\dist\bin\System.Web.Mvc.dll" />
-        <File Id="FILE_98657117EF9249E7A339E49055718E4D" Source="..\dist\bin\System.Web.Providers.dll" />
-        <File Id="FILE_97BACE4F9C284F5F8B847C79E4AD01B8" Source="..\dist\bin\System.Web.Razor.dll" />
-        <File Id="FILE_862F81DB2CCD42098921ACA333BCE729" Source="..\dist\bin\System.Web.WebPages.Deployment.dll" />
-        <File Id="FILE_B61F3C8EF581415A8C0213363C2FC6AF" Source="..\dist\bin\System.Web.WebPages.dll" />
-        <File Id="FILE_32139CC57DA448EDA6F78800F858B13A" Source="..\dist\bin\System.Web.WebPages.Razor.dll" />
-        <File Id="FILE_864E52B68B894EA0AC065EE5DE2CAB6A" Source="..\dist\bin\ThinkingHome.NooLite.dll" />
-        <File Id="FILE_F856DB5C30E345CCA63F887C3F102694" Source="..\dist\bin\ThinkingHome.NooLite.Web.dll" />
+      <Component Id="ComponentD9A9A5A2C9F34240B98B2E9365D4A5B8" Guid="d9a9a5a2-c9f3-4240-b98b-2e9365d4a5b8" DiskId="1" Directory="FOLDER_65E9906705944BDA8E3CF8C0658EFFE8">
+        <File Id="FILE_53CD34AE1383415D906AF1CD86D57DF8" Source="..\dist\bin\HidLibrary.dll" />
+        <File Id="FILE_5ADADEE0475F4864A5008120B3F766AB" Source="..\dist\bin\License.rtf" />
+        <File Id="FILE_03804696F8634A88ACD133798D5CBB80" Source="..\dist\bin\Manual.rtf" />
+        <File Id="FILE_B5F1C9FA6F38421C9B82E8BE98006297" Source="..\dist\bin\Microsoft.Web.Infrastructure.dll" />
+        <File Id="FILE_4F4D50CC21124D3BA82B651AEBF367F1" Source="..\dist\bin\System.Web.Helpers.dll" />
+        <File Id="FILE_54C486D19D0240398F06C1D7FD0AD9E2" Source="..\dist\bin\System.Web.Mvc.dll" />
+        <File Id="FILE_B0AC4C2CF1B34472ADAEA45DF6F380EF" Source="..\dist\bin\System.Web.Providers.dll" />
+        <File Id="FILE_BB2F4E6BB9C44A9DAA1B958B8B1B6F08" Source="..\dist\bin\System.Web.Razor.dll" />
+        <File Id="FILE_71AAC9BA5D434289B538958C926D4ED3" Source="..\dist\bin\System.Web.WebPages.Deployment.dll" />
+        <File Id="FILE_DAC66545DF124CD9BA0339E43E41952E" Source="..\dist\bin\System.Web.WebPages.dll" />
+        <File Id="FILE_57D1734518CA4B0A8EF78F121CC1868F" Source="..\dist\bin\System.Web.WebPages.Razor.dll" />
+        <File Id="FILE_C332846370D046158614ED220120F768" Source="..\dist\bin\ThinkingHome.NooLite.dll" />
+        <File Id="FILE_7C089FE15B154040A64C6637244796DB" Source="..\dist\bin\ThinkingHome.NooLite.Web.dll" />
       </Component>
-      <Component Id="Component461F68D1ADAC4AF2878F703DF48CA99A" Guid="461f68d1-adac-4af2-878f-703df48ca99a" DiskId="1" Directory="FOLDER_E0C58ABA26BF478B9210C776624E790E">
-        <File Id="FILE_8206D554CD554B26ABFF0E2D57752BB8" Source="..\dist\Content\css\jquery.mobile-1.3.0.min.css" />
-        <File Id="FILE_BC531020B3D447438EA1ABE48DF5B905" Source="..\dist\Content\css\site.css" />
+      <Component Id="ComponentE48081117FCC416A96CA79063FF3B6A6" Guid="e4808111-7fcc-416a-96ca-79063ff3b6a6" DiskId="1" Directory="FOLDER_14335C48C60443CC8D4453ABD9FFDF58">
+        <File Id="FILE_5F6BC2F5E2BD4582B94BC4685D8718D5" Source="..\dist\Content\css\jquery.mobile-1.3.0.min.css" />
+        <File Id="FILE_B8601ABD62DB450882F01A938A9FE612" Source="..\dist\Content\css\site.css" />
       </Component>
-      <Component Id="Component9C393CD7B7D64E638407D839899D99F9" Guid="9c393cd7-b7d6-4e63-8407-d839899d99f9" DiskId="1" Directory="FOLDER_60827AC8E865479EBADE7B72DD36AAA4">
-        <File Id="FILE_D1E7E8FD783144FDB1C7603B5A13F420" Source="..\dist\Content\css\images\ajax-loader.gif" />
-        <File Id="FILE_193212DBC4114A5EBCDF3CDE5D4F255D" Source="..\dist\Content\css\images\icons-18-black.png" />
-        <File Id="FILE_750F47B8D8E743CB94330291167A3924" Source="..\dist\Content\css\images\icons-18-white.png" />
-        <File Id="FILE_AAF7F42500CB41A0A8C0FE285247E0D6" Source="..\dist\Content\css\images\icons-36-black.png" />
-        <File Id="FILE_9305254D8C37470198CC3524EF87F352" Source="..\dist\Content\css\images\icons-36-white.png" />
+      <Component Id="Component7C06879B8083439D96B6664F286D5FF1" Guid="7c06879b-8083-439d-96b6-664f286d5ff1" DiskId="1" Directory="FOLDER_7E5726AF0BE44A228E7D9412543A1181">
+        <File Id="FILE_D968E1DBA4FE4CFBA2B136AFADE8EB4C" Source="..\dist\Content\css\images\ajax-loader.gif" />
+        <File Id="FILE_01BFB22372CB4F23B386658F78E1C87F" Source="..\dist\Content\css\images\icons-18-black.png" />
+        <File Id="FILE_79DAA07E6A75467F9C1BE9F9F4C4CD26" Source="..\dist\Content\css\images\icons-18-white.png" />
+        <File Id="FILE_FFCA9A554842411ABE35335521A1AFDF" Source="..\dist\Content\css\images\icons-36-black.png" />
+        <File Id="FILE_5CCB1569776C48C4ACF99F5AD1147984" Source="..\dist\Content\css\images\icons-36-white.png" />
       </Component>
-      <Component Id="Component067C7CE6A2A04598937899B9560A2F75" Guid="067c7ce6-a2a0-4598-9378-99b9560a2f75" DiskId="1" Directory="FOLDER_4C269C7B50C14BBFB72BB3C368671D46">
-        <File Id="FILE_60AC2F469A5248F4BB6826EAFC988F30" Source="..\dist\Content\js\jquery-1.8.2.min.js" />
-        <File Id="FILE_2ACBB402EA284CEBA33C1B468094976D" Source="..\dist\Content\js\jquery.mobile-1.3.0.min.js" />
+      <Component Id="Component7D3783E78D7D44A190A39A740DE32980" Guid="7d3783e7-8d7d-44a1-90a3-9a740de32980" DiskId="1" Directory="FOLDER_35D61D8D36464E49BB83F8CF79250CDF">
+        <File Id="FILE_176A8741047C4150806CCBC4A9DFFA28" Source="..\dist\Content\js\jquery-1.8.2.min.js" />
+        <File Id="FILE_06AA9E7E6E304DD2BDAC977DB779EBAF" Source="..\dist\Content\js\jquery.mobile-1.3.0.min.js" />
       </Component>
-      <Component Id="ComponentF3C5F1994EDE43A6BDF5C44CA4BDAF08" Guid="f3c5f199-4ede-43a6-bdf5-c44ca4bdaf08" DiskId="1" Directory="FOLDER_28ADE81D5BB1478D887DAFD09331E941">
-        <File Id="FILE_6DDABF11DA3743E9AAD9FE1F24EB480F" Source="..\dist\Views\Web.config" />
-        <File Id="FILE_82DA9799229044B685E90A4F8686B8C9" Source="..\dist\Views\_ViewStart.cshtml" />
+      <Component Id="Component7B117E15EEBB42C181C733928C140C1A" Guid="7b117e15-eebb-42c1-81c7-33928c140c1a" DiskId="1" Directory="FOLDER_AF87DB2D55DB431699B3C7980960EF9F">
+        <File Id="FILE_A989F98856AF45538F1A522E69EF3DB2" Source="..\dist\Views\Web.config" />
+        <File Id="FILE_C24B3FBFC2774502AB70C39ED4CAC9C4" Source="..\dist\Views\_ViewStart.cshtml" />
       </Component>
-      <Component Id="ComponentA6ED94FC21604CE7A460FA9FBDA61A40" Guid="a6ed94fc-2160-4ce7-a460-fa9fbda61a40" DiskId="1" Directory="FOLDER_D60FE277C05F43C2B4A22495FDCAE1FC">
-        <File Id="FILE_C2597297FBF449FB866096C5EE0D1D07" Source="..\dist\Views\Home\Button.cshtml" />
-        <File Id="FILE_F6B519FBD2C147F6A61C3804FD4F2079" Source="..\dist\Views\Home\Index.cshtml" />
-        <File Id="FILE_C81D0035A98748BFB204362B94B7B7DF" Source="..\dist\Views\Home\Slider.cshtml" />
-        <File Id="FILE_A6B911F33589496E855722C87B628EE0" Source="..\dist\Views\Home\Switcher.cshtml" />
+      <Component Id="Component6C937F66F0964BBCA85140D88E17D5B8" Guid="6c937f66-f096-4bbc-a851-40d88e17d5b8" DiskId="1" Directory="FOLDER_3AB6DF5498EC45E398075A915B6F07CD">
+        <File Id="FILE_610813FA35C84F51AAD2C3630D656105" Source="..\dist\Views\Home\Button.cshtml" />
+        <File Id="FILE_EA2372A21C34465FAFA1CE2C0E11D507" Source="..\dist\Views\Home\Index.cshtml" />
+        <File Id="FILE_129DFC8DCB8D4742BC1B0E2BFC6AB2DA" Source="..\dist\Views\Home\Slider.cshtml" />
+        <File Id="FILE_B49C1234D38A4FCE827FF1464BB924AD" Source="..\dist\Views\Home\Switcher.cshtml" />
       </Component>
-      <Component Id="Component0FBC6D63E48642CAA189C60E595CA6E0" Guid="0fbc6d63-e486-42ca-a189-c60e595ca6e0" DiskId="1" Directory="FOLDER_3F80F3CAEBCB4598960EB0C25919C0E6">
-        <File Id="FILE_48D2D973D2554F77B8719BFAAE7910D4" Source="..\dist\Views\Shared\Error.cshtml" />
-        <File Id="FILE_AC4474AEF08F46EDB057E87568E93A01" Source="..\dist\Views\Shared\_Layout.cshtml" />
+      <Component Id="ComponentA6387E86413F42918820A66D293EC608" Guid="a6387e86-413f-4291-8820-a66d293ec608" DiskId="1" Directory="FOLDER_EBC6E3264B204D4ABCE2BF44D538B313">
+        <File Id="FILE_5A1D0FF4990E482A831CB0C337754C99" Source="..\dist\Views\Shared\Error.cshtml" />
+        <File Id="FILE_6CF5F81223A24CAA9DDDE8DCA11DCB63" Source="..\dist\Views\Shared\_Layout.cshtml" />
       </Component>
     </ComponentGroup>
   </Fragment>

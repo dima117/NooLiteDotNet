@@ -133,7 +133,6 @@
 	<target name="msi" depends="configure" if="${property::exists('msi.dir')}" >
 
 		<loadtasks assembly="ECM7.NantContrib.dll" />
-		<loadtasks assembly="Microsoft.Tools.WindowsInstallerXml.NAntTasks.dll" />
 
 		<xmlpoke
 			file="${path::combine(dist.dir, 'NooLite.config')}"
@@ -151,40 +150,10 @@
 			</folders>
 		</wix-build-file-list>
 
-		<property 
-			name="wix.dir" 
-			value="${path::combine(environment::get-variable('WIX'), 'bin')}" 
-			unless="${property::exists('wix.dir')}" />
-
-		<candle
-		  exedir="${wix.dir}"
-		  out="..\msi\obj\"
-		  rebuild="true"
-		  extensions="WixUIExtension;WixUtilExtension;WixNetfxExtension"
-		  warningsaserrors="true">
-			<sources basedir="..\ThinkingHome.NooLite.Install">
-				<include name="Product.wxs" />
-				<include name="Files.wxs" />
-				<include name="Folders.wxs" />
-				<include name="UserInterface.wxs" />
-			</sources>
-		</candle>
-
-		<light
-		  exedir="${wix.dir}"
-		  out="..\msi\nwcp-setup.msi"
-		  warningsaserrors="true"
-		  suppressices="ICE57"
-		  cultures="ru-ru"
-		  extensions="WixUIExtension;WixUtilExtension;WixNetfxExtension"
-		  rebuild="true"
-		  suppresspdb="true">
-			<!-- Specify additional options -->
-			<arg line="-fv" />
-			<sources basedir="..\msi\obj\">
-				<include name="*.wixobj" />
-			</sources>
-		</light>
+		<msbuild project="..\ThinkingHome.NooLite.Install\ThinkingHome.NooLite.Install.wixproj">
+			<property name="Configuration" value="Release" />
+			<property name="Platform" value="x86" />
+		</msbuild>
 
 		<msbuild project="..\ThinkingHome.NooLite.Install.Complete\ThinkingHome.NooLite.Install.Complete.wixproj">
 			<property name="Configuration" value="Release" />
