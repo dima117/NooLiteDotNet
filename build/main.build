@@ -8,6 +8,7 @@
 	<property name="web.dir" value="..\ThinkingHome.NooLite.Web" />
 	<property name="configurator.dir" value="..\ThinkingHome.NooLite.Web.Configurator\bin\Release" />
 	<property name="api.dir" value="..\ThinkingHome.NooLite\bin\Release" />
+	<property name="msi.source.dir" value="..\msi"/>
 	<property name="nuget.source.dir" value="..\nuget.package"/>
 
 	<!-- Tasks -->
@@ -26,10 +27,7 @@
 
 	<target name="dist" depends="compile" unless="${target::has-executed('dist')}" >
 
-		<echo message="Delete temporary directory" />
 		<delete dir="${dist.dir}" if="${directory::exists(dist.dir)}"/>
-
-		<echo message="Create temporary directory" />
 		<mkdir dir="${dist.dir}" />
 
 		<echo message="Prepare application" />
@@ -88,33 +86,19 @@
 
 		</if>
 
-		<if test="${property::exists('zip.dir')}">
-
-			<xmlpoke
-				file="${path::combine(dist.dir, 'NooLite.config')}"
-				xpath="/nooLiteConfiguration/@debug" value="false" />
+		<if test="${property::exists('msi.dir')}">
 
 			<property name="zip.filename" value="ThinkingHome.NooLite.zip" />
 			<delete file="${zip.filename}" if="${file::exists(zip.filename)}" />
 			<zip zipfile="${zip.filename}">
 				<fileset basedir="${path::combine(dist.dir, 'bin')}" >
 					<include name="ThinkingHome.NooLite.DLL" />
+					<include name="HidLibrary.dll" />
 				</fileset>
 			</zip>
 
-			<property name="web.zip.filename" value="ThinkingHome.NooLite.Web.zip" />
-			<delete file="${web.zip.filename}" if="${file::exists(web.zip.filename)}" />
-			<zip zipfile="${web.zip.filename}">
-				<fileset basedir="${dist.dir}">
-					<include name="**\*"/>
-				</fileset>
-			</zip>
-
-			<copy todir="${zip.dir}" file="${zip.filename}" />
-			<copy todir="${zip.dir}" file="${web.zip.filename}" />
-
+			<copy todir="${msi.dir}" file="${zip.filename}" />
 		</if>
-
 
 	</target>
 
@@ -146,10 +130,17 @@
 
 	</target>
 
-	<target name="msi" depends="configure" >
+	<target name="msi" depends="configure" if="${property::exists('msi.dir')}" >
 
 		<loadtasks assembly="ECM7.NantContrib.dll" />
 		<loadtasks assembly="Microsoft.Tools.WindowsInstallerXml.NAntTasks.dll" />
+
+		<xmlpoke
+			file="${path::combine(dist.dir, 'NooLite.config')}"
+			xpath="/nooLiteConfiguration/@debug" value="false" />
+
+		<delete dir="${msi.source.dir}" if="${directory::exists(msi.source.dir)}"/>
+		<mkdir dir="${msi.source.dir}" />
 
 		<wix-build-file-list
 			directoryRef="INSTALLFOLDER"
@@ -197,6 +188,9 @@
 			<property name="Platform" value="x86" />
 		</msbuild>
 
+		<copy todir="${msi.dir}" file="${path::combine(msi.source.dir, 'nwcp-setup.msi')}" overwrite="true" />
+		<copy todir="${msi.dir}" file="${path::combine(msi.source.dir, 'nwcp-setup-bundle.exe')}" overwrite="true" />
+		<copy tofile="${path::combine(msi.dir, 'nwcp-manual.rtf')}" file="${path::combine(dist.dir, 'Manual.rtf')}" overwrite="true" />
 
 	</target>
 
@@ -205,6 +199,7 @@
 		<call target="dist" />
 		<call target="configure" />
 		<call target="transfer" />
+		<call target="msi" />
 	</target>
 
 
