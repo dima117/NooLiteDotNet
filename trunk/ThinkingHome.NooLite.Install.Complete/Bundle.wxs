@@ -3,7 +3,7 @@
 
 	<?include Variables.wxi?>
 
-	<Bundle Name="$(var.ProductName)" Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)"  UpgradeCode="c60e5959-14c9-41bf-9247-261febad019e">
+	<Bundle Name="$(var.ProductName)" Version="$(var.ProductVersion)" Manufacturer="$(var.Manufacturer)"  UpgradeCode="$(var.UpgradeCode)">
 		<!--<BootstrapperApplicationRef Id="WixStandardBootstrapperApplication.RtfLicense">
 			<bal:WixStandardBootstrapperApplication LicenseFile="License.rtf" />
 		</BootstrapperApplicationRef>-->
