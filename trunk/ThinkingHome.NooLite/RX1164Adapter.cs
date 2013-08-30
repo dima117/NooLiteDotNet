@@ -1,52 +1,29 @@
-﻿using System;
-using System.Linq;
-using HidLibrary;
-
-namespace ThinkingHome.NooLite
+﻿namespace ThinkingHome.NooLite
 {
-	public class RX1164Adapter : IDisposable
+	public class RX1164Adapter : BaseAdapter
 	{
-		private const int VENDOR_ID = 0x16C0;
-		private const int PRODUCT_ID = 0x05DC;
-
-		private HidDevice device;
-
-		public bool IsConnected
+		public override int ProductId
 		{
-			get { return device != null && device.IsConnected; }
+			get { return 0x05DC; }
 		}
 
-		public bool OpenDevice()
+		public byte[] ReadLatestCommand()
 		{
-			device = HidDevices.Enumerate(VENDOR_ID, PRODUCT_ID).FirstOrDefault();
+			byte[] buf;
+			device.ReadFeatureData(out buf);
 
-			if (device != null)
-			{
-				device.OpenDevice();
-				device.MonitorDeviceEvents = true;
-
-				return true;
-			}
-			return false;
+			return buf;
 		}
 
-		public void SendCommand(RX1164Command cmd, byte channel)
+		public void SendCommand(RX1164Command cmd, byte channel = 0)
 		{
-			var data = new byte[] { 0x00, 0x50, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+			var data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
 			data[1] = (byte)cmd;	
 			data[2] = channel;		
 
 			device.WriteFeatureData(data);
 			System.Threading.Thread.Sleep(200);
-		}
-
-		public void Dispose()
-		{
-			if (device != null)
-			{
-				device.Dispose();
-			}
 		}
 	}
 }
