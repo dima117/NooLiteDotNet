@@ -7,6 +7,14 @@ namespace ThinkingHome.NooLite.Console
     {
         static void Main(string[] args)
         {
+			//using (var xxx = new RX1164Adapter())
+			//{
+			//	xxx.OpenDevice();
+			//	xxx.SendCommand(RX1164Command.BindStart, 2);
+			//}
+
+			//return;
+
             string action = string.Empty;
             byte? channel = null;
             byte level = 100;
