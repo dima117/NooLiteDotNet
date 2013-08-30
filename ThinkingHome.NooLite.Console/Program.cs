@@ -10,7 +10,9 @@ namespace ThinkingHome.NooLite.Console
 			//using (var xxx = new RX1164Adapter())
 			//{
 			//	xxx.OpenDevice();
-			//	xxx.SendCommand(RX1164Command.BindStart, 2);
+			//	xxx.ReadLatestCommand();
+			//	xxx.ReadLatestCommand();
+			//	xxx.ReadLatestCommand();
 			//}
 
 			//return;

@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdapterCommandFormat.cs" />
+    <Compile Include="BaseAdapter.cs" />
     <Compile Include="PC11XXAdapter.cs" />
     <Compile Include="PC11XXCommand.cs" />
     <Compile Include="PC11XXLedCommand.cs" />
