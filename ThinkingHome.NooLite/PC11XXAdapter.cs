@@ -17,14 +17,14 @@
 			byte levelG = 0,
 			byte levelB = 0)
 		{
-			var format = cmd == PC11XXLedCommand.SetLevel ? AdapterCommandFormat.SetLevelRgb : AdapterCommandFormat.LED;
+			var format = cmd == PC11XXLedCommand.SetLevel ? AdapterCommandFormat.FourByteData : AdapterCommandFormat.LED;
 
 			SendCommandInternal((byte)cmd, channel, format, levelR, levelG, levelB);
 		}
 
 		public void SendCommand(PC11XXCommand cmd, byte channel, byte level = 0)
 		{
-			var format = cmd == PC11XXCommand.SetLevel ? AdapterCommandFormat.SetLevel : AdapterCommandFormat.Undefined;
+			var format = cmd == PC11XXCommand.SetLevel ? AdapterCommandFormat.OneByteData : AdapterCommandFormat.Undefined;
 
 			SendCommandInternal((byte)cmd, channel, format, level);
 		}
