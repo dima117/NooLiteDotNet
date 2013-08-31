@@ -7,9 +7,10 @@ namespace ThinkingHome.NooLite.Console
     {
         static void Main(string[] args)
         {
-			//using (var xxx = new RX1164Adapter())
+			//using (var xxx = new RX1164Adapter(true))
 			//{
 			//	xxx.OpenDevice();
+			//	System.Console.ReadKey();
 			//	var x1 = xxx.ReadLatestCommand();
 			//	var x2 = xxx.ReadLatestCommand();
 			//	var x3 = xxx.ReadLatestCommand();

@@ -1,4 +1,6 @@
-﻿namespace ThinkingHome.NooLite.Common
+﻿using System.Linq;
+
+namespace ThinkingHome.NooLite.Common
 {
 	public class ReceivedCommandData
 	{
@@ -15,7 +17,7 @@
 			{
 				return (buf[1] & 0x80) > 0;	// 7й бит 1-го байта
 			}
-		}	
+		}
 
 		public bool Binding
 		{
@@ -52,6 +54,23 @@
 						return new byte[0];
 				}
 			}
+		}
+
+		public override bool Equals(object obj)
+		{
+			var other = obj as ReceivedCommandData;
+
+			if (other == null || buf == null || other.buf == null || buf.Length != other.buf.Length)
+			{
+				return false;
+			}
+
+			return !buf.Where((t, i) => t != other.buf[i]).Any();
+		}
+
+		public override int GetHashCode()
+		{
+			return (buf != null ? buf.Sum(x => x) : 0);
 		}
 	}
 }

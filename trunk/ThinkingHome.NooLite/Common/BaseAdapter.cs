@@ -33,7 +33,7 @@ namespace ThinkingHome.NooLite.Common
 			return false;
 		}
 
-		public void Dispose()
+		public virtual void Dispose()
 		{
 			if (device != null)
 			{
