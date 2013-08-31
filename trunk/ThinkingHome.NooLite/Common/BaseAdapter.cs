@@ -2,7 +2,7 @@
 using System.Linq;
 using HidLibrary;
 
-namespace ThinkingHome.NooLite
+namespace ThinkingHome.NooLite.Common
 {
 	public abstract class BaseAdapter : IDisposable
 	{

@@ -43,9 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ReceivedCommandData.cs" />
-    <Compile Include="AdapterCommandFormat.cs" />
-    <Compile Include="BaseAdapter.cs" />
+    <Compile Include="Common\ReceivedCommandData.cs" />
+    <Compile Include="Common\CommandFormat.cs" />
+    <Compile Include="Common\BaseAdapter.cs" />
     <Compile Include="PC11XXAdapter.cs" />
     <Compile Include="PC11XXCommand.cs" />
     <Compile Include="PC11XXLedCommand.cs" />

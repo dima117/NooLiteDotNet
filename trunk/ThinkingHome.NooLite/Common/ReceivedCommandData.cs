@@ -1,4 +1,4 @@
-﻿namespace ThinkingHome.NooLite
+﻿namespace ThinkingHome.NooLite.Common
 {
 	public class ReceivedCommandData
 	{
@@ -39,14 +39,14 @@
 		{
 			get
 			{
-				switch ((AdapterCommandFormat)buf[4])
+				switch ((CommandFormat)buf[4])
 				{
-					case AdapterCommandFormat.OneByteData:
+					case CommandFormat.OneByteData:
 						return new[] { buf[5] };
-					case AdapterCommandFormat.FourByteData:
+					case CommandFormat.FourByteData:
 						return new[] { buf[5], buf[6], buf[7], buf[8] };
-					case AdapterCommandFormat.Undefined:
-					case AdapterCommandFormat.LED:
+					case CommandFormat.Undefined:
+					case CommandFormat.LED:
 						return new byte[0];
 					default:
 						return new byte[0];
