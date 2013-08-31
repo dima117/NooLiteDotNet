@@ -74,7 +74,7 @@ namespace ThinkingHome.NooLite
 				current = latestCommandData = ReadLatestCommand();
 			}
 
-			if (!current.Equals(prev))
+			if (prev != null && !current.Equals(prev))
 			{
 				OnCommandReceived(current);
 			}
