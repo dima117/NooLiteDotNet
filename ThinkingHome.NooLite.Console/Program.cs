@@ -7,13 +7,11 @@ namespace ThinkingHome.NooLite.Console
     {
         static void Main(string[] args)
         {
-			//using (var xxx = new RX1164Adapter(true))
+			//using (var xxx = new RX1164Adapter())
 			//{
+			//	xxx.CommandReceived += xxx_CommandReceived;
 			//	xxx.OpenDevice();
 			//	System.Console.ReadKey();
-			//	var x1 = xxx.ReadLatestCommand();
-			//	var x2 = xxx.ReadLatestCommand();
-			//	var x3 = xxx.ReadLatestCommand();
 			//}
 
 			//return;
@@ -22,7 +20,7 @@ namespace ThinkingHome.NooLite.Console
             byte? channel = null;
             byte level = 100;
 
-            var p = new OptionSet() {
+            var p = new OptionSet {
                 { "a|action=", "the {NAME} of action to execute. (On, Off, SetLevel, Switch, SaveState, LoadState, Bind, Unbind)", v => action = v },                
                 { "c|channel=", "the number of {CHANNEL} for the command. This must be between 0 to 31.", (byte v) => channel = v },
                 { "l|level=",  "the {LEVEL} of brightness for the command. This must be an byte.", (byte v) => level = v },                    
@@ -58,5 +56,10 @@ namespace ThinkingHome.NooLite.Console
                 p.WriteOptionDescriptions(System.Console.Out);
             }
         }
+
+		static void xxx_CommandReceived(Common.ReceivedCommandData obj)
+		{
+			System.Console.WriteLine("moo - {0}", obj.Channel);
+		}
     }
 }
