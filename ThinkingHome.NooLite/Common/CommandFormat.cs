@@ -1,6 +1,6 @@
-﻿namespace ThinkingHome.NooLite
+﻿namespace ThinkingHome.NooLite.Common
 {
-	internal enum AdapterCommandFormat
+	internal enum CommandFormat
 	{
 		Undefined = 0x00,
 		OneByteData = 0x01,

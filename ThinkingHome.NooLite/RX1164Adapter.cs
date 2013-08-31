@@ -1,4 +1,6 @@
-﻿namespace ThinkingHome.NooLite
+﻿using ThinkingHome.NooLite.Common;
+
+namespace ThinkingHome.NooLite
 {
 	public class RX1164Adapter : BaseAdapter
 	{
