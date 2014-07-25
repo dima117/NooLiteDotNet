@@ -1,5 +1,6 @@
 ﻿
 using System;
+using System.Linq;
 using System.Timers;
 using ThinkingHome.NooLite.Common;
 
@@ -13,7 +14,10 @@ namespace ThinkingHome.NooLite
 
 		private readonly Timer timer;
 
-		private ReceivedCommandData latestCommandData;
+		private ReceivedCommandData currentCommandData;		// текущее содержимое буфера адаптера
+		private bool lastProcessedTogl;						// предыдущий бит TOGL
+		private byte lastProcessedCommand = byte.MaxValue;	// предыдущая команда
+
 
 		public event Action<ReceivedCommandData> CommandReceived;
 
@@ -49,7 +53,7 @@ namespace ThinkingHome.NooLite
 
 		public RX1164Adapter()
 		{
-			timer = new Timer(100);
+			timer = new Timer(200);
 			timer.Elapsed += TimerElapsed;
 		}
 
@@ -70,12 +74,23 @@ namespace ThinkingHome.NooLite
 
 			lock (lockObject)
 			{
-				prev = latestCommandData;
-				current = latestCommandData = ReadLatestCommand();
+				prev = currentCommandData;
+				current = currentCommandData = ReadLatestCommand();
+
+				if (prev == null)
+				{
+					prev = current;
+					lastProcessedTogl = current.ToggleFlag;
+					lastProcessedCommand = current.Cmd;
+				}
 			}
 
-			if (prev != null && current.ToggleFlag != prev.ToggleFlag)
+			if (current.Equals(prev) && 
+				(current.ToggleFlag != lastProcessedTogl || current.Cmd != lastProcessedCommand))
 			{
+				lastProcessedTogl = current.ToggleFlag;
+				lastProcessedCommand = current.Cmd;
+
 				OnCommandReceived(current);
 			}
 		}

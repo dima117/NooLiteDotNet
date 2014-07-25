@@ -72,5 +72,10 @@ namespace ThinkingHome.NooLite.Common
 		{
 			return (buf != null ? buf.Sum(x => x) : 0);
 		}
+
+		public override string ToString()
+		{
+			return string.Join("", buf.Select(b => b.ToString("x2")));
+		}
 	}
 }
