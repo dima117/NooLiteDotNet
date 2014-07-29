@@ -46,6 +46,7 @@
     <Compile Include="Common\ReceivedCommandData.cs" />
     <Compile Include="Common\CommandFormat.cs" />
     <Compile Include="Common\BaseAdapter.cs" />
+    <Compile Include="Common\RxAdapterType.cs" />
     <Compile Include="PC11XXAdapter.cs" />
     <Compile Include="PC11XXCommand.cs" />
     <Compile Include="PC11XXLedCommand.cs" />

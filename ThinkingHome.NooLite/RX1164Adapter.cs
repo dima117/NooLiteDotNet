@@ -1,7 +1,9 @@
 ﻿
 using System;
 using System.Linq;
+using System.Text;
 using System.Timers;
+using HidLibrary;
 using ThinkingHome.NooLite.Common;
 
 namespace ThinkingHome.NooLite
@@ -14,6 +16,7 @@ namespace ThinkingHome.NooLite
 
 		private readonly Timer timer;
 
+		private RxAdapterType adapterType;
 		private ReceivedCommandData currentCommandData;		// текущее содержимое буфера адаптера
 		private bool lastProcessedTogl;						// предыдущий бит TOGL
 		private byte lastProcessedCommand = byte.MaxValue;	// предыдущая команда
@@ -54,7 +57,46 @@ namespace ThinkingHome.NooLite
 		public RX1164Adapter()
 		{
 			timer = new Timer(200);
-			timer.Elapsed += TimerElapsed;
+		}
+
+		protected override HidDevice SelectDevice()
+		{
+			var firstDevice = HidDevices
+				.Enumerate(VendorId, ProductId)
+				.Select(GetDeviceAdapterType)
+				.OrderByDescending(x => x.Item1)
+				.FirstOrDefault();
+
+			if (firstDevice != null)
+			{
+				adapterType = firstDevice.Item1;
+				return firstDevice.Item2;
+			}
+
+			return null;
+		}
+
+		private static Tuple<RxAdapterType, HidDevice> GetDeviceAdapterType(HidDevice hidDevice)
+		{
+			RxAdapterType adapterType = RxAdapterType.Other;
+			byte[] bytes;
+
+			if (hidDevice != null && hidDevice.ReadProduct(out bytes))
+			{
+				string productString = Encoding.UTF8.GetString(bytes).ToLower();
+
+				switch (productString)
+				{
+					case "rx2164":
+						adapterType = RxAdapterType.Rx2164;
+						break;
+					case "rx1164":
+						adapterType = RxAdapterType.Rx1164;
+						break;
+				}
+			}
+
+			return new Tuple<RxAdapterType, HidDevice>(adapterType, hidDevice);
 		}
 
 		public override bool OpenDevice()
@@ -64,11 +106,27 @@ namespace ThinkingHome.NooLite
 				return false;
 			}
 
-			timer.Start();
+			switch (adapterType)
+			{
+				case RxAdapterType.Rx1164:
+					timer.Elapsed += Rx1164TimerElapsed;
+					timer.Start();
+					break;
+				case RxAdapterType.Rx2164:
+					timer.Elapsed += Rx2164TimerElapsed;
+					timer.Start();
+					break;
+			}
+
 			return true;
 		}
 
-		private void TimerElapsed(object sender, ElapsedEventArgs e)
+		private void Rx2164TimerElapsed(object sender, ElapsedEventArgs e)
+		{
+			throw new NotImplementedException();
+		}
+
+		private void Rx1164TimerElapsed(object sender, ElapsedEventArgs e)
 		{
 			ReceivedCommandData prev, current;
 
@@ -85,7 +143,7 @@ namespace ThinkingHome.NooLite
 				}
 			}
 
-			if (current.Equals(prev) && 
+			if (current.Equals(prev) &&
 				(current.ToggleFlag != lastProcessedTogl || current.Cmd != lastProcessedCommand))
 			{
 				lastProcessedTogl = current.ToggleFlag;

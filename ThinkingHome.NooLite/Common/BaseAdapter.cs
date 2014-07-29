@@ -20,9 +20,14 @@ namespace ThinkingHome.NooLite.Common
 			get { return device != null && device.IsConnected; }
 		}
 
+		protected virtual HidDevice SelectDevice()
+		{
+			return HidDevices.Enumerate(VendorId, ProductId).FirstOrDefault();
+		}
+
 		public virtual bool OpenDevice()
 		{
-			device = HidDevices.Enumerate(VendorId, ProductId).FirstOrDefault();
+			device = SelectDevice();
 
 			if (device != null)
 			{
