@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.NooLite", "ThinkingHome.NooLite\ThinkingHome.NooLite.csproj", "{13CF9847-9279-4815-B573-70CC152201A2}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.NooLite.Console", "ThinkingHome.NooLite.Console\ThinkingHome.NooLite.Console.csproj", "{47BB589E-63ED-4C46-857D-98DC2215C9CA}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.NooLite.Web", "ThinkingHome.NooLite.Web\ThinkingHome.NooLite.Web.csproj", "{7C9A0D70-AC86-4299-BB9E-68590943C674}"
-EndProject
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{2AD111E7-6071-431E-B05D-8A3B6BA3762C}"
 	ProjectSection(SolutionItems) = preProject
 		build\main.build = build\main.build
 		build\ThinkingHome.NooLite.nuspec = build\ThinkingHome.NooLite.nuspec
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.NooLite", "ThinkingHome.NooLite\ThinkingHome.NooLite.csproj", "{13CF9847-9279-4815-B573-70CC152201A2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.NooLite.Console", "ThinkingHome.NooLite.Console\ThinkingHome.NooLite.Console.csproj", "{47BB589E-63ED-4C46-857D-98DC2215C9CA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkingHome.NooLite.Web", "ThinkingHome.NooLite.Web\ThinkingHome.NooLite.Web.csproj", "{7C9A0D70-AC86-4299-BB9E-68590943C674}"
 EndProject
 Project("{930C7802-8A8C-48F9-8165-68863BCCD9DD}") = "ThinkingHome.NooLite.Install", "ThinkingHome.NooLite.Install\ThinkingHome.NooLite.Install.wixproj", "{E6371289-4FBC-412C-B136-7D27613CB77A}"
 EndProject
