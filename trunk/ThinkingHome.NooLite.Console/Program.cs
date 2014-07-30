@@ -10,10 +10,10 @@ namespace ThinkingHome.NooLite.Console
 			string action = string.Empty;
 			byte? channel = null;
 			byte level = 100;
-			bool rx1164trace = false;
+			bool rx1164Trace = false;
 
 			var p = new OptionSet {
-                { "t|trace", "", v => rx1164trace = true },                
+                { "t|trace", "", v => rx1164Trace = true },                
                 { "a|action=", "the {NAME} of action to execute. (On, Off, SetLevel, Switch, SaveState, LoadState, Bind, Unbind)", v => action = v },                
                 { "c|channel=", "the number of {CHANNEL} for the command. This must be between 0 to 31.", (byte v) => channel = v },
                 { "l|level=",  "the {LEVEL} of brightness for the command. This must be an byte.", (byte v) => level = v },                    
@@ -23,7 +23,7 @@ namespace ThinkingHome.NooLite.Console
 			{
 				p.Parse(args);
 
-				if (rx1164trace)
+				if (rx1164Trace)
 				{
 					RX1164Trace();
 				}
@@ -59,7 +59,7 @@ namespace ThinkingHome.NooLite.Console
 
 		private static void RX1164Trace()
 		{
-			using (var xxx = new RX1164Adapter())
+			using (var xxx = new RX2164Adapter())
 			{
 				xxx.CommandReceived += xxx_CommandReceived;
 				xxx.OpenDevice();
@@ -69,7 +69,7 @@ namespace ThinkingHome.NooLite.Console
 
 		static void xxx_CommandReceived(Common.ReceivedCommandData obj)
 		{
-			System.Console.WriteLine("buf {0} (channel: {1}, command: {2}, togl: {3})", obj, obj.Channel, obj.Cmd, obj.ToggleFlag);
+			System.Console.WriteLine("buf {0} (channel: {1}, command: {2})", obj, obj.Channel, obj.Cmd);
 		}
 	}
 }

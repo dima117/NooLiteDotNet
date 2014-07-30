@@ -2,21 +2,13 @@
 
 namespace ThinkingHome.NooLite.Common
 {
-	public class ReceivedCommandData
+	public abstract class ReceivedCommandData
 	{
-		private readonly byte[] buf;
+		protected readonly byte[] buf;
 
-		public ReceivedCommandData(byte[] buf)
+		protected ReceivedCommandData(byte[] buf)
 		{
 			this.buf = (byte[])buf.Clone();
-		}
-
-		public bool ToggleFlag
-		{
-			get
-			{
-				return (buf[1] & 0x80) > 0;	// 7й бит 1-го байта
-			}
 		}
 
 		public bool Binding
