@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using System.Text;
 using HidLibrary;
 
 namespace ThinkingHome.NooLite.Common
@@ -44,6 +45,20 @@ namespace ThinkingHome.NooLite.Common
 			{
 				device.Dispose();
 			}
+		}
+
+		public static string GetProductString(HidDevice hidDevice)
+		{
+			byte[] bytes;
+
+			if (hidDevice != null && hidDevice.ReadProduct(out bytes))
+			{
+				string productString = Encoding.Unicode.GetString(bytes);
+
+				return productString.Trim('\0');
+			}
+
+			return string.Empty;
 		}
 	}
 }
