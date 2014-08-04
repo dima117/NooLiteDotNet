@@ -117,9 +117,14 @@
 
 		<xmlpoke
 			file="${path::combine(nuget.source.dir, 'ThinkingHome.NooLite.nuspec')}"
-			xpath="/package/metadata/version"
+			xpath="/xsi:package/xsi:metadata/xsi:version"
 			verbose="true"
-			value="${nuget.package.version}" />
+			value="${nuget.package.version}">
+
+			<namespaces>
+                    <namespace prefix="xsi" uri="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd" />
+                </namespaces>
+		</xmlpoke>
 
 		<copy todir="${path::combine(nuget.source.dir, 'lib\net40')}" >
 			<fileset basedir="${api.dir}">

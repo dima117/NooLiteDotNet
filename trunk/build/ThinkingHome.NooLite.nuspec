@@ -12,7 +12,7 @@
     <id>NooLiteDotNet</id>
     <title>ThinkingHome.NooLite</title>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Wireless control of appliances using the system NooLite (http://www.noo.com.by). Adapters PC11xx and RX1164 are supported.</description>
+    <description>Wireless control of appliances using the system NooLite (http://www.noo.com.by). Adapters PC118/1116/1132 and RX1164/2164 are supported.</description>
     <summary>Wireless control of appliances using the system NooLite (http://www.noo.com.by)</summary>
     <copyright>Dmitriy Andriyanov, Sergey Matveev</copyright>
     <language>en-US</language>
