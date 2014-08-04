@@ -1,6 +1,4 @@
-﻿using ThinkingHome.NooLite.Common;
-
-namespace ThinkingHome.NooLite
+﻿namespace ThinkingHome.NooLite.ReceivedData
 {
 	public class RX1164ReceivedCommandData : ReceivedCommandData
 	{

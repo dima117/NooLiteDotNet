@@ -1,6 +1,6 @@
 ﻿namespace ThinkingHome.NooLite
 {
-	public enum RX1164Command: byte
+	public enum RxCommand: byte
     {
 		None =		0x00,
 		BindStart =	0x01,

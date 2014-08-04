@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Timers;
+using ThinkingHome.NooLite.ReceivedData;
 
 namespace ThinkingHome.NooLite.Common
 {
@@ -68,7 +69,7 @@ namespace ThinkingHome.NooLite.Common
 			return buf;
 		}
 
-		public void SendCommand(RX1164Command cmd, byte channel = 0)
+		public void SendCommand(RxCommand cmd, byte channel = 0)
 		{
 			var data = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 

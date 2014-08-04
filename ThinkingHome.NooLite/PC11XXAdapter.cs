@@ -1,4 +1,5 @@
 ﻿using ThinkingHome.NooLite.Common;
+using ThinkingHome.NooLite.ReceivedData;
 
 namespace ThinkingHome.NooLite
 {
