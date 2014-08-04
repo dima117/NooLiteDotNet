@@ -1,10 +1,10 @@
 ﻿using System.Linq;
 
-namespace ThinkingHome.NooLite.Common
+namespace ThinkingHome.NooLite.ReceivedData
 {
 	public abstract class ReceivedCommandData
 	{
-		protected readonly byte[] buf;
+		public readonly byte[] buf;
 
 		protected ReceivedCommandData(byte[] buf)
 		{
@@ -29,11 +29,16 @@ namespace ThinkingHome.NooLite.Common
 			get { return buf[2]; }
 		}
 
+		internal CommandFormat DataFormat
+		{
+			get { return (CommandFormat)buf[4]; }
+		}
+
 		public byte[] Data
 		{
 			get
 			{
-				switch ((CommandFormat)buf[4])
+				switch (DataFormat)
 				{
 					case CommandFormat.OneByteData:
 						return new[] { buf[5] };

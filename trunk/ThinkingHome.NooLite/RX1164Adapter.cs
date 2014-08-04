@@ -4,6 +4,7 @@ using System.Linq;
 using System.Timers;
 using HidLibrary;
 using ThinkingHome.NooLite.Common;
+using ThinkingHome.NooLite.ReceivedData;
 
 namespace ThinkingHome.NooLite
 {

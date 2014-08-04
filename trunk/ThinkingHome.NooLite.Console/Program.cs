@@ -1,5 +1,6 @@
 ﻿using System;
 using NDesk.Options;
+using ThinkingHome.NooLite.ReceivedData;
 
 namespace ThinkingHome.NooLite.Console
 {
@@ -61,13 +62,20 @@ namespace ThinkingHome.NooLite.Console
 		{
 			using (var xxx = new RX2164Adapter())
 			{
-				xxx.CommandReceived += xxx_CommandReceived;
+				//xxx.CommandReceived += xxx_CommandReceived;
+				xxx.MicroclimateDataReceived += xxx_MicroclimateDataReceived;
 				xxx.OpenDevice();
 				System.Console.ReadKey();
 			}
 		}
 
-		static void xxx_CommandReceived(Common.ReceivedCommandData obj)
+		static void xxx_MicroclimateDataReceived(MicroclimateReceivedCommandData obj)
+		{
+			System.Console.WriteLine("buf {0} (channel: {1}, command: {2}, t: {3:0.0}; h: {4})", 
+				obj, obj.Channel, obj.Cmd, obj.Temperature, obj.Humidity);
+		}
+
+		static void xxx_CommandReceived(ReceivedCommandData obj)
 		{
 			System.Console.WriteLine("buf {0} (channel: {1}, command: {2})", obj, obj.Channel, obj.Cmd);
 		}

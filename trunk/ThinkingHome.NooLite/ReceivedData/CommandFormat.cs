@@ -1,4 +1,4 @@
-﻿namespace ThinkingHome.NooLite.Common
+﻿namespace ThinkingHome.NooLite.ReceivedData
 {
 	internal enum CommandFormat
 	{
