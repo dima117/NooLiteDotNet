@@ -1,5 +1,7 @@
 ﻿using System;
+using System.IO;
 using NDesk.Options;
+using ThinkingHome.NooLite.PR1132;
 using ThinkingHome.NooLite.ReceivedData;
 
 namespace ThinkingHome.NooLite.Console
@@ -8,6 +10,9 @@ namespace ThinkingHome.NooLite.Console
 	{
 		static void Main(string[] args)
 		{
+			ParseConfiguration();
+			return;
+
 			string action = string.Empty;
 			byte? channel = null;
 			byte level = 100;
@@ -62,7 +67,7 @@ namespace ThinkingHome.NooLite.Console
 		{
 			using (var xxx = new RX2164Adapter())
 			{
-				//xxx.CommandReceived += xxx_CommandReceived;
+				xxx.CommandReceived += xxx_CommandReceived;
 				xxx.MicroclimateDataReceived += xxx_MicroclimateDataReceived;
 				xxx.OpenDevice();
 				System.Console.ReadKey();
@@ -78,6 +83,15 @@ namespace ThinkingHome.NooLite.Console
 		static void xxx_CommandReceived(ReceivedCommandData obj)
 		{
 			System.Console.WriteLine("buf {0} (channel: {1}, command: {2})", obj, obj.Channel, obj.Cmd);
+		}
+
+		private static void ParseConfiguration()
+		{
+			using (var file = File.OpenRead("noolite_settings.bin"))
+			{
+				var cfg = PR1132Configuration.Deserialize(file);
+				System.Console.WriteLine(cfg);
+			}
 		}
 	}
 }
