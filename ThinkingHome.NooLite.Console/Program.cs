@@ -10,7 +10,7 @@ namespace ThinkingHome.NooLite.Console
 	{
 		static void Main(string[] args)
 		{
-			ParseConfiguration();
+			SendGetwayCommand();
 			return;
 
 			string action = string.Empty;
@@ -92,6 +92,12 @@ namespace ThinkingHome.NooLite.Console
 				var cfg = PR1132Configuration.Deserialize(file);
 				System.Console.WriteLine(cfg);
 			}
+		}
+
+		private static void SendGetwayCommand()
+		{
+			var getway = new PR1132Gateway("192.168.0.168");
+			getway.SendCommand(PC11XXCommand.LoadState, 15);
 		}
 	}
 }
