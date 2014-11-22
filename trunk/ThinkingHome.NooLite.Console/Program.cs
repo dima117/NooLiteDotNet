@@ -76,7 +76,7 @@ namespace ThinkingHome.NooLite.Console
 
 		static void xxx_MicroclimateDataReceived(MicroclimateReceivedCommandData obj)
 		{
-			System.Console.WriteLine("buf {0} (channel: {1}, command: {2}, t: {3:0.0}; h: {4})", 
+			System.Console.WriteLine("buf {0} (channel: {1}, command: {2}, t: {3:0.0}; h: {4})",
 				obj, obj.Channel, obj.Cmd, obj.Temperature, obj.Humidity);
 		}
 
@@ -96,8 +96,11 @@ namespace ThinkingHome.NooLite.Console
 
 		private static void SendGetwayCommand()
 		{
-			var getway = new PR1132Gateway("192.168.0.168");
-			getway.SendCommand(PC11XXCommand.LoadState, 15);
+			using (var getway = new PR1132Gateway("192.168.0.168"))
+			{
+				//getway.SendCommand(PC11XXCommand.LoadState, 15);
+				var x = getway.LoadSensorData();
+			}
 		}
 	}
 }

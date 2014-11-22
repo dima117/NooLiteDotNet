@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Net;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using ThinkingHome.NooLite.PR1132;
 
 namespace ThinkingHome.NooLite
@@ -39,15 +41,40 @@ namespace ThinkingHome.NooLite
 		{
 			var url = GetUrl("noolite_settings.bin");
 
-			using (var client = new WebClient())
-			{
-				var bytes = client.DownloadData(url);
+			var bytes = client.DownloadData(url);
 
-				using (var stream = new MemoryStream(bytes))
-				{
-					return PR1132Configuration.Deserialize(stream);
-				}
+			using (var stream = new MemoryStream(bytes))
+			{
+				return PR1132Configuration.Deserialize(stream);
 			}
+		}
+
+		public PR1132SensorData[] LoadSensorData()
+		{
+			var url = GetUrl("sens.xml");
+
+			var xml = client.DownloadString(url);
+			var doc = XDocument.Parse(xml);
+
+			var result = new PR1132SensorData[4];
+
+			for (int i = 0; i < 4; i++)
+			{
+				string strT = doc.XPathSelectElement("response/snst" + i).Value;
+				string strH = doc.XPathSelectElement("response/snsh" + i).Value;
+				string strState = doc.XPathSelectElement("response/snt" + i).Value;
+
+				var data = new PR1132SensorData
+				{
+					Temperature = Convert.ToInt32(strT),
+					Humidity = Convert.ToInt32(strH),
+					State = (SensorState)Convert.ToInt32(strState)
+				};
+
+				result[i] = data;
+			}
+
+			return result;
 		}
 
 		private Uri GetUrl(string relativeUrl)
@@ -69,14 +96,14 @@ namespace ThinkingHome.NooLite
 			switch (format)
 			{
 				case CommandFormat.OneByteData:
-					relativeUrl += string.Format("&fmt={0}&d0={1}", (byte) format, level0);
+					relativeUrl += string.Format("&fmt={0}&d0={1}", (byte)format, level0);
 					break;
 				case CommandFormat.FourByteData:
 				case CommandFormat.LED:
-					relativeUrl += string.Format("&fmt={0}&d0={1}&d1={2}&d2={3}", (byte) format, level0, level1, level2);
+					relativeUrl += string.Format("&fmt={0}&d0={1}&d1={2}&d2={3}", (byte)format, level0, level1, level2);
 					break;
 			}
-			
+
 			var url = GetUrl(relativeUrl);
 
 			client.DownloadString(url);
