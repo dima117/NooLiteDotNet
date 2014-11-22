@@ -49,8 +49,10 @@
     <Compile Include="PR1132\PR1132ChannelType.cs" />
     <Compile Include="PR1132\Pr1132Configuration.cs" />
     <Compile Include="PR1132\PR1132ControlGroup.cs" />
+    <Compile Include="PR1132\PR1132SensorData.cs" />
     <Compile Include="PR1132\PR1132Timer.cs" />
     <Compile Include="PR1132\PR1132TimerCommad.cs" />
+    <Compile Include="PR1132\SensorState.cs" />
     <Compile Include="ReceivedData\MicroclimateReceivedCommandData.cs" />
     <Compile Include="ReceivedData\ReceivedCommandData.cs" />
     <Compile Include="CommandFormat.cs" />
