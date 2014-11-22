@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\BaseRxAdapter.cs" />
+    <Compile Include="PR1132Gateway.cs" />
     <Compile Include="PR1132\PR1132Channel.cs" />
     <Compile Include="PR1132\PR1132ChannelType.cs" />
     <Compile Include="PR1132\Pr1132Configuration.cs" />
@@ -52,7 +53,7 @@
     <Compile Include="PR1132\PR1132TimerCommad.cs" />
     <Compile Include="ReceivedData\MicroclimateReceivedCommandData.cs" />
     <Compile Include="ReceivedData\ReceivedCommandData.cs" />
-    <Compile Include="ReceivedData\CommandFormat.cs" />
+    <Compile Include="CommandFormat.cs" />
     <Compile Include="Common\BaseAdapter.cs" />
     <Compile Include="PC11XXAdapter.cs" />
     <Compile Include="PC11XXCommand.cs" />
