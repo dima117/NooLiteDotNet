@@ -10,8 +10,8 @@ namespace ThinkingHome.NooLite.Console
 	{
 		static void Main(string[] args)
 		{
-			SendGetwayCommand();
-			return;
+			//SendGetwayCommand();
+			//return;
 
 			string action = string.Empty;
 			byte? channel = null;
@@ -96,10 +96,11 @@ namespace ThinkingHome.NooLite.Console
 
 		private static void SendGetwayCommand()
 		{
-			using (var getway = new PR1132Gateway("192.168.0.168"))
+			using (var gateway = new PR1132Gateway("192.168.0.168"))
 			{
-				//getway.SendCommand(PC11XXCommand.LoadState, 15);
-				var x = getway.LoadSensorData();
+				//gateway.SendCommand(PC11XXCommand.Off, 0);
+				var x = gateway.LoadSensorData();
+				//var cfg = gateway.LoadConfiguration();
 			}
 		}
 	}

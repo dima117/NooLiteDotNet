@@ -66,10 +66,20 @@ namespace ThinkingHome.NooLite
 
 				var data = new PR1132SensorData
 				{
-					Temperature = Convert.ToInt32(strT),
-					Humidity = Convert.ToInt32(strH),
 					State = (SensorState)Convert.ToInt32(strState)
 				};
+
+				decimal t;
+				if (decimal.TryParse(strT, out t))
+				{
+					data.Temperature = t;
+				}
+
+				int h;
+				if (int.TryParse(strH, out h))
+				{
+					data.Humidity = h;
+				}
 
 				result[i] = data;
 			}
